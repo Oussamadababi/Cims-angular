@@ -1,13 +1,7 @@
-<nav
-  class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top"
->
+<nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute fixed-top">
+
   <div class="container-fluid">
-    <button
-      mat-raised-button
-      class="navbar-toggler"
-      type="button"
-      (click)="sidebarToggle()"
-    >
+    <button mat-raised-button class="navbar-toggler" type="button" (click)="sidebarToggle()">
       <span class="sr-only">Toggle navigation</span>
       <span class="navbar-toggler-icon icon-bar"></span>
       <span class="navbar-toggler-icon icon-bar"></span>
@@ -23,62 +17,34 @@
           </a>
         </li>
         <li class="nav-item dropdown">
-          <a
-            class="nav-link"
-            href="javascript:void(0)"
-            id="navbarDropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             <i class="material-icons" (click)="notif()">notifications</i>
             <span class="notification">{{ this.numberofnonevu }}</span>
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-right"
-            aria-labelledby="navbarDropdownMenuLink"
-            [(ngModel)]="this.notification.message"
-            ngDefaultControl
-          >
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink"
+            [(ngModel)]="this.notification.message" ngDefaultControl>
             <ng-container *ngFor="let item of this.notification">
-              <a
-                class="dropdown-item"
-                *ngIf="item.etat == true"
-                [value]="item.id_notification"
-                [routerLink]="['Affectations_partielles']"
-              >
+              <a class="dropdown-item" *ngIf="item.etat == true" [value]="item.id_notification"
+                [routerLink]="['Affectations_partielles']">
                 {{ item.message }}
               </a>
-              <a
-                class="dropdown-item"
-                id="nonevu"
-                *ngIf="item.etat == false"
-                [value]="item.id_notification"
-                [routerLink]="['Affectations_partielles']"
-              >
+              <a class="dropdown-item" id="nonevu" *ngIf="item.etat == false" [value]="item.id_notification"
+                [routerLink]="['Affectations_partielles']">
                 {{ item.message }}
               </a>
             </ng-container>
           </div>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            href="javascript:void(0)"
-            id="navbarDropdownMenuLink"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
+          <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
             <i class="material-icons">person</i>
             <p>
               <span class="d-lg-none d-md-block">Account</span>
             </p>
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-right"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" routerLink="/profil">
               Profil
             </a>
