@@ -1,0 +1,79 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Ajouter une affectation</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-5 mb-3">
+                  <mat-form-field class="spacing">
+                    <mat-label>Personnel</mat-label>
+                    <mat-select name="personnel" [(ngModel)]="
+                        this.AffectationTotale.personnel.id_personnel
+                      " ngDefaultControl>
+                      <mat-option *ngFor="let item of this.personnel" [value]="item.id_personnel">
+                        {{ item.nom }} {{ item.prenom }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <mat-form-field class="spacing">
+                  <mat-label>Gouvernorat</mat-label>
+                  <mat-select name="gouvernorat" ngDefaultControl required [(ngModel)]="this.gouvselecter"
+                    (selectionChange)="onOptionsSelected()">
+                    <mat-option *ngFor="let item of this.gouvernorat" [value]="item.idGouv">
+                      {{ item.nomGouv }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <mat-form-field class="spacing">
+                  <mat-label>Site</mat-label>
+                  <mat-select *ngIf="this.gouvernorat != []" name="site"
+                    [(ngModel)]="this.AffectationTotale.site.idSite" ngDefaultControl required>
+                    <mat-option *ngFor="let item of this.site" [value]="item.idSite">
+                      {{ item.nomSite }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <div class="add ml-auto mr-auto">
+                  <button (click)="addT()" class="btn btn-success btn-round">
+                    Ajouter
+                  </button>
+                  <button class="btn btn-danger btn-round" (click)="cancel()">
+                    Annuler
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Liste des affectations totales</h4>
+          </div>
+          <ag-grid-angular style="width: 1000px; height: 400px;" class="ag-theme-material" [rowData]="rowDataT"
+            [columnDefs]="columnDefsT" [modules]="modules" (rowSelected)="getId($event)"
+            (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
+            [paginationAutoPageSize]="true" [pagination]="true"></ag-grid-angular>
+          <div class="add ml-auto mr-auto">
+            <button class="btn btn-danger btn-round" (click)="delete()">
+              Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

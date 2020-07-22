@@ -1,0 +1,128 @@
+[33mcommit 39626d578b5de6302a2e14960d27054ed89abca2[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Wed May 13 00:35:33 2020 +0100
+
+    lister missions d'une aff
+
+[33mcommit d07be8bbbb02643074e69e0ec0849ab5cdfde57b[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Mon May 11 06:10:05 2020 +0100
+
+    origin master
+
+[33mcommit 07d2dc81d61f713b7b4be01d4cbf97774f00d159[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Sun May 10 15:17:29 2020 +0100
+
+    confirmer password
+
+[33mcommit c86023518ef652973c59a36bcd1ba2660d7d82b1[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Thu May 7 17:56:32 2020 +0100
+
+    les affectations t/p, get profil/update pass/listsitespargouv
+
+[33mcommit 027ce5b0103fd4c285e161d67b7391f7900b2381[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Tue Apr 28 16:09:45 2020 +0100
+
+    rectifications
+
+[33mcommit b4bedbb0dd29a95c630d5c5a0296e63e6afb946e[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Fri Apr 24 00:31:15 2020 +0100
+
+    gestion des affectations
+
+[33mcommit d059c73c2b9ffc931879b0dee8bc3a16afa44ae3[m
+Author: amani-bh <amani-bh@users.noreply.github.com>
+Date:   Mon Apr 20 19:06:50 2020 +0100
+
+    ajouter personnel
+
+[33mcommit 8eb4146379cac3238c7a10288ea7ddc00eaaa198[m
+Author: amani-bh <amani-bh@users.noreply.github.com>
+Date:   Sat Apr 18 20:13:16 2020 +0100
+
+    service Directeur/chefS
+
+[33mcommit 106536e367ce5bc46a9ce77520d8e70322374570[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Thu Apr 16 00:50:35 2020 +0100
+
+    ....
+
+[33mcommit ff5de533481575ca9acec858138744e757cf0f1b[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Mon Apr 13 09:43:15 2020 +0100
+
+    navbar&redirection & authguard
+
+[33mcommit f137884935f867401ab425aa3fdffd945f181180[m
+Author: amani-bh <amani-bh@users.noreply.github.com>
+Date:   Sun Apr 12 23:07:10 2020 +0100
+
+    Update List-PersonnelsRH.component.ts
+
+[33mcommit e56856e95100626409494bbce79d9ab28f94e57b[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Sun Apr 12 23:03:34 2020 +0100
+
+    profil/auth
+
+[33mcommit 04659faf477e1a503223516a9c893dd58731925a[m
+Merge: 1e546d12 3bf5f4cf
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Fri Apr 10 11:31:07 2020 +0100
+
+    Merge branch 'master' of https://github.com/SafeSekma/PFE-cims
+
+[33mcommit 1e546d12a196d8c2fda50209f7ca1a05b57dc255[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Fri Apr 10 11:30:06 2020 +0100
+
+    register/login
+
+[33mcommit 3bf5f4cf22119bbbeb1a5cab3a9086c81ccbe5f2[m
+Author: amani-bh <amani-bh@users.noreply.github.com>
+Date:   Wed Apr 8 17:27:14 2020 +0100
+
+    ...
+
+[33mcommit ef6b1993ac3e84c8c086c9c535e23e74e4744372[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Sun Apr 5 23:38:15 2020 +0100
+
+    Authentification tekhdem mezelou les roles
+
+[33mcommit 748725ba2763e1cd769bd3c8abb607a387ac9e5e[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Fri Apr 3 01:19:04 2020 +0100
+
+    commit
+
+[33mcommit 724762e45dc9311a8477036876156e3ca9203919[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Thu Apr 2 22:40:43 2020 +0100
+
+    personnel mazel msh kemel
+
+[33mcommit 5c59e848c3fcb3efedd167714f2de531f87597e8[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Sat Mar 21 16:04:02 2020 +0100
+
+    ..
+
+[33mcommit f7193dbeab0d672c3e988105c4e75a3c97b402de[m
+Author: amani-bh <amani-bh@users.noreply.github.com>
+Date:   Fri Mar 20 20:58:53 2020 +0100
+
+    Second commit
+    
+    Demandeur/Planificateur
+
+[33mcommit 4f0075a78426833b2901f0e1472a7b20416f0e72[m
+Author: Safé Sekma <safesekma@gmail.com>
+Date:   Wed Mar 18 19:10:31 2020 +0100
+
+    99% des interfaces

@@ -1,0 +1,56 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Ajouter un departement</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <input type="text" id="name" name="nom" class="form-control" required
+                    [(ngModel)]="this.departement.nom_dept" />
+                  <label class="form-control-placeholder" for="name">
+                    Nom du departement*
+                  </label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="add ml-auto mr-auto">
+                  <button (click)="add()" class="btn btn-success btn-round">
+                    Ajouter
+                  </button>
+                  <button class="btn btn-danger btn-round" (click)="cancel()">
+                    Annuler
+                  </button>
+                </div>
+              </div>
+              <p>(*):champs obligatoire</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Liste des departements</h4>
+          </div>
+          <ag-grid-angular style="width: 710px; height: 350px;" class="ag-theme-material" [rowData]="rowData"
+            [columnDefs]="columnDefs" [modules]="modules" (rowSelected)="getId($event)"
+            (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
+            [pagination]="true" [paginationAutoPageSize]="true"></ag-grid-angular>
+          <div class="add ml-auto mr-auto">
+            <button class="btn btn-danger btn-round" (click)="delete()">
+              Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

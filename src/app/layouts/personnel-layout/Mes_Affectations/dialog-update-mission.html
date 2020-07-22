@@ -1,0 +1,108 @@
+<h1 mat-dialog-title>Parametrer votre mission</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Date de mission</mat-label>
+    <input matInput value="{{ Mission.date }}" disabled />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Heure Départ</mat-label>
+    <input type="time" matInput [(ngModel)]="Mission.heureDepart" value="{{ Mission.heureDepart }}" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Heure Arrivée</mat-label>
+    <input type="time" matInput [(ngModel)]="Mission.heureArrivee" value="{{ Mission.heureArrivee }}" />
+  </mat-form-field>
+  <!--<div>
+    Besoin Transport<br>
+    <mat-radio-group>
+      <mat-radio-button value="OUI" name="transport" [(ngModel)]="this.Transport" ngDefaultControl required>
+        
+      </mat-radio-button>
+      <mat-radio-button value="NON" name="transport" [(ngModel)]="this.Transport" ngDefaultControl required>
+        Non
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>-->
+  <div>
+    Frais de déplacement à la charge de
+    <br />
+    <mat-radio-group>
+      <mat-radio-button value="missionnaire" name="deplacement" [(ngModel)]="this.Deplacement" [checked]="etatDM"
+        ngDefaultControl required>
+        Le missionnaire
+      </mat-radio-button>
+
+      <br />
+      <mat-radio-button value="cims" name="deplacement" [(ngModel)]="this.Deplacement" [checked]="etatDC"
+        ngDefaultControl required>
+        Le CIMS
+      </mat-radio-button>
+      <br />
+      <mat-radio-button value="organisme" name="deplacement" [(ngModel)]="this.Deplacement" [checked]="etatDO"
+        ngDefaultControl required>
+        L'organisme d'accueil
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div>
+    Frais de transport à la charge de
+    <br />
+    <mat-radio-group>
+      <mat-radio-button value="missionnaire" name="transport" [(ngModel)]="this.Transport" [checked]="etatTM"
+        ngDefaultControl required>
+        Le missionnaire
+      </mat-radio-button>
+      <div *ngIf="this.Transport == 'missionnaire' ">
+        <mat-radio-button style="margin-left: 20px;" value="personelle" name="moyen" [(ngModel)]="this.MoyenDeTransport"
+          ngDefaultControl required>
+          Personnelle
+        </mat-radio-button>
+        <mat-radio-button style="margin-left: 20px;" value="public" name="moyen" [(ngModel)]="this.MoyenDeTransport"
+          ngDefaultControl required>
+          Public
+        </mat-radio-button>
+      </div>
+      <br />
+      <mat-radio-button value="cims" name="transport" [(ngModel)]="this.Transport" [checked]="etatTC" ngDefaultControl
+        required>
+        Le CIMS
+      </mat-radio-button>
+      <br />
+      <mat-radio-button value="organisme" name="transport" [(ngModel)]="this.Transport" [checked]="etatTO"
+        ngDefaultControl required>
+        L'organisme d'accueil
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div>
+    Frais d'hebergement à la charge de
+    <br />
+    <mat-radio-group>
+      <mat-radio-button value="missionnaire" name="hebergement" [(ngModel)]="this.Hebergement" [checked]="etatHM"
+        ngDefaultControl required>
+        Le missionnaire
+      </mat-radio-button>
+      <br />
+      <mat-radio-button value="cims" name="hebergement" [(ngModel)]="this.Hebergement" [checked]="etatHC"
+        ngDefaultControl required>
+        Le CIMS
+      </mat-radio-button>
+      <br />
+      <mat-radio-button value="organisme" name="hebergement" [(ngModel)]="this.Hebergement" [checked]="etatHO"
+        ngDefaultControl required>
+        L'organisme d'accueil
+      </mat-radio-button>
+      <br />
+      <mat-radio-button value="NON" name="hebergement" [(ngModel)]="this.Hebergement" [checked]="etatHN"
+        ngDefaultControl required>
+        Pas d'hébergement
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button class="btn btn-success btn-round" (click)="UpdateMission(Mission.idMission)" cdkFocusInitial>
+    Modifier
+  </button>
+</div>

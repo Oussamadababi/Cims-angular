@@ -1,0 +1,109 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Mes affectations</h4>
+          </div>
+
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table" *ngIf="AffectationPartielle">
+                <thead class=" text-primary">
+                  <th>
+                    Site
+                  </th>
+                  <th>
+                    Date debut
+                  </th>
+
+                  <th>
+                    Date fin
+                  </th>
+                  <th>
+                    Jour
+                  </th>
+                  <th>
+                    Sujet
+                  </th>
+                </thead>
+                <tbody id="body" *ngFor="let Affp of AffectationPartielle">
+                  <tr>
+                    <td>
+                      <input type="checkbox" id="{{ Affp.idAffect }}checkAll" disabled />
+
+                      {{ Affp.site.nomSite }}
+                    </td>
+                    <td>
+                      {{ Affp.dateDebut }}
+                    </td>
+
+                    <td>
+                      {{ Affp.datefin }}
+                    </td>
+                    <td>
+                      {{ Affp.jour }}
+                    </td>
+                    <td>
+                      {{ Affp.sujet }}
+                    </td>
+                    <td>
+                      <i class="material-icons" id="{{ Affp.idAffect }}" (click)="getMissionParId(Affp.idAffect)">
+                        expand_more
+                      </i>
+                      <i *ngIf="Affp.opened == true" class="material-icons" id="{{ Affp.idAffect }}"
+                        (click)="getMissionParId(Affp.idAffect)">
+                        expand_less
+                      </i>
+                    </td>
+                    <td>
+                      <i class="material-icons" id="{{ Affp.idAffect }}" (click)="getOrdreOfAff(Affp.idAffect)">
+                        print
+                      </i>
+                    </td>
+                  </tr>
+                  <ng-container *ngIf="Affp.opened == true">
+                    <tr>
+                      <th></th>
+
+                      <th>Date Mission</th>
+                      <th>Heure Départ</th>
+                      <th>Heure Arrivée</th>
+                    </tr>
+                    <tr *ngFor="let M of Mission">
+                      <td></td>
+                      <td class="text-primary">
+                        <input class="cb" type="checkbox" [checked]="M.etat_accomplie" (change)="onChange(M.idMission)"
+                          (click)="openDialog(M.idMission)" />
+
+                        {{ M.date }}
+                      </td>
+
+                      <td> {{M.heureDepart}}
+
+                      </td>
+                      <td>
+                        {{M.heureArrivee}}
+
+                      </td>
+
+
+                      <td> <button mat-raised-button (click)="open(M.idMission)">Parametrer Mission</button></td>
+                      <td>
+                        <i class="material-icons" id="{{ M.idMission }}" (click)="getOrdreOfMission(M.idMission)">
+                          picture_as_pdf
+                        </i>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

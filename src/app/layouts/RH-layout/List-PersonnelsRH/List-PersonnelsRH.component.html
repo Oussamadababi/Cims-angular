@@ -1,0 +1,138 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <button class="btn btn-succes btn-round" (click)="displayaddpers()">
+      Ajouter un personnel
+    </button>
+
+    <div *ngIf="this.addpers" class="main-content">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Ajouter un personnel</h4>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <input type="text" id="nom" name="nomP" class="form-control" required
+                      [(ngModel)]="this.personnel.nom" />
+                    <label class="form-control-placeholder" for="nom">
+                      Nom *
+                    </label>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <input type="text" id="prenom" name="prenomP" class="form-control" required
+                      [(ngModel)]="this.personnel.prenom" />
+                    <label class="form-control-placeholder" for="prenom">
+                      Prenom *
+                    </label>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <input type="radio" id="male" name="gender" value="homme" [(ngModel)]="this.personnel.sexe" />
+                    <label for="male">Homme</label>
+                    <br />
+                    <input type="radio" id="female" name="gender" value="femme" [(ngModel)]="this.personnel.sexe" />
+                    <label for="female">Femme</label>
+                  </div>
+                  <br />
+                </div>
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <mat-form-field class="spacing">
+                      <mat-label>Departement </mat-label>
+                      <mat-select name="departement" [(ngModel)]="this.personnel.departement.id_dept" ngDefaultControl
+                        required>
+                        <mat-option *ngFor="let item of this.departement" [value]="item.id_dept">
+                          {{ item.nom_dept }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <mat-form-field class="spacing">
+                      <mat-label>Grade </mat-label>
+                      <mat-select name="grade" [(ngModel)]="this.personnel.grade.id_grade" ngDefaultControl required>
+                        <mat-option *ngFor="let item of this.grade" [value]="item.id_grade">
+                          {{ item.nom_grade }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <input type="tel" id="tél" name="telP" class="form-control" required
+                      [(ngModel)]="this.personnel.telephone" required minlength="8" maxlength="8" />
+                    <label class="form-control-placeholder" for="tél">
+                      Téléphone *
+                    </label>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Email *</mat-label>
+                      <input matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                        [(ngModel)]="this.personnel.email" placeholder="Ex. ex@example.com">
+                      <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        S'il vous plaît, mettez une adresse email valide !!
+                      </mat-error>
+                      <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email est <strong> obligatoire</strong>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-md-4 mb-3">
+                    <!-- <input type="text" id="date_recrutement" name="date_recrutement" class="form-control"
+                      [(ngModel)]="this.personnel.date_recrutement" required />
+                    <label class="form-control-placeholder" for="date_recrutement">
+                      Date de recrutement *
+                    </label>-->
+                    <mat-form-field>
+                      <mat-label>Date de recrutement *</mat-label>
+                      <input matInput [matDatepicker]="picker" ngDefaultControl
+                        [(ngModel)]="this.personnel.date_recrutement" [ngModelOptions]="{ standalone: true }">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+
+                    </mat-form-field>
+                  </div>
+                </div>
+                <p>(*):champs obligatoire </p>
+              </form>
+            </div>
+            <div class="row">
+              <div class="add ml-auto mr-auto">
+                <button (click)="add()" type="submit" class="btn btn-success btn-round">
+                  Ajouter
+                </button>
+                <button class="btn btn-danger btn-round" (click)="cancel()">
+                  Annuler
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Liste des personnels</h4>
+          </div>
+
+          <ag-grid-angular style="width: 1218px; height: 500px;" class="ag-theme-material" [rowData]="rowData"
+            [columnDefs]="columnDefs" [modules]="modules" (rowSelected)="getId($event)"
+            (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
+            [pagination]="true" [paginationAutoPageSize]="true"></ag-grid-angular>
+          <div class="add ml-auto mr-auto">
+            <button class="btn btn-danger btn-round" (click)="delete()">
+              Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

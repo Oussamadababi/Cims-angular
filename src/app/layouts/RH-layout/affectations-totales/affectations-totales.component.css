@@ -1,0 +1,16 @@
+.spacing {
+  padding-left: 50px;
+}
+::ng-deep .green-snackbar {
+  background: green !important;
+  color: beige !important;
+  margin-top: 25em !important ;
+}
+::ng-deep .red-snackbar {
+  background: red !important;
+  color: beige !important;
+  margin-top: 25em !important ;
+}
+::ng-deep .mat-button-wrapper {
+  color: black !important;
+}

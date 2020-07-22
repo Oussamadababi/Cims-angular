@@ -1,0 +1,110 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <button class="btn btn-succes btn-round" (click)="displayaddaff()">
+      Ajouter une demande
+    </button>
+
+    <div *ngIf="this.addaff" class="main-content">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title">Ajouter une demande</h4>
+            </div>
+            <div class="card-body">
+              <form>
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <label class="spacing">
+                      Type
+                    </label>
+                    <select name="type" id="type-select" [(ngModel)]="this.typeaff">
+                      <option value="totale">Affectation totale</option>
+                      <option value="partielle">Affectation partielle</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4 mb-3">
+                    <label class="spacing">
+                      Personnel correspondant
+                    </label>
+                    <SELECT name="personnel" size="1">
+                      <OPTION>....</OPTION>
+                    </SELECT>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="spacing">
+                      Site
+                    </label>
+                    <SELECT name="site" size="1">
+                      <OPTION>HR....</OPTION>
+                    </SELECT>
+                  </div>
+                </div>
+                <div *ngIf="this.typeaff === this.partiel">
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <label for="DD">
+                        Date début
+                      </label>
+                      <input type="date" id="DD" class="form-control" required />
+                    </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="DF">
+                        Date fin
+                      </label>
+                      <input type="date" id="DF" class="form-control" />
+                    </div>
+                    <label>
+                      Jour(s) :
+                    </label>
+                    <SELECT name="jour" size="1" multiple>
+                      <OPTION>Lundi</OPTION>
+                      <OPTION>Mardi</OPTION>
+                      <OPTION>Mercredi</OPTION>
+                      <OPTION>Jeudi</OPTION>
+                      <OPTION>Vendredi</OPTION>
+                      <OPTION>Samedi</OPTION>
+                    </SELECT>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4 mb-3">
+                      <label for="sujet">
+                        Sujet
+                      </label>
+                      <input type="text" class="form-control" value="Assistance technique" />
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="row">
+              <div class="add ml-auto mr-auto">
+                <button (click)="this.ekteb()" class="btn btn-success btn-round">
+                  Ajouter
+                </button>
+                <button class="btn btn-danger btn-round" (click)="cancel()">
+                  Annuler
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Liste des demande</h4>
+          </div>
+
+          <ag-grid-angular style="width: 500px; height: 150px;" class="ag-theme-balham" [rowData]="rowData"
+            [columnDefs]="columnDefs" [modules]="modules"></ag-grid-angular>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

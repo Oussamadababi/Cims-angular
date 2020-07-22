@@ -1,0 +1,128 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Ajout d'une affectation</h4>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-5 mb-3">
+                  <mat-form-field class="spacing">
+                    <mat-label>Personnel</mat-label>
+                    <mat-select name="personnel" [(ngModel)]="
+                        this.AffectationPartielle.personnel.id_personnel
+                      " ngDefaultControl>
+                      <mat-option *ngFor="let item of this.personnel" [value]="item.id_personnel">
+                        {{ item.nom }} {{ item.prenom }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div>
+                  <mat-form-field class="spacing">
+                    <mat-label>Gouvernorat</mat-label>
+                    <mat-select name="gouvernorat" required ngDefaultControl [(ngModel)]="this.gouvselecter"
+                      (selectionChange)="onOptionsSelected()">
+                      <mat-option *ngFor="let item of this.gouvernorat" [value]="item.idGouv">
+                        {{ item.nomGouv }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field class="spacing">
+                    <mat-label>Site</mat-label>
+                    <mat-select *ngIf="this.gouvernorat != []" name="site"
+                      [(ngModel)]="this.AffectationPartielle.site.idSite" ngDefaultControl required>
+                      <mat-option *ngFor="let item of this.site" [value]="item.idSite">
+                        {{ item.nomSite }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <mat-form-field>
+                    <mat-label>Date debut</mat-label>
+                    <input matInput ngDefaultControl [matDatepickerFilter]="dateFilter" [min]="minDate"
+                      [matDatepicker]="picker" [(ngModel)]="this.AffectationPartielle.dateDebut" readonly
+                      [ngModelOptions]="{ timezone: null }" name="date" />
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <mat-form-field>
+                    <mat-label>Date fin</mat-label>
+                    <input matInput [matDatepickerFilter]="dateFilter" ngDefaultControl [min]="minDate"
+                      [matDatepicker]="picker3" [(ngModel)]="this.AffectationPartielle.datefin" readonly
+                      [ngModelOptions]="{ standalone: true }" (dateChange)="onOptionsSelectedDate()" />
+                    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <mat-form-field>
+                  <mat-label>Jour(s) :</mat-label>
+                  <mat-select multiple="multiple" [(ngModel)]="this.AffectationPartielle.jour"
+                    [ngModelOptions]="{ standalone: true }" name="jour">
+                    <mat-option *ngFor="let item of this.days" [value]="item">
+                      {{ item }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <div class="col-md-4 mb-3">
+                  <label for="sujet">
+                    Sujet
+                  </label>
+                  <input disabled type="text" name="sujet" class="form-control"
+                    [(ngModel)]="this.AffectationPartielle.sujet" ngDefaultControl />
+                </div>
+              </div>
+              <div class="row">
+                <div class="add ml-auto mr-auto">
+                  <button (click)="addP()" class="btn btn-success btn-round">
+                    Ajouter
+                  </button>
+                  <button class="btn btn-danger btn-round" (click)="cancel()">
+                    Annuler
+                  </button>
+                </div>
+              </div>
+              <p>(*):champs obligatoire</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">
+              Liste des affectations partielles en attente
+            </h4>
+          </div>
+          <br />
+          <ag-grid-angular style="width: 1210; height: 350px;" class="ag-theme-material" [rowData]="rowDataP"
+            [columnDefs]="columnDefsP" [modules]="modules" (rowSelected)="getId($event)"
+            (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
+            [pagination]="true" [paginationAutoPageSize]="true"></ag-grid-angular>
+          <div class="add ml-auto mr-auto">
+            <button class="btn btn-danger btn-round" (click)="delete()">
+              Supprimer
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

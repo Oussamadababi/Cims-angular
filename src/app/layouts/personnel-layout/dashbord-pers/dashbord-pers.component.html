@@ -1,0 +1,92 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-warning card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">check_circle_outline</i>
+            </div>
+            <p class="card-category" style="font-weight: bold;">
+              Les Mission Accomplies
+            </p>
+            <h2 class="card-title">{{ this.nbrMissAcc }}</h2>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">update</i>
+              Mis à jour il y a une minute
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">highlight_off</i>
+            </div>
+            <p class="card-category" style="font-weight: bold;">
+              Les Mission Non Accomplies
+            </p>
+            <h2 class="card-title">{{ nbrNonMissAcc }}</h2>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">update</i>
+              Mis à jour il y a une minute
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <div class="card card-chart">
+          <div class="card-header card-header-success">
+            <div
+              class="ct-chart"
+              id="dailySalesChart"
+              style="width:500px; height: 300px;"
+            ></div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">
+              Le nombre des missions par mois
+            </h4>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i>
+              Mis à jour il y a une minute
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-left: 3em">
+        <div class="card card-chart">
+          <div class="card-header card-header-warning">
+            <div
+              class="ct-chart"
+              id="websiteViewsChart"
+              style="width:550px; height: 300px;;"
+            ></div>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">
+              Le nombre des missions par affectation
+            </h4>
+          </div>
+          <div class="card-footer">
+            <div class="stats">
+              <i class="material-icons">access_time</i>
+              Mis à jour il y a une minute
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

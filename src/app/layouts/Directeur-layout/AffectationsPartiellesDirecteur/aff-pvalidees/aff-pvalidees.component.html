@@ -1,0 +1,52 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">
+              Liste des affectations partielles Validées
+            </h4>
+          </div>
+          <br />
+          <ag-grid-angular
+            style="width: 1210px; height: 401px;"
+            class="ag-theme-material"
+            [rowData]="rowDataP"
+            [columnDefs]="columnDefsP"
+            [modules]="modules"
+            (cellClicked)="getId($event)"
+            rowMultiSelectWithClick="false"
+            [rowSelection]="'single'"
+            [frameworkComponents]="frameworkComponents"
+            [pagination]="true"
+            [paginationAutoPageSize]="true"
+          ></ag-grid-angular>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title ">Liste des missions accomplies</h4>
+          </div>
+
+          <ag-grid-angular
+            style="width: 1210px; height: 500px;"
+            class="ag-theme-material"
+            [rowData]="rowDataMissAcc"
+            [columnDefs]="columnDefsMissAcc"
+            [modules]="modules"
+            [pagination]="true"
+            (cellClicked)="getIdF($event)"
+            rowMultiSelectWithClick="false"
+            [rowSelection]="'single'"
+            [frameworkComponents]="frameworkComponentsMissionAcc"
+            [paginationAutoPageSize]="true"
+          ></ag-grid-angular>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

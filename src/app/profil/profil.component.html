@@ -1,0 +1,114 @@
+<div class="padding">
+  <button class="btn btn-succes btn-round" (click)="gotoHome()">Accueil</button>
+</div>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Editer mon profil</h4>
+          </div>
+          <div class="card-body">
+            <p>Modifier le mot de passe</p>
+            <form
+              name="form"
+              (ngSubmit)="f.form.valid && onSubmit()"
+              #f="ngForm"
+            >
+              <div class="row">
+                <div class="col-md-5 mb-3">
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    name="password"
+                    [(ngModel)]="form.password"
+                    required
+                    minlength="6"
+                    #password="ngModel"
+                    required
+                  />
+                  <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="f.submitted && password.invalid"
+                  >
+                    <div *ngIf="password.errors.required">
+                      Mot de passe obligatoire
+                    </div>
+                    <div *ngIf="password.errors.minlength">
+                      Mot de passe doit etre au moins 6 caractéres
+                    </div>
+                  </div>
+                  <label class="form-control-placeholder" for="password">
+                    Nouveau mot de passe
+                  </label>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    [(ngModel)]="this.pass2"
+                    required
+                    minlength="6"
+                    required
+                  />
+                  <div
+                    class="alert alert-danger"
+                    role="alert"
+                    *ngIf="f.submitted && password.invalid"
+                  >
+                    <div *ngIf="password.errors.required">
+                      Confirmez votre mot de passe
+                    </div>
+                    <div *ngIf="this.passwordDuplique == false">
+                      Mot de passe non identiques
+                    </div>
+                  </div>
+                  <label class="form-control-placeholder" for="password">
+                    Confirmer le mot de passe
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="add ml-auto mr-auto">
+                  <button class="btn btn-success btn-round">Confirmer</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <img
+              *ngIf="this.sexe == 'homme'"
+              class="img"
+              src="./assets/img/faces/profil-avatar-homme-icone-ronde_24640-14044.jpg"
+            />
+
+            <img
+              *ngIf="this.sexe == 'femme'"
+              class="img"
+              src="./assets/img/faces/profil-avatar-femme-icone-ronde_24640-14042.jpg"
+            />
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-gray">
+              {{ this.dep }} / {{ this.grade }}
+            </h6>
+            <h4 class="card-title">{{ this.nom }} {{ this.prenom }}</h4>
+            <p class="card-description">
+              Email : {{ this.email }}
+              <br />
+              Telephone : {{ this.mobile }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
