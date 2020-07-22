@@ -33,6 +33,7 @@ import { PersonnelLayoutComponent } from "./layouts/personnel-layout/personnel-l
 import { DEMANDEURLayoutComponent } from "./layouts/demandeur-layout/demandeur-layout.component";
 import { PlanificateurLayoutComponent } from "./layouts/planificateur-layout/planificateur-layout.component";
 import { ProfilComponent } from "./profil/profil.component";
+//import { CongeComponent } from './layouts/RH-layout/conge/conge.component';
 //import { RegisterLayoutComponent } from "./register-layout/register-layout.component";
 @NgModule({
   imports: [
@@ -64,10 +65,11 @@ import { ProfilComponent } from "./profil/profil.component";
     PersonnelLayoutComponent,
     DEMANDEURLayoutComponent,
     PlanificateurLayoutComponent,
-    ProfilComponent
+    ProfilComponent,
+    //  CongeComponent
     //RegisterLayoutComponent
   ],
   providers: [authInterceptorProviders, MessagingService, AsyncPipe],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

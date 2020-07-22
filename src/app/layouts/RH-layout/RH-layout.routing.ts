@@ -7,6 +7,7 @@ import { ListPersonnelsComponent } from "./List-PersonnelsRH/List-PersonnelsRH.c
 import { ListSitesComponent } from "./list-sites/list-sites.component";
 import { ListGradesComponent } from "./list-grades/list-grades.component";
 import { ListDepartementComponent } from "./list-departement/list-departement.component";
+import { CongeComponent } from "./conge/conge.component";
 
 export const RHLayoutRoutes: Routes = [
   { path: "", component: DashboardComponent },
@@ -19,5 +20,6 @@ export const RHLayoutRoutes: Routes = [
   { path: "List_Sites", component: ListSitesComponent },
   { path: "List_Grades", component: ListGradesComponent },
   { path: "List_Departements", component: ListDepartementComponent },
-  { path: "dashboard", component: DashboardComponent }
+  { path: "dashboard", component: DashboardComponent },
+  { path: "Gestion_Conge", component: CongeComponent }
 ];

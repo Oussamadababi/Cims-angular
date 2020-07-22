@@ -26,6 +26,7 @@ import { ListPersonnelsComponent } from "./List-PersonnelsRH/List-PersonnelsRH.c
 import { affectations_partiellesComponent } from "./affectations-partielles/affectations-partiellesRH.component";
 import { AffectationsTotalesComponent } from "./affectations-totales/affectations-totales.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { CongeComponent } from './conge/conge.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -55,7 +56,8 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     DropDownEditorDept,
     DropDownEditorGrade,
     DropDownEditorSite,
-    ButtonOrdreMissionComponent
+    ButtonOrdreMissionComponent,
+    CongeComponent
   ]
 })
 export class RHLayoutModule {}

@@ -9,10 +9,10 @@ import { MessagingService } from "./services/Messaging/messaging.service";
 export class AppComponent {
   title = "push-notification";
   message;
-  constructor(private messagingService: MessagingService) {}
+  constructor(private messagingService: MessagingService) { }
   ngOnInit() {
-    this.messagingService.requestPermission();
-    this.messagingService.receiveMessage();
-    this.message = this.messagingService.currentMessage;
+    /* this.messagingService.requestPermission();
+     this.messagingService.receiveMessage();
+     this.message = this.messagingService.currentMessage;*/
   }
 }
