@@ -160,7 +160,7 @@ export class RHService {
     );
   }
   ////////////////////////////////////////////////////////////////////
-  ajouterConge(Conge: object, matricule: number) {
-    return this.http.post("http://localhost:8082/api/ajouterConge" + matricule, Conge);
+  ajouterConge(Conge: object, personnel_id: number) {
+    return this.http.post("http://localhost:8082/api/ajouterConge/" + personnel_id, Conge);
   }
 }
