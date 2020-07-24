@@ -33,7 +33,7 @@ export class CongeComponent implements OnInit {
     this.Rhservice.listerPersonnel().subscribe(data => {
       this.personnels = data;
       console.dir(data);
-
+      this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
     });
   }
 
@@ -44,19 +44,86 @@ export class CongeComponent implements OnInit {
     datefin: "",
     personnel: { personnel_id: "" }
   };
-
+  nombreJourConge: any;
 
   add() {
-    this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
-      console.log(res);
-      console.log(this.conge["personnel"].personnel_id);
-      this._snackBar.open("demandeConge ajouté avec succés", "OK", {
-        duration: 2000,
-        panelClass: ["green-snackbar"]
+    if (this.conge["typedeconge"] != "") {
+      if (this.conge["datedebut"] != "") {
+        if (this.conge["datefin"] != "") {
+          if (this.conge["personnel"].personnel_id != "") {
+            if (this.conge["datedebut"] < this.conge["datefin"]) {
 
-      });
-    });
+              this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+                console.log(res);
+                console.log(this.conge["personnel"].personnel_id);
+                this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
+                console.log((this.conge["datefin"] - this.conge["datedebut"]) / 86400000);
+                this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+                  duration: 2000,
+                  panelClass: ["green-snackbar"]
+
+                });
+              });
+
+
+            } else {
+              this._snackBar.open(
+                "verifier les date du conge ",
+                "OK",
+                {
+                  duration: 2000,
+                  panelClass: ["red-snackbar"]
+                }
+              );
+
+            }
+          }
+          else {
+            this._snackBar.open(
+              "Veuillez insérer le nom du personnel ",
+              "OK",
+              {
+                duration: 2000,
+                panelClass: ["red-snackbar"]
+              }
+            );
+          }
+        }
+        else {
+          this._snackBar.open(
+            "Veuillez insérer datefin du conge ",
+            "OK",
+            {
+              duration: 2000,
+              panelClass: ["red-snackbar"]
+            }
+          );
+
+        }
+      }
+      else {
+        this._snackBar.open(
+          "Veuillez insérer datedebut du conge ",
+          "OK",
+          {
+            duration: 2000,
+            panelClass: ["red-snackbar"]
+          }
+        );
+      }
+    }
+    else {
+      this._snackBar.open(
+        "Veuillez insérer typedeconge ",
+        "OK",
+        {
+          duration: 2000,
+          panelClass: ["red-snackbar"]
+        }
+      );
+    }
 
   }
+
 
 }
