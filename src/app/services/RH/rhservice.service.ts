@@ -173,4 +173,10 @@ export class RHService {
       "http://localhost:8082/api/deleteConge/" + idConge
     );
   }
+  updateConge(id_conge: number, Conge: object) {
+    return this.http.put(
+      "http://localhost:8082/api/updateConge/" + id_conge,
+      Conge
+    );
+  }
 }

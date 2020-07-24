@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { RHService } from "../../../services/RH/rhservice.service";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -112,6 +112,7 @@ export class CongeComponent implements OnInit {
             if (this.conge["datedebut"] < this.conge["datefin"]) {
 
               this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+                this.ngOnInit();
                 console.log(res);
                 console.log(this.conge["personnel"].personnel_id);
                 this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
@@ -182,18 +183,70 @@ export class CongeComponent implements OnInit {
     }
 
   }
-  deleteConge() {
-    this.Rhservice.deleteConge(10).subscribe(res => {
-      console.log(res);
-
-    });
-    this._snackBar.open(
-      "Veuillez insérer typedeconge ",
-      "OK",
-      {
+  /* deleteConge() {
+     this.Rhservice.deleteConge(this.id).subscribe(res => {
+       console.log(res);
+       this.ngOnInit();
+     });
+ 
+   }*/
+  delete() {
+    if (this.id != null) {
+      this.dialog.open(DialogConfirmation, {
+        data: this.id
+      });
+      this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
+    } else {
+      this._snackBar.open("Veuillez sélectionner le personnel à supprimer", "OK", {
         duration: 2000,
         panelClass: ["red-snackbar"]
-      }
-    );
+      });
+    }
+  }
+  edit(event) {
+    if (
+      this.Rhservice.updateConge(
+        event.data["id"],
+        event.data
+      ).subscribe(res => {
+        console.log("Conge modifié");
+        this.ngOnInit();
+        this._snackBar.open("Conge modifié avec succés", "OK", {
+          duration: 2000
+        });
+      })
+    ) {
+
+    }
+  }
+}
+
+@Component({
+  selector: 'dialog-confirmation',
+  templateUrl: 'dialog-confirmation.html',
+})
+export class DialogConfirmation implements OnInit {
+  message: string;
+  constructor(
+    public dialogRef: MatDialogRef<DialogConfirmation>,
+    private http: HttpClient,
+    private Rhservice: RHService,
+    private _snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public id: number) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  ngOnInit(): void {
+  }
+  Action() {
+    if (this.id != null) {
+      this.Rhservice.deleteConge(this.id).subscribe(res => {
+        console.log("congee Supprimé");
+        this.dialogRef.close();
+      }, err => {
+        this.message = err.error.message;
+      });
+    }
   }
 }
