@@ -23,7 +23,7 @@ import { MomentUtcDateAdapter } from "../../chef-service-layout/AffectationsPart
 
 })
 export class CongeComponent implements OnInit {
-
+  rowData: any;
   constructor(private http: HttpClient,
     private Rhservice: RHService,
     private _snackBar: MatSnackBar,
@@ -35,8 +35,61 @@ export class CongeComponent implements OnInit {
       console.dir(data);
       this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
     });
+    this.Rhservice.listConge().subscribe(res => {
+      console.log(res);
+      this.rowData = res;
+    });
   }
-
+  columnDefs = [
+    {
+      headerName: "numdemande",
+      field: "id",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "typedeconge",
+      field: "typedeconge",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "datedebut",
+      field: "datedebut",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "datefin",
+      field: "datefin",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "nombredejour",
+      field: "",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "NomPersonnel",
+      field: "p.nom",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    }
+  ]
   conge: object = {
     id: "",
     typedeconge: "",
@@ -44,8 +97,13 @@ export class CongeComponent implements OnInit {
     datefin: "",
     personnel: { personnel_id: "" }
   };
+  id: number;
   nombreJourConge: any;
-
+  getId(event) {
+    this.id = event.data["id"];
+    console.log(event.data["id"]);
+    console.log(this.id);
+  }
   add() {
     if (this.conge["typedeconge"] != "") {
       if (this.conge["datedebut"] != "") {
@@ -124,6 +182,18 @@ export class CongeComponent implements OnInit {
     }
 
   }
+  deleteConge() {
+    this.Rhservice.deleteConge(10).subscribe(res => {
+      console.log(res);
 
-
+    });
+    this._snackBar.open(
+      "Veuillez insérer typedeconge ",
+      "OK",
+      {
+        duration: 2000,
+        panelClass: ["red-snackbar"]
+      }
+    );
+  }
 }

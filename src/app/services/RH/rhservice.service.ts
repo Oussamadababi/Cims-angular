@@ -163,4 +163,14 @@ export class RHService {
   ajouterConge(Conge: object, personnel_id: number) {
     return this.http.post("http://localhost:8082/api/ajouterConge/" + personnel_id, Conge);
   }
+  listConge() {
+    return this.http.get(
+      "http://localhost:8082/api/listconge"
+    );
+  }
+  deleteConge(idConge: number) {
+    return this.http.delete(
+      "http://localhost:8082/api/deleteConge/" + idConge
+    );
+  }
 }

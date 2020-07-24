@@ -77,5 +77,25 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title ">Liste DemandeConge</h4>
+                        </div>
+
+                        <ag-grid-angular style="width: 1218px; height: 500px;" class="ag-theme-material"
+                            [rowData]="rowData" [columnDefs]="columnDefs" [modules]="modules"
+                            (rowSelected)="getId($event)" (cellValueChanged)="edit($event)" [rowSelection]="'multiple'"
+                            rowMultiSelectWithClick="true" [pagination]="true" [paginationAutoPageSize]="true">
+                        </ag-grid-angular>
+                        <div class="add ml-auto mr-auto">
+                            <button class="btn btn-danger btn-round" (click)="deleteConge()">
+                                Supprimer
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
