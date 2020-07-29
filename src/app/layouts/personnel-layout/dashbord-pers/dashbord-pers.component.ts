@@ -88,6 +88,7 @@ export class DashbordPersComponent implements OnInit {
   ngOnInit() {
     this.PersonnelService.nbrMissionAccomplie().subscribe(data => {
       this.nbrMissAcc = data;
+      console.log(data);
     });
     this.PersonnelService.nbrMissionNonAccomplie().subscribe(data => {
       this.nbrNonMissAcc = data;

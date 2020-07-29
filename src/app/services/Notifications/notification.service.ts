@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class NotificationService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getNotifById() {
     return this.http.get("http://localhost:8082/api/listNotification");
   }

@@ -1,0 +1,91 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">Ajouter DemandeConge</h4>
+                        </div>
+                        <div class="card-body">
+                            <form>
+
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <mat-form-field>
+                                            <mat-label>Date de debut *</mat-label>
+                                            <input matInput [matDatepicker]="picker" [(ngModel)]="this.conge.datedebut"
+                                                [ngModelOptions]="{ standalone: true }">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker></mat-datepicker>
+
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <mat-form-field>
+                                            <mat-label>Date fin *</mat-label>
+                                            <input matInput [matDatepicker]="picker1" ngDefaultControl
+                                                [(ngModel)]="this.conge.datefin"
+                                                [ngModelOptions]="{ standalone: true }">
+                                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker1></mat-datepicker>
+
+                                        </mat-form-field>
+                                        <!-- nombre jour {{nombreJourConge}}-->
+                                    </div>
+
+
+
+
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <mat-form-field class="spacing">
+                                        <mat-label>TypeConge </mat-label>
+                                        <mat-select name="TypeConge" [(ngModel)]="this.conge.typedeconge"
+                                            ngDefaultControl required>
+                                            <mat-option value="conge_repos">
+                                                Conge_repos
+                                            </mat-option>
+                                            <mat-option value="conge_exceptionnel">
+                                                Conge_exceptionnel
+                                            </mat-option>
+                                            <mat-option value="conge_autre">
+                                                Autre
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="add ml-auto mr-auto">
+                            <button (click)="add()" class="btn btn-success btn-round">
+                                Ajouter
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title ">Liste DemandeConge</h4>
+                            </div>
+
+                            <ag-grid-angular style="width: 1218px; height: 500px;" class="ag-theme-material"
+                                [rowData]="rowData" [columnDefs]="columnDefs" [modules]="modules"
+                                (rowSelected)="getId($event)" (cellValueChanged)="edit($event)"
+                                [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
+                                [paginationAutoPageSize]="true">
+                            </ag-grid-angular>
+                            <div class="add ml-auto mr-auto">
+                                <button class="btn btn-danger btn-round">
+                                    Supprimer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class PersonnelService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getAffPparPersonnel() {
     return this.http.get(
       "http://localhost:8082/api/listAffectation_P_Personnel"
@@ -67,5 +67,13 @@ export class PersonnelService {
   }
   nbrMissionNonAccomplie() {
     return this.http.get("http://localhost:8082/api/nbrMissionNonAccomplie");
+  }
+  demandeConge(Conge: object, personnel_id: number) {
+    return this.http.post("http://localhost:8082/api/demanderConge/" + personnel_id, Conge);
+  }
+  listCongeParPersonnel(personnel_id: number) {
+    return this.http.get(
+      "http://localhost:8082/api/listcongeparPersonnel/" + personnel_id
+    );
   }
 }

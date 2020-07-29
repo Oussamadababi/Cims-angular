@@ -13,6 +13,12 @@ export const ROUTES: RouteInfo[] = [
     title: "Mes affectations",
     icon: "content_paste",
     class: ""
+  },
+  {
+    path: "Conge",
+    title: "Mes Conges",
+    icon: "Conge",
+    class: ""
   }
 ];
 
@@ -24,7 +30,7 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);

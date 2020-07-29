@@ -20,7 +20,8 @@ import {
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { DashbordPersComponent } from './dashbord-pers/dashbord-pers.component';
-
+import { CongeComponent } from './conge/conge.component';
+import { MatDatepickerModule } from "@angular/material/datepicker";
 @NgModule({
   imports: [
     CommonModule,
@@ -38,10 +39,11 @@ import { DashbordPersComponent } from './dashbord-pers/dashbord-pers.component';
     MatDialogModule,
     AgGridModule.withComponents([]),
     MatRadioModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
   ],
   entryComponents: [DialogElementsExampleDialog, DialogUpdateMission],
-  declarations: [DialogElementsExampleDialog, Mes_AffectationsComponent, DialogUpdateMission, DashbordPersComponent],
+  declarations: [DialogElementsExampleDialog, Mes_AffectationsComponent, DialogUpdateMission, DashbordPersComponent, CongeComponent],
   bootstrap: []
 })
 export class PersonnelLayoutModule { }

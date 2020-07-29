@@ -1,0 +1,41 @@
+<!--<h3 mat-dialog-title>Ajouter une piéce jointe</h3>
+<div mat-dialog-content>
+  <button type="button" mat-raised-button (click)="fileInput.click()">
+    Choisir un fichier
+  </button>
+  <input
+    hidden
+    (change)="onFileSelected()"
+    #fileInput
+    type="file"
+    id="file"
+    accept="image/png, image/jpeg"
+    [(ngModel)]="Mission.piecejointe"
+  />
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Annuler</button>
+  <button mat-button [mat-dialog-close]="Mission.piecejointe" cdkFocusInitial>
+    Ok
+  </button>
+</div> -->
+<div *ngIf="currentFile" class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+    attr.aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{ width: progress + '%' }">
+    {{ progress }}%
+  </div>
+</div>
+
+<label class="btn btn-default">
+  <input type="file" (change)="selectFile($event)" accept=".png, .jpg, .jpeg" />
+</label>
+
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+  Importer fichier
+</button>
+
+<div class="alert alert-light" role="alert">{{ message }}</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>OK</button>
+</div>
