@@ -56,6 +56,7 @@
                                     </mat-form-field>
 
                                 </div>
+
                             </form>
                         </div>
                         <div class="add ml-auto mr-auto">
@@ -80,7 +81,7 @@
                                 [paginationAutoPageSize]="true">
                             </ag-grid-angular>
                             <div class="add ml-auto mr-auto">
-                                <button class="btn btn-danger btn-round">
+                                <button class="btn btn-danger btn-round" (click)=delete()>
                                     Supprimer
                                 </button>
                             </div>
