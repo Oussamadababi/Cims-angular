@@ -51,6 +51,12 @@ export const ROUTES: RouteInfo[] = [
     title: "GestionConge",
     icon: "content_paste",
     class: ""
+  },
+  {
+    path: "Absence",
+    title: "Absence",
+    icon: "content_paste",
+    class: ""
   }
 ];
 

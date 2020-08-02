@@ -179,4 +179,11 @@ export class RHService {
       Conge
     );
   }
+  ///////////////////////////////////////////////////////////////////////
+  ajouterAbsence(personnel_id: number, datedejour: Date) {
+    return this.http.put("http://localhost:8082/api/ListeAbsence/" + personnel_id + "/" + datedejour, {}
+    );
+
+  }
+
 }

@@ -33,6 +33,7 @@ export class CongeComponent implements OnInit {
     this.Rhservice.listerPersonnel().subscribe(data => {
       this.personnels = data;
       console.dir(data);
+      console.log(this.conge["datefin"]);
       this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
     });
     this.Rhservice.listConge().subscribe(res => {
@@ -114,6 +115,7 @@ export class CongeComponent implements OnInit {
               this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
                 this.ngOnInit();
                 console.log(res);
+                console.log(this.conge["datefin"]);
                 console.log(this.conge["personnel"].personnel_id);
                 this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
                 console.log((this.conge["datefin"] - this.conge["datedebut"]) / 86400000);
