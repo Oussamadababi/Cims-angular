@@ -1,6 +1,9 @@
 <div class="main-content">
     <div class="container-fluid">
-        <div class="main-content">
+        <button class="btn btn-succes btn-round" (click)="displayAbsence()">
+            ListeAbsence
+        </button>
+        <div *ngIf="!this.addpers" class="main-content">
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
@@ -41,10 +44,58 @@
                             <button (click)="add()" class="btn btn-success btn-round">
                                 Ajouter
                             </button>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="row" *ngIf="this.addpers">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Liste des personnels</h4>
+                    </div>
+                    <center>
+                        <div class="col-md-4 mb-3" style="text-align: center;">
+
+                            <mat-form-field>
+                                <mat-label>Date</mat-label>
+                                <input matInput [matDatepicker]="picker" ngDefaultControl
+                                    [(ngModel)]="this.absence.datedujour" [ngModelOptions]="{ standalone: true }">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+
+                            </mat-form-field>
+
+                            <div class="add ml-auto mr-auto">
+                                <button class="btn btn-success btn-round" (click)="getListeAbsence()">
+                                    AfficherLesAbsences
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </center>
+                    <center>
+                        <ag-grid-angular style="width: 250px; height: 500px;text-align: center;"
+                            class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs" [modules]="modules"
+                            (rowSelected)="getId($event)" (cellValueChanged)="edit($event)" [rowSelection]="'multiple'"
+                            rowMultiSelectWithClick="true" [pagination]="true" [paginationAutoPageSize]="true">
+                        </ag-grid-angular>
+                        <div class="add ml-auto mr-auto">
+                            <button class="btn btn-danger btn-round" (click)="delete2()">
+                                Supprimer
+                            </button>
+                            <button class="btn btn-danger btn-round" (click)="cancel()">
+                                Annuler
+                            </button>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

@@ -185,5 +185,12 @@ export class RHService {
     );
 
   }
-
+  getListeAbsenceParDate(datedejour: Date) {
+    return this.http.get("http://localhost:8082/api/listAbsenceParJour/" + datedejour);
+  }
+  deletePersonnelFromListeAbsence(personnel_id: number, datedejour: Date) {
+    return this.http.put(
+      "http://localhost:8082/api/supprimerPersonnelDeLaListe/" + personnel_id + "/" + datedejour, {}
+    );
+  }
 }
