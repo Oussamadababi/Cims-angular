@@ -221,6 +221,18 @@ export class CongeComponent implements OnInit {
 
     }
   }
+  AnnulationConge: object;
+  ajouterAnuulationConge() {
+    this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
+
+      console.log(res);
+      this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
+
+      });
+    });
+  }
 }
 
 @Component({
