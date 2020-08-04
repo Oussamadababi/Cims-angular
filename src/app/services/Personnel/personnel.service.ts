@@ -81,5 +81,8 @@ export class PersonnelService {
       "http://localhost:8082/api/deleteConge/" + idConge
     );
   }
+  congeparPersonnelenattenteCompte(personnel_id: number) {
+    return this.http.get("http://localhost:8082/api/congeparpersonnelCompte/" + personnel_id);
+  }
 
 }
