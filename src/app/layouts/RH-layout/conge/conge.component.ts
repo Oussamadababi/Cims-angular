@@ -98,6 +98,7 @@ export class CongeComponent implements OnInit {
     datefin: "",
     personnel: { personnel_id: "" }
   };
+
   id: number;
   nombreJourConge: any;
   getId(event) {
