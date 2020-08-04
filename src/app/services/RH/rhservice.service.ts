@@ -193,4 +193,7 @@ export class RHService {
       "http://localhost:8082/api/supprimerPersonnelDeLaListe/" + personnel_id + "/" + datedejour, {}
     );
   }
+  ajouterAnnulationConge(conge_id: number) {
+    return this.http.post("http://localhost:8082/api/ajouterAConge/" + conge_id, {});
+  }
 }
