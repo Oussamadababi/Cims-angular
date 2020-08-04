@@ -196,4 +196,10 @@ export class RHService {
   ajouterAnnulationConge(conge_id: number) {
     return this.http.post("http://localhost:8082/api/ajouterAConge/" + conge_id, {});
   }
+  congeparPersonnelenattente(personnel_id: number) {
+    return this.http.get("http://localhost:8082/api/congeparpersonnel/" + personnel_id);
+  }
+  annulationCongeenAttente(personnel_id: number) {
+    return this.http.get("http://localhost:8082/api/AnulationCongeenattente/" + personnel_id);
+  }
 }
