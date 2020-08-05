@@ -202,4 +202,10 @@ export class RHService {
   annulationCongeenAttente(personnel_id: number) {
     return this.http.get("http://localhost:8082/api/AnulationCongeenattente/" + personnel_id);
   }
+  listAnnulationConge() {
+    return this.http.get(
+      "http://localhost:8082/api/listannulationconge"
+    );
+  }
+
 }

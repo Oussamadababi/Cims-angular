@@ -24,6 +24,7 @@ import { MomentUtcDateAdapter } from "../../chef-service-layout/AffectationsPart
 })
 export class CongeComponent implements OnInit {
   rowData: any;
+  rowData1: any;
   constructor(private http: HttpClient,
     private Rhservice: RHService,
     private _snackBar: MatSnackBar,
@@ -40,7 +41,14 @@ export class CongeComponent implements OnInit {
       console.log(res);
       this.rowData = res;
     });
+
+    this.Rhservice.listAnnulationConge().subscribe(res => {
+      console.log(res);
+      this.rowData1 = res;
+    });
+
   }
+
   columnDefs = [
     {
       headerName: "numdemande",
@@ -199,7 +207,7 @@ export class CongeComponent implements OnInit {
           panelClass: ["red-snackbar"]
         }
       );
-
+  
     }*/
 
   }
@@ -208,7 +216,7 @@ export class CongeComponent implements OnInit {
        console.log(res);
        this.ngOnInit();
      });
- 
+   
    }*/
   delete() {
     if (this.id != null) {
@@ -267,6 +275,40 @@ export class CongeComponent implements OnInit {
 
     }
   }
+  columnAnnulationConge = [
+    {
+      headerName: "numdemande",
+      field: "id",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "datedemande",
+      field: "datedemande",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "etat",
+      field: "etat",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "Conge_id",
+      field: "conge.id",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    }
+  ]
 }
 
 @Component({
@@ -297,4 +339,5 @@ export class DialogConfirmation implements OnInit {
       });
     }
   }
+
 }
