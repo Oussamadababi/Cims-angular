@@ -94,71 +94,59 @@ export class CongeComponent implements OnInit {
   };
   add() {
     this.conge2 = this.PersonnelService.congeparPersonnelenattenteCompte(this.tokenStorage.getUser().id).subscribe(res => { });
-    if (this.conge2 == null) {
-
-      if (this.conge["typedeconge"] != "") {
-        if (this.conge["datedebut"] != "") {
-          if (this.conge["datefin"] != "") {
-            if (this.conge["personnel"].personnel_id != "") {
-              if (this.conge["datedebut"] < this.conge["datefin"]) {
-                this.PersonnelService.demandeConge(this.conge, this.tokenStorage.getUser().id).subscribe(res => {
-                  this.ngOnInit();
-                  console.log(res);
-                  console.log(this.conge["personnel"].personnel_id);
-                  this._snackBar.open("demandeConge ajouté avec succés", "OK", {
-                    duration: 2000,
-                    panelClass: ["green-snackbar"]
-                  });
+    //if (this.conge2 == null) {
+    if (this.conge["typedeconge"] != "") {
+      if (this.conge["datedebut"] != "") {
+        if (this.conge["datefin"] != "") {
+          if (this.conge["personnel"].personnel_id != "") {
+            if (this.conge["datedebut"] < this.conge["datefin"]) {
+              this.PersonnelService.demandeConge(this.conge, this.tokenStorage.getUser().id).subscribe(res => {
+                this.ngOnInit();
+                console.log(res);
+                console.log(this.conge["personnel"].personnel_id);
+                this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+                  duration: 2000,
+                  panelClass: ["green-snackbar"]
                 });
-              } else {
-                this._snackBar.open(
-                  "verifier les date du conge ",
-                  "OK",
-                  {
-                    duration: 2000,
-                    panelClass: ["red-snackbar"]
-                  }
-                );
-
-              }
-            }
-            else {
+              });
+            } else {
               this._snackBar.open(
-                "Veuillez insérer le nom du personnel ",
+                "verifier les date du conge ",
                 "OK",
                 {
                   duration: 2000,
                   panelClass: ["red-snackbar"]
                 }
               );
+
             }
           }
           else {
             this._snackBar.open(
-              "Veuillez insérer datefin du conge ",
+              "Veuillez insérer le nom du personnel ",
               "OK",
               {
                 duration: 2000,
                 panelClass: ["red-snackbar"]
               }
             );
-
           }
         }
         else {
           this._snackBar.open(
-            "Veuillez insérer datedebut du conge ",
+            "Veuillez insérer datefin du conge ",
             "OK",
             {
               duration: 2000,
               panelClass: ["red-snackbar"]
             }
           );
+
         }
       }
       else {
         this._snackBar.open(
-          "Veuillez insérer typedeconge ",
+          "Veuillez insérer datedebut du conge ",
           "OK",
           {
             duration: 2000,
@@ -166,17 +154,28 @@ export class CongeComponent implements OnInit {
           }
         );
       }
-    } else {
+    }
+    else {
       this._snackBar.open(
-        "il y a une demande encours ",
+        "Veuillez insérer typedeconge ",
         "OK",
         {
           duration: 2000,
           panelClass: ["red-snackbar"]
         }
       );
-
     }
+    /* } else {
+       this._snackBar.open(
+         "il y a une demande encours ",
+         "OK",
+         {
+           duration: 2000,
+           panelClass: ["red-snackbar"]
+         }
+       );
+ 
+     }*/
   }
   delete() {
     if (this.id != null) {
