@@ -10,6 +10,7 @@ import {
 } from "@angular/material/core";
 import { MAT_MOMENT_DATE_FORMATS } from "@angular/material-moment-adapter";
 import { MomentUtcDateAdapter } from "../../chef-service-layout/AffectationsPartiellesCS/datePicker";
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-conge',
   templateUrl: './conge.component.html',
@@ -25,10 +26,17 @@ import { MomentUtcDateAdapter } from "../../chef-service-layout/AffectationsPart
 export class CongeComponent implements OnInit {
   rowData: any;
   rowData1: any;
+  form: FormGroup;
   constructor(private http: HttpClient,
     private Rhservice: RHService,
     private _snackBar: MatSnackBar,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog,
+    private fb: FormBuilder) {
+    this.form = this.fb.group({
+      checkArray: this.fb.array([])
+    })
+
+  }
   personnels: any;
   ngOnInit(): void {
     this.Rhservice.listerPersonnel().subscribe(data => {
@@ -49,6 +57,22 @@ export class CongeComponent implements OnInit {
 
   }
 
+  onCheckboxChange(e) {
+    const checkArray: FormArray = this.form.get('checkArray') as FormArray;
+
+    if (e.target.checked) {
+      checkArray.push(new FormControl(e.target.value));
+    } else {
+      let i: number = 0;
+      checkArray.controls.forEach((item: FormControl) => {
+        if (item.value == e.target.value) {
+          checkArray.removeAt(i);
+          return;
+        }
+        i++;
+      });
+    }
+  }
   columnDefs = [
     {
       headerName: "numdemande",
@@ -251,30 +275,32 @@ export class CongeComponent implements OnInit {
   ajouterAnuulationConge() {
     this.AnnulationConge = this.Rhservice.annulationCongeenAttente(this.conge["personnel"].personnel_id).subscribe(res => {
     });
-    if (this.AnnulationConge == null) {
-      this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
+    //if (this.AnnulationConge == null) {
+    this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
 
-        console.log(res);
-        this._snackBar.open("demandeConge ajouté avec succés", "OK", {
-          duration: 2000,
-          panelClass: ["green-snackbar"]
+      console.log(res);
+      this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
 
-        });
       });
-    }
+    });
+  }
 
-    else {
-      this._snackBar.open(
-        "il y a une demande d'Annulation encours ",
-        "OK",
-        {
-          duration: 2000,
-          panelClass: ["red-snackbar"]
-        }
-      );
+  /*else {
+    this._snackBar.open(
+      "il y a une demande d'Annulation encours ",
+      "OK",
+      {
+        duration: 2000,
+        panelClass: ["red-snackbar"]
+      }
+    );
 
     }
   }
+  
+  }*/
   columnAnnulationConge = [
     {
       headerName: "numdemande",
@@ -309,7 +335,9 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     }
   ]
+
 }
+
 
 @Component({
   selector: 'dialog-confirmation',

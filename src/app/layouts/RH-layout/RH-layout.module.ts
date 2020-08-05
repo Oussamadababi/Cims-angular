@@ -28,6 +28,7 @@ import { AffectationsTotalesComponent } from "./affectations-totales/affectation
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { CongeComponent } from './conge/conge.component';
 import { AbsenceComponent } from './absence/absence.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -42,6 +43,7 @@ import { AbsenceComponent } from './absence/absence.component';
     MatTooltipModule,
     MatSnackBarModule,
     MatDatepickerModule,
+
     AgGridModule.withComponents([])
   ],
   declarations: [
@@ -62,4 +64,4 @@ import { AbsenceComponent } from './absence/absence.component';
     AbsenceComponent
   ]
 })
-export class RHLayoutModule {}
+export class RHLayoutModule { }

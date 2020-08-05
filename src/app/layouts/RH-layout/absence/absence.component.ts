@@ -57,7 +57,7 @@ export class AbsenceComponent implements OnInit {
     this.Rhservice.ajouterAbsence(this.absence["personnel"].personnel_id, this.d).subscribe(res => {
       console.log(res);
 
-      this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+      this._snackBar.open("Personnel ajouté au liste d'absences", "OK", {
         duration: 2000,
         panelClass: ["green-snackbar"]
 
