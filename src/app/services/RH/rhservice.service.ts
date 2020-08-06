@@ -207,5 +207,15 @@ export class RHService {
       "http://localhost:8082/api/listannulationconge"
     );
   }
+  AccepterAConge(idAConge: number) {
+    return this.http.delete(
+      "http://localhost:8082/api/accepterAnnulationConge/" + idAConge
+    );
+  }
+  RefusererAConge(idAConge: number) {
+    return this.http.delete(
+      "http://localhost:8082/api/refuserAnnulationConge/" + idAConge
+    );
+  }
 
 }

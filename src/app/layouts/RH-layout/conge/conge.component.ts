@@ -303,7 +303,7 @@ export class CongeComponent implements OnInit {
   }*/
   columnAnnulationConge = [
     {
-      headerName: "numdemande",
+      headerName: "Num Demande",
       field: "id",
       sortable: true,
       filter: true,
@@ -311,7 +311,7 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     },
     {
-      headerName: "datedemande",
+      headerName: "Date demandé",
       field: "datedemande",
       sortable: true,
       filter: true,
@@ -319,7 +319,7 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     },
     {
-      headerName: "etat",
+      headerName: "Etat",
       field: "etat",
       sortable: true,
       filter: true,
@@ -327,7 +327,7 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     },
     {
-      headerName: "Conge_id",
+      headerName: "Conge id",
       field: "conge.id",
       sortable: true,
       filter: true,
@@ -366,6 +366,7 @@ export class DialogConfirmation implements OnInit {
         this.message = err.error.message;
       });
     }
+
   }
 
 }
