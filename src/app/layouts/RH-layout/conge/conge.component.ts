@@ -350,7 +350,10 @@ export class DialogConfirmation implements OnInit {
     private http: HttpClient,
     private Rhservice: RHService,
     private _snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public id: number) { }
+    @Inject(MAT_DIALOG_DATA) public id: number,
+    public idA: number
+  ) { }
+
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -361,6 +364,14 @@ export class DialogConfirmation implements OnInit {
     if (this.id != null) {
       this.Rhservice.deleteConge(this.id).subscribe(res => {
         console.log("congee Supprimé");
+        this.dialogRef.close();
+      }, err => {
+        this.message = err.error.message;
+      });
+    }
+    if (this.idA != null) {
+      this.Rhservice.AccepterAConge(this.idA).subscribe(res => {
+        console.log("Annulation Congé Accepter");
         this.dialogRef.close();
       }, err => {
         this.message = err.error.message;
