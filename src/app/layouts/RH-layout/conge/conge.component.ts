@@ -141,7 +141,7 @@ export class CongeComponent implements OnInit {
     console.log(this.id);
   }
   getIdA(event1) {
-    this.id = event1.data["id"];
+    this.idA = event1.data["id"];
     console.log(event1.data["id"]);
     console.log(this.idA);
   }
@@ -264,6 +264,17 @@ export class CongeComponent implements OnInit {
     }
   }
   AccepterAConge() {
+    this.Rhservice.AccepterAConge(this.idA).subscribe(res => {
+      this.ngOnInit();
+      this._snackBar.open("demandeAccepter avec succés", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
+
+
+      });
+    });
+
+    /*console.log(this.idA);
     if (this.idA != null) {
       this.dialog.open(DialogConfirmation, {
         data: this.idA
@@ -274,7 +285,7 @@ export class CongeComponent implements OnInit {
         duration: 2000,
         panelClass: ["red-snackbar"]
       });
-    }
+    }*/
   }
   edit(event) {
     if (
@@ -390,14 +401,14 @@ export class DialogConfirmation implements OnInit {
         this.message = err.error.message;
       });
     }
-    if (this.idA != null) {
-      this.Rhservice.AccepterAConge(this.idA).subscribe(res => {
-        console.log("Annulation Congé Accepter");
-        this.dialogRef.close();
-      }, err => {
-        this.message = err.error.message;
-      });
-    }
+    /* else if (this.idA != null) {
+       this.Rhservice.AccepterAConge(this.idA).subscribe(res => {
+         console.log("Annulation Congé Accepter");
+         this.dialogRef.close();
+       }, err => {
+         this.message = err.error.message;
+       });
+     }*/
 
   }
 
