@@ -34,11 +34,16 @@ export class CongeComponent implements OnInit {
     public dialog: MatDialog,
     private tokenStorage: TokenStorageService) { }
   rowData: any;
+  rowData1: any;
   id: number;
   ngOnInit(): void {
     this.PersonnelService.listCongeParPersonnel(this.tokenStorage.getUser().id).subscribe(res => {
       console.log(res);
       this.rowData = res;
+    });
+    this.PersonnelService.annulationCongeparPersonnel(this.tokenStorage.getUser().id).subscribe(res => {
+      console.log(res);
+      this.rowData1 = res;
     });
   }
   columnDefs = [
@@ -195,7 +200,54 @@ export class CongeComponent implements OnInit {
     console.log(event.data["id"]);
     console.log(this.id);
   }
+  ajouterAnuulationConge() {
+    /*  this.AnnulationConge = this.Rhservice.annulationCongeenAttente(this.conge["personnel"].personnel_id).subscribe(res => {
+      });*/
+    //if (this.AnnulationConge == null) {
+    this.PersonnelService.ajouterAnnulationConge(this.id).subscribe(res => {
 
+      console.log(res);
+      this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
+
+      });
+    });
+  }
+  columnAnnulationConge = [
+    {
+      headerName: "numdemande",
+      field: "id",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "datedemande",
+      field: "datedemande",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "etat",
+      field: "etat",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "Conge_id",
+      field: "conge.id",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    }
+  ]
 
 
 }

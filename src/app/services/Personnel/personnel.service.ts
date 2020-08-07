@@ -84,5 +84,11 @@ export class PersonnelService {
   congeparPersonnelenattenteCompte(personnel_id: number) {
     return this.http.get("http://localhost:8082/api/congeparpersonnelCompte/" + personnel_id);
   }
+  ajouterAnnulationConge(conge_id: number) {
+    return this.http.post("http://localhost:8082/api/ajouterAConge/" + conge_id, {});
+  }
+  annulationCongeparPersonnel(personnel_id: number) {
+    return this.http.get("http://localhost:8082/api/AnulationConge/" + personnel_id);
+  }
 
 }
