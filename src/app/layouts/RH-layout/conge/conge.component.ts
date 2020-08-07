@@ -257,7 +257,7 @@ export class CongeComponent implements OnInit {
       });
       this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
     } else {
-      this._snackBar.open("Veuillez sélectionner le personnel à supprimer", "OK", {
+      this._snackBar.open("Veuillez sélectionner le Congé à supprimer", "OK", {
         duration: 2000,
         panelClass: ["red-snackbar"]
       });
@@ -266,7 +266,7 @@ export class CongeComponent implements OnInit {
   AccepterAConge() {
     this.Rhservice.AccepterAConge(this.idA).subscribe(res => {
       this.ngOnInit();
-      this._snackBar.open("demandeAccepter avec succés", "OK", {
+      this._snackBar.open("Demande Annulation congé est accepté", "OK", {
         duration: 2000,
         panelClass: ["green-snackbar"]
 
@@ -311,9 +311,20 @@ export class CongeComponent implements OnInit {
     this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
 
       console.log(res);
-      this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+      this._snackBar.open("demande Annulation Conge ajouté avec succés", "OK", {
         duration: 2000,
         panelClass: ["green-snackbar"]
+
+      });
+    });
+  }
+  RefusererAConge() {
+    this.Rhservice.RefusererAConge(this.idA).subscribe(res => {
+      this.ngOnInit();
+      this._snackBar.open("Demande Annulation congé est refusé", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
+
 
       });
     });
