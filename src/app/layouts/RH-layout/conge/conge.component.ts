@@ -133,11 +133,17 @@ export class CongeComponent implements OnInit {
   };
 
   id: number;
+  idA: number;
   nombreJourConge: any;
   getId(event) {
     this.id = event.data["id"];
     console.log(event.data["id"]);
     console.log(this.id);
+  }
+  getIdA(event1) {
+    this.id = event1.data["id"];
+    console.log(event1.data["id"]);
+    console.log(this.idA);
   }
   add() {
 
@@ -257,6 +263,19 @@ export class CongeComponent implements OnInit {
       });
     }
   }
+  AccepterAConge() {
+    if (this.idA != null) {
+      this.dialog.open(DialogConfirmation, {
+        data: this.idA
+      });
+      this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
+    } else {
+      this._snackBar.open("Veuillez sélectionner l'annulation à accepter", "OK", {
+        duration: 2000,
+        panelClass: ["red-snackbar"]
+      });
+    }
+  }
   edit(event) {
     if (
       this.Rhservice.updateConge(
@@ -305,7 +324,7 @@ export class CongeComponent implements OnInit {
   }*/
   columnAnnulationConge = [
     {
-      headerName: "numdemande",
+      headerName: "Num Demande",
       field: "id",
       sortable: true,
       filter: true,
@@ -313,7 +332,7 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     },
     {
-      headerName: "datedemande",
+      headerName: "Date demandé",
       field: "datedemande",
       sortable: true,
       filter: true,
@@ -321,7 +340,7 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     },
     {
-      headerName: "etat",
+      headerName: "Etat",
       field: "etat",
       sortable: true,
       filter: true,
@@ -329,7 +348,7 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     },
     {
-      headerName: "Conge_id",
+      headerName: "Conge id",
       field: "conge.id",
       sortable: true,
       filter: true,
@@ -352,7 +371,10 @@ export class DialogConfirmation implements OnInit {
     private http: HttpClient,
     private Rhservice: RHService,
     private _snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public id: number) { }
+    @Inject(MAT_DIALOG_DATA) public id: number,
+    public idA: number
+  ) { }
+
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -368,6 +390,15 @@ export class DialogConfirmation implements OnInit {
         this.message = err.error.message;
       });
     }
+    if (this.idA != null) {
+      this.Rhservice.AccepterAConge(this.idA).subscribe(res => {
+        console.log("Annulation Congé Accepter");
+        this.dialogRef.close();
+      }, err => {
+        this.message = err.error.message;
+      });
+    }
+
   }
 
 }

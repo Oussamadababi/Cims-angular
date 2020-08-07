@@ -106,7 +106,7 @@
                                 Supprimer
                             </button>
                             <button class="btn btn-danger btn-round" (click)="ajouterAnuulationConge()">
-                                Annulation
+                                Anuller
                             </button>
                         </div>
                     </div>
@@ -121,9 +121,18 @@
 
                         <ag-grid-angular style="width: 1218px; height: 500px;" class="ag-theme-material"
                             [rowData]="rowData1" [columnDefs]="columnAnnulationConge" [modules]="modules"
-                            (rowSelected)="getId($event)" (cellValueChanged)="edit($event)" [rowSelection]="'multiple'"
-                            rowMultiSelectWithClick="true" [pagination]="true" [paginationAutoPageSize]="true">
+                            (rowSelected)="getIdA($event1)" (cellValueChanged)="edit($event1)"
+                            [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
+                            [paginationAutoPageSize]="true">
                         </ag-grid-angular>
+                        <div class="add ml-auto mr-auto">
+                            <button class="btn btn-danger btn-round" (click)="AccepterAConge()">
+                                Accepter
+                            </button>
+                            <button class="btn btn-danger btn-round" (click)="RefusererAConge()">
+                                Refuser
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
