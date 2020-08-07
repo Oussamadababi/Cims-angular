@@ -133,11 +133,17 @@ export class CongeComponent implements OnInit {
   };
 
   id: number;
+  idA: number;
   nombreJourConge: any;
   getId(event) {
     this.id = event.data["id"];
     console.log(event.data["id"]);
     console.log(this.id);
+  }
+  getIdA(event1) {
+    this.id = event1.data["id"];
+    console.log(event1.data["id"]);
+    console.log(this.idA);
   }
   add() {
 
@@ -250,6 +256,19 @@ export class CongeComponent implements OnInit {
       this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
     } else {
       this._snackBar.open("Veuillez sélectionner le personnel à supprimer", "OK", {
+        duration: 2000,
+        panelClass: ["red-snackbar"]
+      });
+    }
+  }
+  AccepterAConge() {
+    if (this.idA != null) {
+      this.dialog.open(DialogConfirmation, {
+        data: this.idA
+      });
+      this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
+    } else {
+      this._snackBar.open("Veuillez sélectionner l'annulation à accepter", "OK", {
         duration: 2000,
         panelClass: ["red-snackbar"]
       });

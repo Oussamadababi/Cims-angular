@@ -208,13 +208,13 @@ export class RHService {
     );
   }
   AccepterAConge(idAConge: number) {
-    return this.http.delete(
-      "http://localhost:8082/api/accepterAnnulationConge/" + idAConge
+    return this.http.put(
+      "http://localhost:8082/api/accepterAnnulationConge/" + idAConge, {}
     );
   }
   RefusererAConge(idAConge: number) {
-    return this.http.delete(
-      "http://localhost:8082/api/refuserAnnulationConge/" + idAConge
+    return this.http.put(
+      "http://localhost:8082/api/refuserAnnulationConge/" + idAConge, {}
     );
   }
 
