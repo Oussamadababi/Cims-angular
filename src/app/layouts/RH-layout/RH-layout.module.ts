@@ -28,6 +28,7 @@ import { AffectationsTotalesComponent } from "./affectations-totales/affectation
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { CongeComponent } from './conge/conge.component';
 import { AbsenceComponent } from './absence/absence.component';
+import { RecuperationSoldeReposComponent } from './recuperation-solde-repos/recuperation-solde-repos.component';
 
 @NgModule({
   imports: [
@@ -61,7 +62,8 @@ import { AbsenceComponent } from './absence/absence.component';
     DropDownEditorSite,
     ButtonOrdreMissionComponent,
     CongeComponent,
-    AbsenceComponent
+    AbsenceComponent,
+    RecuperationSoldeReposComponent
   ]
 })
 export class RHLayoutModule { }

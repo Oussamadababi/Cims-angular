@@ -57,6 +57,12 @@ export const ROUTES: RouteInfo[] = [
     title: "Absence",
     icon: "content_paste",
     class: ""
+  },
+  {
+    path: "RecuperationSoldeRepos",
+    title: "RecuperationSoldeRepos",
+    icon: "content_paste",
+    class: ""
   }
 ];
 

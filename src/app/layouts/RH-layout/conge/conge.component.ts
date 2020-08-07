@@ -243,9 +243,11 @@ export class CongeComponent implements OnInit {
    
    }*/
   delete() {
+    console.log(this.id);
     if (this.id != null) {
       this.dialog.open(DialogConfirmation, {
         data: this.id
+
       });
       this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
     } else {
