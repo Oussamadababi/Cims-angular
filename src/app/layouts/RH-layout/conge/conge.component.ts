@@ -337,6 +337,28 @@ export class CongeComponent implements OnInit {
       });
     });
   }
+  RefuserConge() {
+    this.Rhservice.RefusererConge(this.id).subscribe(res => {
+      this.ngOnInit();
+      this._snackBar.open("Demande congé est refusé", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
+
+
+      });
+    });
+  }
+  AccepterConge() {
+    this.Rhservice.AccepterConge(this.id).subscribe(res => {
+      this.ngOnInit();
+      this._snackBar.open("Demande congé est accepté", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
+
+
+      });
+    });
+  }
 
   /*else {
     this._snackBar.open(

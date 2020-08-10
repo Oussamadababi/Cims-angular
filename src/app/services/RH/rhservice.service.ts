@@ -217,5 +217,15 @@ export class RHService {
       "http://localhost:8082/api/refuserAnnulationConge/" + idAConge, {}
     );
   }
+  RefusererConge(idConge: number) {
+    return this.http.put(
+      "http://localhost:8082/api/refuserConge/" + idConge, {}
+    );
+  }
+  AccepterConge(idConge: number) {
+    return this.http.put(
+      "http://localhost:8082/api/accepterConge/" + idConge, {}
+    );
+  }
 
 }
