@@ -9,7 +9,6 @@ import {
   MAT_DATE_LOCALE
 } from "@angular/material/core";
 import { MAT_MOMENT_DATE_FORMATS } from "@angular/material-moment-adapter";
-import { MomentUtcDateAdapter } from "../../chef-service-layout/AffectationsPartiellesCS/datePicker";
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -29,7 +28,12 @@ export class RecuperationSoldeReposComponent implements OnInit {
       checkArray: this.fb.array([])
     })
 
+
   }
+  conge2: object;
+  RSR: object = {
+    personnel: { personnel_id: "" }
+  };
   personnels: any;
   ngOnInit(): void {
     this.Rhservice.listerPersonnel().subscribe(data => {
@@ -37,6 +41,19 @@ export class RecuperationSoldeReposComponent implements OnInit {
 
     });
 
+  }
+  add() {
+
+    console.log(this.RSR["personnel"].personnel_id);
+    this.Rhservice.ajouterRSR(this.RSR, this.RSR["personnel"].personnel_id).subscribe(res => {
+      this.ngOnInit();
+      console.log(res);
+      console.log(this.RSR["personnel"].personnel_id);
+      this._snackBar.open("Demande De recuperation Solde repos ajouté avec succés", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
+      });
+    });
   }
 
 }

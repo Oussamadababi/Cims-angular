@@ -8,7 +8,7 @@
                 <form>
                     <mat-form-field class="spacing">
                         <mat-label>Personnel</mat-label>
-                        <mat-select name="personnel" ngDefaultControl>
+                        <mat-select name="personnel" [(ngModel)]="this.RSR.personnel.personnel_id" ngDefaultControl>
                             <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel"
                                 ngDefaultControl>
                                 {{ item.nom }} {{ item.prenom }}

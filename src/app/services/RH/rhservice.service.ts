@@ -228,4 +228,9 @@ export class RHService {
     );
   }
 
+  ajouterRSR(RSR: object, personnel_id: number) {
+    return this.http.post("http://localhost:8082/api/addRSR/" + personnel_id, RSR);
+  }
+
+
 }
