@@ -20,9 +20,23 @@ import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@ang
 export class RecuperationSoldeReposComponent implements OnInit {
   form: FormGroup;
 
-  constructor() { }
+  constructor(private http: HttpClient,
+    private Rhservice: RHService,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog,
+    private fb: FormBuilder) {
+    this.form = this.fb.group({
+      checkArray: this.fb.array([])
+    })
+
+  }
   personnels: any;
   ngOnInit(): void {
+    this.Rhservice.listerPersonnel().subscribe(data => {
+      this.personnels = data;
+
+    });
+
   }
 
 }
