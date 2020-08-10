@@ -317,7 +317,7 @@ export class CongeComponent implements OnInit {
     });
     //if (this.AnnulationConge == null) {
     this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
-
+      this.ngOnInit();
       console.log(res);
       this._snackBar.open("demande Annulation Conge ajouté avec succés", "OK", {
         duration: 2000,
