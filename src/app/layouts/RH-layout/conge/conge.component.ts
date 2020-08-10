@@ -121,6 +121,14 @@ export class CongeComponent implements OnInit {
       filter: true,
       editable: true,
       maxWidth: 200
+    },
+    {
+      headerName: "Etat",
+      field: "etat",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
     }
   ]
   conge2: object;

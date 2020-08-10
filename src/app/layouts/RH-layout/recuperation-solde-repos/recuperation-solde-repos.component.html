@@ -1,1 +1,28 @@
-<p>recuperation-solde-repos works!</p>
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">Ajouter Demande Recuperation Solde Repos</h4>
+            </div>
+            <div class="card-body">
+                <form>
+                    <mat-form-field class="spacing">
+                        <mat-label>Personnel</mat-label>
+                        <mat-select name="personnel" [(ngModel)]="this.conge.personnel.personnel_id" ngDefaultControl>
+                            <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel"
+                                ngDefaultControl>
+                                {{ item.nom }} {{ item.prenom }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form>
+            </div>
+            <div class="add ml-auto mr-auto">
+                <button (click)="add()" class="btn btn-success btn-round">
+                    Ajouter
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
