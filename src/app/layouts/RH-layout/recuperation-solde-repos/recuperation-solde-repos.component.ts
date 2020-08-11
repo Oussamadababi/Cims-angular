@@ -134,7 +134,16 @@ export class RecuperationSoldeReposComponent implements OnInit {
     console.log(event1.data["id"]);
     console.log(this.idA);
   }
+  AccepterDemandeRSR() {
+    this.Rhservice.AccepterDemandeRSR(this.idA).subscribe(res => {
+      this.ngOnInit();
+      this._snackBar.open("Demande Recuperation Solde Repos est accepté", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
+
+
+      });
+    });
+  }
 
 }
-
-
