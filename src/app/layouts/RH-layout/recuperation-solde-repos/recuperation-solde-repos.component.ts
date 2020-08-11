@@ -18,6 +18,7 @@ import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@ang
 })
 export class RecuperationSoldeReposComponent implements OnInit {
   form: FormGroup;
+  rowData: any;
 
   constructor(private http: HttpClient,
     private Rhservice: RHService,
@@ -41,6 +42,11 @@ export class RecuperationSoldeReposComponent implements OnInit {
 
     });
 
+    this.Rhservice.listRSR().subscribe(res => {
+      console.log(res);
+      this.rowData = res;
+    });
+
   }
   add() {
 
@@ -56,4 +62,79 @@ export class RecuperationSoldeReposComponent implements OnInit {
     });
   }
 
+  columnRSR = [
+    {
+      headerName: "Num Demande",
+      field: "id",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "Date demandé",
+      field: "datedemande",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "Etat",
+      field: "etat",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "prenom personnel",
+      field: "p.prenom",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "Nom personnel",
+      field: "p.nom",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "Solde Repos",
+      field: "p.soldeRepos",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "Solde Recuperer",
+      field: "soldeRecuperer",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "Titre Annee",
+      field: "titreAnnee",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    }
+  ]
+  idA: number;
+  getIdA(event1) {
+    this.idA = event1.data["id"];
+    console.log(event1.data["id"]);
+    console.log(this.idA);
+  }
+
 }
+
+

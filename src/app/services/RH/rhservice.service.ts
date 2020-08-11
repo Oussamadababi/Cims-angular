@@ -232,5 +232,11 @@ export class RHService {
     return this.http.post("http://localhost:8082/api/addRSR/" + personnel_id, RSR);
   }
 
+  listRSR() {
+    return this.http.get(
+      "http://localhost:8082/api/listRSR"
+    );
+  }
+
 
 }

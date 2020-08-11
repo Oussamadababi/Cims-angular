@@ -26,3 +26,26 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-danger">
+                <h4 class="card-title ">Liste Demande Recuperation Solde Repose </h4>
+            </div>
+
+            <ag-grid-angular style="width: 1500px; height: 500px;" class="ag-theme-material" [rowData]="rowData"
+                [columnDefs]="columnRSR" [modules]="modules" (rowSelected)="getIdA($event)"
+                (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
+                [pagination]="true" [paginationAutoPageSize]="true">
+            </ag-grid-angular>
+            <div class="add ml-auto mr-auto">
+                <button class="btn btn-success btn-round" (click)=" AccepterAConge()">
+                    Accepter
+                </button>
+                <button class="btn btn-danger btn-round" (click)="RefusererAConge()">
+                    Refuser
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
