@@ -423,8 +423,7 @@ export class DialogConfirmation implements OnInit {
     private http: HttpClient,
     private Rhservice: RHService,
     private _snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public id: number,
-    public idA: number
+    @Inject(MAT_DIALOG_DATA) public id: number
   ) { }
 
 
