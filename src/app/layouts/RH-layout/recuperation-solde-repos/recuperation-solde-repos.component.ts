@@ -146,4 +146,16 @@ export class RecuperationSoldeReposComponent implements OnInit {
     });
   }
 
+  RefusererDemandeRSR() {
+    this.Rhservice.RefuserDemandeRSR(this.idA).subscribe(res => {
+      this.ngOnInit();
+      this._snackBar.open("Demande Recuperation Solde Repos est refusé", "OK", {
+        duration: 2000,
+        panelClass: ["green-snackbar"]
+
+
+      });
+    });
+  }
+
 }

@@ -243,6 +243,11 @@ export class RHService {
       "http://localhost:8082/api/AccepterDemandeRSR/" + idRSR, {}
     );
   }
+  RefuserDemandeRSR(idRSR: number) {
+    return this.http.put(
+      "http://localhost:8082/api/RefuserDemandeRSR/" + idRSR, {}
+    );
+  }
 
 
 }
