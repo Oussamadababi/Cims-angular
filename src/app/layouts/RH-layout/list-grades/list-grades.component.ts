@@ -12,7 +12,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export class ListGradesComponent implements OnInit {
   message: string;
   id: number;
-  grade: object = { id_grade: "", nom_grade: "" };
+  grade: object = { id_grade: "", nom_grade_fr: "" };
   rowData: any;
   constructor(
     private http: HttpClient,
@@ -27,7 +27,7 @@ export class ListGradesComponent implements OnInit {
     });
   }
   add() {
-    if (this.grade["nom_grade"] != "") {
+    if (this.grade["nom_grade_fr"] != "") {
       this.Rhservice.addGrade(this.grade).subscribe(res => {
         console.log(res);
         this.ngOnInit();
@@ -98,7 +98,7 @@ export class ListGradesComponent implements OnInit {
     },
     {
       headerName: "Nom",
-      field: "nom_grade",
+      field: "nom_grade_fr",
       sortable: true,
       filter: true,
       editable: true,
