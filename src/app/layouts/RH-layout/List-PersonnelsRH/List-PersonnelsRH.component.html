@@ -29,6 +29,20 @@
                     </label>
                   </div>
                   <div class="col-md-4 mb-3">
+                    <input type="text" id="prenom" name="nom_Ar" class="form-control" required
+                      [(ngModel)]="this.personnel.nom_Ar" />
+                    <label class="form-control-placeholder" for="Nom en Ar">
+                      Nom en Ar *
+                    </label>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <input type="text" id="prenom" name="prenom_AR" class="form-control" required
+                      [(ngModel)]="this.personnel.prenom_AR" />
+                    <label class="form-control-placeholder" for="Nom en Ar">
+                      Prenom en Ar *
+                    </label>
+                  </div>
+                  <div class="col-md-4 mb-3">
                     <input type="radio" id="male" name="gender" value="homme" [(ngModel)]="this.personnel.sexe" />
                     <label for="male">Homme</label>
                     <br />
@@ -36,6 +50,25 @@
                     <label for="female">Femme</label>
                   </div>
                   <br />
+                  <div class="col-md-4 mb-3">
+                    <mat-form-field>
+                      <mat-label>Date de naissance *</mat-label>
+                      <input matInput [matDatepicker]="picker" ngDefaultControl
+                        [(ngModel)]="this.personnel.date_Naissance" [ngModelOptions]="{ standalone: true }">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <input type="text" id="prenom" name="Adresse" class="form-control" required
+                      [(ngModel)]="this.personnel.Adresse" />
+                    <label class="form-control-placeholder" for="Adresse">
+                      Adresse *
+                    </label>
+                  </div>
+
+
                 </div>
                 <div class="row">
                   <div class="col-md-4 mb-3">
@@ -83,20 +116,60 @@
                   </div>
 
                   <div class="col-md-4 mb-3">
-                    <!-- <input type="text" id="date_recrutement" name="date_recrutement" class="form-control"
-                      [(ngModel)]="this.personnel.date_recrutement" required />
-                    <label class="form-control-placeholder" for="date_recrutement">
-                      Date de recrutement *
-                    </label>-->
                     <mat-form-field>
                       <mat-label>Date de recrutement *</mat-label>
-                      <input matInput [matDatepicker]="picker" ngDefaultControl
+                      <input matInput [matDatepicker]="picker1" ngDefaultControl
                         [(ngModel)]="this.personnel.date_recrutement" [ngModelOptions]="{ standalone: true }">
-                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                      <mat-datepicker #picker></mat-datepicker>
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
 
                     </mat-form-field>
                   </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input type="tel" id="tél" name="matricule" class="form-control" required
+                    [(ngModel)]="this.personnel.matricule" required minlength="8" maxlength="8" />
+                  <label class="form-control-placeholder" for="matricule">
+                    Cin *
+                  </label>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input type="tel" id="tél" name="matricule_CNSS" class="form-control" required
+                    [(ngModel)]="this.personnel.matricule_CNSS" required minlength="8" maxlength="8" />
+                  <label class="form-control-placeholder" for="matricule_CNSS">
+                    matricule_CNSS *
+                  </label>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input type="tel" id="tél" name="matricule_CNRPS" class="form-control" required
+                    [(ngModel)]="this.personnel.matricule_CNRPS" required minlength="8" maxlength="8" />
+                  <label class="form-control-placeholder" for="matricule_CNRPS">
+                    matricule_CNRPS *
+                  </label>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <mat-form-field>
+                    <mat-label>Date de promotion *</mat-label>
+                    <input matInput [matDatepicker]="picker2" ngDefaultControl
+                      [(ngModel)]="this.personnel.date_Promotion" [ngModelOptions]="{ standalone: true }">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input type="text" id="poste_Occupe" name="poste_Occupe" class="form-control" required
+                    [(ngModel)]="this.personnel.poste_Occupe" />
+                  <label class="form-control-placeholder" for="poste_Occupe">
+                    Poste Occupe *
+                  </label>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <input type="tel" id="tél" name="soldeRepos" class="form-control" required
+                    [(ngModel)]="this.personnel.soldeRepos" required minlength="8" maxlength="8" />
+                  <label class="form-control-placeholder" for="soldeRepos">
+                    Solde initial de congé *
+                  </label>
                 </div>
                 <p>(*):champs obligatoire </p>
               </form>

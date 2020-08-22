@@ -62,7 +62,20 @@ export class ListPersonnelsComponent implements OnInit {
     departement: { id_dept: "" },
     grade: { id_grade: "" },
     email: "",
-    date_recrutement: ""
+    date_recrutement: "",
+    matricule: "",
+    matricule_CNRPS: "",
+    matricule_CNSS: "",
+    nom_Ar: "",
+    prenom_AR: "",
+    poste_Occupe: "",
+    date_Promotion: "",
+    soldeRepos: "",
+    date_Naissance: "",
+    Adresse: ""
+
+
+
   };
   rowData: any;
   constructor(
