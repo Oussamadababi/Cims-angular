@@ -12,7 +12,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export class ListGradesComponent implements OnInit {
   message: string;
   id: number;
-  grade: object = { id_grade: "", nom_grade_fr: "" };
+  grade: object = { id_grade: "", nom_grade_fr: "", nom_grade_ar: "", categorie_grade_fr: "", categorie_grade_ar: "" };
   rowData: any;
   constructor(
     private http: HttpClient,
@@ -97,12 +97,36 @@ export class ListGradesComponent implements OnInit {
       valueGetter: "node.rowIndex + 1"
     },
     {
-      headerName: "Nom",
+      headerName: "Nom Fr",
       field: "nom_grade_fr",
       sortable: true,
       filter: true,
       editable: true,
-      minWidth: 500
+      minWidth: 50
+    },
+    {
+      headerName: "Nom Ar",
+      field: "nom_grade_ar",
+      sortable: true,
+      filter: true,
+      editable: true,
+      minWidth: 50
+    },
+    {
+      headerName: "Categorie en Fr",
+      field: "categorie_grade_fr",
+      sortable: true,
+      filter: true,
+      editable: true,
+      minWidth: 50
+    },
+    {
+      headerName: "NoCategorie en Ar",
+      field: "categorie_grade_ar",
+      sortable: true,
+      filter: true,
+      editable: true,
+      minWidth: 50
     }
   ];
 }
