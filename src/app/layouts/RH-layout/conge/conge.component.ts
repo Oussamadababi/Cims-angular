@@ -137,6 +137,7 @@ export class CongeComponent implements OnInit {
     typedeconge: "",
     datedebut: "",
     datefin: "",
+    numDeJour: "",
     personnel: { personnel_id: "" }
   };
 
