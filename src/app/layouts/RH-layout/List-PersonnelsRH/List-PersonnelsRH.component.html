@@ -171,6 +171,30 @@
                     Solde initial de congé *
                   </label>
                 </div>
+                <div class="card-body">
+                  <form>
+                    <mat-form-field class="spacing">
+                      <mat-label>Grade</mat-label>
+                      <mat-select name="Grade" [(ngModel)]="this.personnel.grade.id_grade" ngDefaultControl>
+                        <mat-option *ngFor="let item of this.grades" [value]="item.id_grade" ngDefaultControl>
+                          {{ item.nom_grade_fr }} {{ item.categorie_grade_fr }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </form>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <mat-form-field class="spacing">
+                      <mat-label>Affectation</mat-label>
+                      <mat-select name="sites" [(ngModel)]="this.personnel.affectation.affectation_id" ngDefaultControl>
+                        <mat-option *ngFor="let item of this.sites" [value]="item.affectation_id" ngDefaultControl>
+                          {{ item.nomSite }} {{ item.nomSite }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </form>
+                </div>
                 <p>(*):champs obligatoire </p>
               </form>
             </div>

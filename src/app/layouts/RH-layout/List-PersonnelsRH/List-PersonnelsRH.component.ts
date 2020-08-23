@@ -49,6 +49,7 @@ export class ListPersonnelsComponent implements OnInit {
   message: string;
   id: number;
   grade: any;
+  site: any;
 
   departement: any;
   addpers: boolean;
@@ -72,11 +73,15 @@ export class ListPersonnelsComponent implements OnInit {
     date_Promotion: "",
     soldeRepos: "",
     date_Naissance: "",
-    Adresse: ""
+    Adresse: "",
+    affectation: { affectation_id: "" }
 
 
 
   };
+  grades: any;
+  sites: any;
+
   rowData: any;
   constructor(
     private http: HttpClient,
@@ -93,7 +98,16 @@ export class ListPersonnelsComponent implements OnInit {
     });
     this.Rhservice.listerGrades().subscribe(
       data => {
-        this.grade = data;
+        this.grades = data;
+        console.dir(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    this.Rhservice.listerSite().subscribe(
+      data => {
+        this.sites = data;
         console.dir(data);
       },
       err => {
