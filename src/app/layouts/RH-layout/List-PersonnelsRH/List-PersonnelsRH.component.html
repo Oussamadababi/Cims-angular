@@ -189,7 +189,7 @@
                       <mat-label>Affectation</mat-label>
                       <mat-select name="sites" [(ngModel)]="this.personnel.affectation.affectation_id" ngDefaultControl>
                         <mat-option *ngFor="let item of this.sites" [value]="item.affectation_id" ngDefaultControl>
-                          {{ item.nomSite }} {{ item.nomSite }}
+                          {{ item.nom_etablissement_fr }} {{ item.nature_etablissement_fr }}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
