@@ -249,6 +249,12 @@ export class RHService {
     );
   }
 
+  listFonctions() {
+    return this.http.get(
+      "http://localhost:8082/api/listFonctions"
+    );
+  }
+
 
 
 }

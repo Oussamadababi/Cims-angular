@@ -189,7 +189,31 @@
                       <mat-label>Affectation</mat-label>
                       <mat-select name="sites" [(ngModel)]="this.personnel.affectation.affectation_id" ngDefaultControl>
                         <mat-option *ngFor="let item of this.sites" [value]="item.affectation_id" ngDefaultControl>
-                          {{ item.nom_etablissement_fr }} {{ item.nature_etablissement_fr }}
+                          {{ item.nom_etablissement_fr }} {{ item.nom_etablissement_ar }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </form>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <mat-form-field class="spacing">
+                      <mat-label>Structure</mat-label>
+                      <mat-select name="departement" [(ngModel)]="this.personnel.departement.id_dept" ngDefaultControl>
+                        <mat-option *ngFor="let item of this.departement" [value]="item.id_dept" ngDefaultControl>
+                          {{ item.nom_dept }} {{ item.nom_dept }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </form>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <mat-form-field class="spacing">
+                      <mat-label>Foncion</mat-label>
+                      <mat-select name="Fonction" [(ngModel)]="this.personnel.fonction.id_fonction" ngDefaultControl>
+                        <mat-option *ngFor="let item of this.fonction" [value]="item.id_fonction" ngDefaultControl>
+                          {{ item.fonction }} {{ item.fonction }}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>

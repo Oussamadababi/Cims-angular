@@ -50,7 +50,6 @@ export class ListPersonnelsComponent implements OnInit {
   id: number;
   grade: any;
   site: any;
-
   departement: any;
   addpers: boolean;
 
@@ -74,13 +73,16 @@ export class ListPersonnelsComponent implements OnInit {
     soldeRepos: "",
     date_Naissance: "",
     Adresse: "",
-    affectation: { affectation_id: "" }
+    affectation: { affectation_id: "" },
+    fonction: { id_fonction: "" }
 
 
 
   };
   grades: any;
   sites: any;
+  fonction: any;
+
 
   rowData: any;
   constructor(
@@ -117,6 +119,10 @@ export class ListPersonnelsComponent implements OnInit {
 
     this.Rhservice.listerDepartements().subscribe(data => {
       this.departement = data;
+      console.dir(data);
+    });
+    this.Rhservice.listFonctions().subscribe(data => {
+      this.fonction = data;
       console.dir(data);
     });
   }
