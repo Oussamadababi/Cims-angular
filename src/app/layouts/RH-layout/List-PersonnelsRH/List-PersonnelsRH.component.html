@@ -72,29 +72,6 @@
                 </div>
                 <div class="row">
                   <div class="col-md-4 mb-3">
-                    <mat-form-field class="spacing">
-                      <mat-label>Departement </mat-label>
-                      <mat-select name="departement" [(ngModel)]="this.personnel.departement.id_dept" ngDefaultControl
-                        required>
-                        <mat-option *ngFor="let item of this.departement" [value]="item.id_dept">
-                          {{ item.nom_dept }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-4 mb-3">
-                    <mat-form-field class="spacing">
-                      <mat-label>Grade </mat-label>
-                      <mat-select name="grade" [(ngModel)]="this.personnel.grade.id_grade" ngDefaultControl required>
-                        <mat-option *ngFor="let item of this.grade" [value]="item.id_grade">
-                          {{ item.nom_grade }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-4 mb-3">
                     <input type="tel" id="tél" name="telP" class="form-control" required
                       [(ngModel)]="this.personnel.telephone" required minlength="8" maxlength="8" />
                     <label class="form-control-placeholder" for="tél">
