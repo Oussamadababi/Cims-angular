@@ -54,6 +54,7 @@ export class ListPersonnelsComponent implements OnInit {
   addpers: boolean;
   gouvselecter: any;
   divselect: any;
+  affectionselect: any;
 
   personnel: object = {
     id_personnel: "",
@@ -87,7 +88,7 @@ export class ListPersonnelsComponent implements OnInit {
   fonction: any;
   divisions: any;
   services: any;
-
+  affections: any;
 
   rowData: any;
   constructor(
@@ -144,6 +145,14 @@ export class ListPersonnelsComponent implements OnInit {
     this.Rhservice.listDivisions(this.gouvselecter).subscribe(res => {
       var y: any = res;
       this.divisions = y;
+    });
+
+
+  }
+  onOptionsSelected2() {
+    this.Rhservice.listAttparAff(this.affectionselect).subscribe(res => {
+      var y: any = res;
+      this.affections = y;
     });
 
 
