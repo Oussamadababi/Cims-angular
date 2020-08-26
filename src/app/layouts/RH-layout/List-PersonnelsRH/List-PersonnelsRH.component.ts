@@ -74,7 +74,8 @@ export class ListPersonnelsComponent implements OnInit {
     date_Naissance: "",
     Adresse: "",
     affectation: { affectation_id: "" },
-    fonction: { id_fonction: "" }
+    fonction: { id_fonction: "" },
+    division: { id_division: "" }
 
 
 
@@ -82,6 +83,7 @@ export class ListPersonnelsComponent implements OnInit {
   grades: any;
   sites: any;
   fonction: any;
+  divisions: any;
 
 
   rowData: any;
@@ -123,6 +125,10 @@ export class ListPersonnelsComponent implements OnInit {
     });
     this.Rhservice.listFonctions().subscribe(data => {
       this.fonction = data;
+      console.dir(data);
+    });
+    this.Rhservice.listDivisions(1).subscribe(data => {
+      this.divisions = data;
       console.dir(data);
     });
   }

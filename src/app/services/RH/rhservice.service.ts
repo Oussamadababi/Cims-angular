@@ -254,7 +254,11 @@ export class RHService {
       "http://localhost:8082/api/listFonctions"
     );
   }
-
+  listDivisions(idS: number) {
+    return this.http.get(
+      "http://localhost:8082/api/getDivisionParStructure/" + idS
+    );
+  }
 
 
 }
