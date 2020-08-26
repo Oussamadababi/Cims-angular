@@ -166,7 +166,7 @@
                       <mat-label>Affectation</mat-label>
                       <mat-select name="sites" [(ngModel)]="this.personnel.affectation.affectation_id" ngDefaultControl>
                         <mat-option *ngFor="let item of this.sites" [value]="item.affectation_id" ngDefaultControl>
-                          {{ item.nom_etablissement_fr }} {{ item.nom_etablissement_ar }}
+                          {{ item.nom_etablissement_fr }} {{ item.nom_etablissement_ar }} {{item.nomSite}}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
@@ -176,8 +176,9 @@
                   <form>
                     <mat-form-field class="spacing">
                       <mat-label>Structure</mat-label>
-                      <mat-select name="departement" [(ngModel)]="this.personnel.departement.id_dept" ngDefaultControl>
-                        <mat-option *ngFor="let item of this.departement" [value]="item.id_dept" ngDefaultControl>
+                      <mat-select name="departement" [(ngModel)]="this.gouvselecter"
+                        (selectionChange)="onOptionsSelected()">
+                        <mat-option *ngFor="let item of this.departement" [value]="item.id_dept">
                           {{ item.nom_dept }} {{ item.nom_dept }}
                         </mat-option>
                       </mat-select>
@@ -200,9 +201,10 @@
                   <form>
                     <mat-form-field class="spacing">
                       <mat-label>Division</mat-label>
-                      <mat-select name="Division" [(ngModel)]="this.personnel.division.id_division" ngDefaultControl>
+                      <mat-select *ngIf="this.departement != []" name="Division"
+                        [(ngModel)]="this.personnel.division.id_division" ngDefaultControl>
                         <mat-option *ngFor="let item of this.divisions" [value]="item.id_division" ngDefaultControl>
-                          {{ item.nom_divisionFr }} {{ nom_divisionAr }}
+                          {{ item.nom_divisionFr }} {{ item.nom_divisionAr }}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>

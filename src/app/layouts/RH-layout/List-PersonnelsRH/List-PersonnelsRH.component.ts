@@ -52,6 +52,7 @@ export class ListPersonnelsComponent implements OnInit {
   site: any;
   departement: any;
   addpers: boolean;
+  gouvselecter: any;
 
   personnel: object = {
     id_personnel: "",
@@ -120,16 +121,26 @@ export class ListPersonnelsComponent implements OnInit {
     );
 
     this.Rhservice.listerDepartements().subscribe(data => {
-      this.departement = data;
-      console.dir(data);
+      /* this.departement = data;
+       console.dir(data);*/
+      var x: any = data;
+      this.departement = x;
+      console.log(this.departement[0]);
     });
     this.Rhservice.listFonctions().subscribe(data => {
       this.fonction = data;
       console.dir(data);
     });
-    this.Rhservice.listDivisions(1).subscribe(data => {
-      this.divisions = data;
-      console.dir(data);
+    /* this.Rhservice.listDivisions(this.departement).subscribe(data => {
+       this.divisions = data;
+       console.dir(data);
+     });*/
+  }
+
+  onOptionsSelected() {
+    this.Rhservice.listDivisions(this.gouvselecter).subscribe(res => {
+      var y: any = res;
+      this.divisions = y;
     });
   }
   add() {
