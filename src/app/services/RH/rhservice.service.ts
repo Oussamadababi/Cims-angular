@@ -259,6 +259,16 @@ export class RHService {
       "http://localhost:8082/api/getDivisionParStructure/" + idS
     );
   }
+  listService(idS: number) {
+    return this.http.get(
+      "http://localhost:8082/api/ServiceParDiv/" + idS
+    );
+  }
 
+  listAttparAff(idAf: number) {
+    return this.http.get(
+      "http://localhost:8082/api/attributparAf/" + idAf
+    );
+  }
 
 }

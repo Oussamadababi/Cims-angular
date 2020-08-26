@@ -53,6 +53,7 @@ export class ListPersonnelsComponent implements OnInit {
   departement: any;
   addpers: boolean;
   gouvselecter: any;
+  divselect: any;
 
   personnel: object = {
     id_personnel: "",
@@ -85,6 +86,7 @@ export class ListPersonnelsComponent implements OnInit {
   sites: any;
   fonction: any;
   divisions: any;
+  services: any;
 
 
   rowData: any;
@@ -94,6 +96,7 @@ export class ListPersonnelsComponent implements OnInit {
     private _snackBar: MatSnackBar,
     public dialog: MatDialog
   ) { }
+
 
   ngOnInit(): void {
     this.addpers = false;
@@ -142,7 +145,16 @@ export class ListPersonnelsComponent implements OnInit {
       var y: any = res;
       this.divisions = y;
     });
+
+
   }
+  onOptionsSelected1() {
+    this.Rhservice.listService(this.divselect).subscribe(res => {
+      var y: any = res;
+      this.services = y;
+    });
+  }
+
   add() {
     if (this.personnel["nom"] != "") {
       if (this.personnel["prenom"] != "") {
