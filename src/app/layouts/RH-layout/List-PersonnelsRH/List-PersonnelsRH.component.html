@@ -176,9 +176,9 @@
                   <form>
                     <mat-form-field class="spacing">
                       <mat-label>Structure</mat-label>
-                      <mat-select name="departement" [(ngModel)]="this.gouvselecter">
-                        <mat-option *ngFor="let item of this.departement" [value]="item.id_dept"
-                          (selectionChange)="onOptionsSelected()">
+                      <mat-select name="departement" [(ngModel)]="this.gouvselecter"
+                        (selectionChange)="onOptionsSelected()">
+                        <mat-option *ngFor="let item of this.departement" [value]="item.id_dept">
                           {{ item.nom_dept }} {{ item.nom_dept }}
                         </mat-option>
                       </mat-select>
@@ -201,9 +201,23 @@
                   <form>
                     <mat-form-field class="spacing">
                       <mat-label>Division</mat-label>
-                      <mat-select name="Division" [(ngModel)]="this.personnel.division.id_division" ngDefaultControl>
+                      <mat-select *ngIf="this.departement != []" name="Division" [(ngModel)]="divselect"
+                        (selectionChange)="onOptionsSelected1()" ngDefaultControl>
                         <mat-option *ngFor="let item of this.divisions" [value]="item.id_division" ngDefaultControl>
                           {{ item.nom_divisionFr }} {{ item.nom_divisionAr }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </form>
+                </div>
+                <div class="card-body">
+                  <form>
+                    <mat-form-field class="spacing">
+                      <mat-label>Service</mat-label>
+                      <mat-select *ngIf="this.divisions != []" name="Service"
+                        [(ngModel)]="this.personnel.division.id_division">
+                        <mat-option *ngFor="let item of this.services" [value]="item.id_Service">
+                          {{ item.nom_ServiceFr }} {{ item.nom_ServiceAr }}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
