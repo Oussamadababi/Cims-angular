@@ -150,6 +150,7 @@ export class ListPersonnelsComponent implements OnInit {
 
   }
   //fffffff
+  //ffffffffffffffffffffffffffff
   onOptionsSelected2() {
     this.Rhservice.listAttparAff(this.affectionselect).subscribe(res => {
       var y: any = res;
