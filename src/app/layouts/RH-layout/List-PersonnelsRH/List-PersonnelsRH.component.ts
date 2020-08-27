@@ -136,7 +136,7 @@ export class ListPersonnelsComponent implements OnInit {
       console.dir(data);
     });
     /* this.Rhservice.listDivisions(this.departement).subscribe(data => {
-       this.divisions = data;
+       this.divisions = data;aaaaa
        console.dir(data);
      });*/
   }
