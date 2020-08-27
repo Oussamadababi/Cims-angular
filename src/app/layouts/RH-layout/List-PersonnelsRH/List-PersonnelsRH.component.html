@@ -164,13 +164,18 @@
                   <form>
                     <mat-form-field class="spacing">
                       <mat-label>Affectation</mat-label>
-                      <mat-select name="sites" [(ngModel)]="this.personnel.affectation.affectation_id" ngDefaultControl>
-                        <mat-option *ngFor="let item of this.sites" [value]="item.affectation_id" ngDefaultControl>
+                      <mat-select name="sites" [(ngModel)]="this.idAfffff" (selectionChange)="onOptionSAffectation()">
+                        <mat-option *ngFor="let item of this.sites" [value]="item.affectation_id">
                           {{ item.nom_etablissement_fr }} {{ item.nom_etablissement_ar }} {{item.nomSite}}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
                   </form>
+                </div>
+                <div>
+                  <output>
+                    aaaaaaaaaaaa {{ AttributAffectation }}
+                  </output>
                 </div>
                 <div class="card-body">
                   <form>
