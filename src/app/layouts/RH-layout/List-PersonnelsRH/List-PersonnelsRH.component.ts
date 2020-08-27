@@ -154,9 +154,10 @@ export class ListPersonnelsComponent implements OnInit {
     });
   }
   onOptionSAffectation() {
+    console.log(this.sites);
     this.Rhservice.listAttparAff(this.idAfffff).subscribe(res => {
       var y: any = res;
-      this.sites = y;
+      this.AttributAffectation = y;
     });
   }
 
