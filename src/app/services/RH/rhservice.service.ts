@@ -271,4 +271,10 @@ export class RHService {
     );
   }
 
+  getAttFonction(idf: number) {
+    return this.http.get(
+      "http://localhost:8082/api/getTypeFonction/" + idf
+    );
+  }
+
 }

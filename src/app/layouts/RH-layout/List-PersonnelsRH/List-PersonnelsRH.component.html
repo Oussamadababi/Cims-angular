@@ -176,7 +176,7 @@
                 </div>
                 <div>
                   <output>
-                    aaaaaaaaaaaa {{ AttributAffectation }}
+                    {{ attributAffectation.nature }}
                   </output>
                 </div>
                 <div class="card-body">
@@ -196,12 +196,17 @@
                   <form>
                     <mat-form-field class="spacing">
                       <mat-label>Foncion</mat-label>
-                      <mat-select name="Fonction" [(ngModel)]="this.personnel.fonction.id_fonction" ngDefaultControl>
-                        <mat-option *ngFor="let item of this.fonction" [value]="item.id_fonction" ngDefaultControl>
-                          {{ item.fonction }} {{ item.fonction }}
+                      <mat-select name="Fonction" [(ngModel)]="this.idfonction" (selectionChange)="onOptionFonction()">
+                        <mat-option *ngFor="let item of this.fonction" [value]="item.id_fonction">
+                          {{ item.fonction }}
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
+                    <div>
+                      <output>
+                        {{ attributfonction.type_fonction}}
+                      </output>
+                    </div>
                   </form>
                 </div>
                 <div class="card-body">

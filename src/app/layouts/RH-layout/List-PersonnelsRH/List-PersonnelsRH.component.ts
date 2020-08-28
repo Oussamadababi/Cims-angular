@@ -55,6 +55,7 @@ export class ListPersonnelsComponent implements OnInit {
   gouvselecter: any;
   divselect: any;
   idAfffff: any;
+  idfonction: any;
 
   personnel: object = {
     id_personnel: "",
@@ -88,7 +89,13 @@ export class ListPersonnelsComponent implements OnInit {
   fonction: any;
   divisions: any;
   services: any;
-  AttributAffectation: any;
+  attributfonction: object = {
+    type_fonction: ""
+  };
+  attributAffectation: object = {
+    nature: "",
+    qualite: ""
+  };
 
 
   rowData: any;
@@ -157,7 +164,17 @@ export class ListPersonnelsComponent implements OnInit {
     console.log(this.sites);
     this.Rhservice.listAttparAff(this.idAfffff).subscribe(res => {
       var y: any = res;
-      this.AttributAffectation = y;
+      console.log(res);
+      console.log(this.attributAffectation);
+      this.attributAffectation = y;
+    });
+  }
+  onOptionFonction() {
+    this.Rhservice.getAttFonction(this.idfonction).subscribe(res => {
+      var y: any = res;
+      console.log(res);
+      console.log(this.attributfonction);
+      this.attributfonction = y;
     });
   }
 
