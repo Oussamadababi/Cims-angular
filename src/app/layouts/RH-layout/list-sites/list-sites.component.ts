@@ -15,7 +15,13 @@ export class ListSitesComponent implements OnInit {
   gouvernorat: any;
   site: object = {
     nomSite: "",
-    gouvernorat: { idGouv: "" }
+    gouvernorat: { idGouv: "" },
+    nom_etablissement_fr: "",
+    nom_etablissement_ar: "",
+    nature_etablissement_fr: "",
+    nature_etablissement_ar: "",
+    qualite_direction_fr: "",
+    qualite_direction_ar: ""
   };
   message: string;
   rowData: any;
