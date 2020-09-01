@@ -16,8 +16,8 @@ export class RHService {
       site
     );
   }
-  addSite(site: object) {
-    return this.http.post("http://localhost:8082/api/addSite", site);
+  addSite(site: object, idGouv: number) {
+    return this.http.post("http://localhost:8082/api/addSite/" + idGouv, site);
   }
   deleteSite(idSite: number) {
     return this.http.delete("http://localhost:8082/api/deleteSite/" + idSite);

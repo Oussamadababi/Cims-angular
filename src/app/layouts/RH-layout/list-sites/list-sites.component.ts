@@ -12,16 +12,16 @@ import { DropDownEditor } from "./drop-down-editor";
 })
 export class ListSitesComponent implements OnInit {
   id: number;
-  gouvernorat: any;
+  gouvernorats: any;
   site: object = {
     nomSite: "",
-    gouvernorat: { idGouv: "" },
     nom_etablissement_fr: "",
     nom_etablissement_ar: "",
     nature_etablissement_fr: "",
     nature_etablissement_ar: "",
     qualite_direction_fr: "",
-    qualite_direction_ar: ""
+    qualite_direction_ar: "",
+    gouvernorat: { idGouvernorat: "" }
   };
   message: string;
   rowData: any;
@@ -35,16 +35,19 @@ export class ListSitesComponent implements OnInit {
     this.Rhservice.listerSite().subscribe(res => {
       console.log(res);
       this.rowData = res;
-      console.log(this.site["gouvernorat"]);
+      console.log(this.site["gouvernorat"].idGouvernorat);
     });
     this.Rhservice.listerGouvernorats().subscribe(data => {
-      this.gouvernorat = data;
+      this.gouvernorats = data;
     });
 
   }
   add() {
+    console.log(this.site["gouvernorat"].idGouvernorat);
+    console.log(this.site["gouvernorat"].idGouvernorat);
+    console.log(this.site["gouvernorat"].idGouvernorat);
     if (this.site["nomSite"] != "") {
-      if (this.site["gouvernorat"].idGouv != "") {
+      if (this.site["gouvernorat"].idGouvernorat != "") {
         for (let prop in this.site) {
           if (typeof this.site[prop] == "string") {
             if (!this.site[prop]) return alert(prop + " is Required");
@@ -52,7 +55,7 @@ export class ListSitesComponent implements OnInit {
             if (this.site[prop] == {}) return alert(prop + "is Required");
           }
         }
-        this.Rhservice.addSite(this.site).subscribe(res => {
+        this.Rhservice.addSite(this.site, this.site["gouvernorat"].idGouvernorat).subscribe(res => {
           console.log(res);
           this.ngOnInit();
           this._snackBar.open("Site ajouté avec succés", "OK", {

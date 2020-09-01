@@ -19,8 +19,8 @@
                 <div>
                   <mat-form-field class="spacing">
                     <mat-label>Gouvernorat</mat-label>
-                    <mat-select name="gouvernorat" [(ngModel)]="this.site.gouvernorat.idGouv" ngDefaultControl required>
-                      <mat-option *ngFor="let item of this.gouvernorat" [value]="item.idGouv">
+                    <mat-select name="gouvernorat" [(ngModel)]="this.site.gouvernorat.idGouvernorat" ngDefaultControl>
+                      <mat-option *ngFor="let item of this.gouvernorats" [value]="item.idGouv">
                         {{ item.nomGouv }}
                       </mat-option>
                     </mat-select>
