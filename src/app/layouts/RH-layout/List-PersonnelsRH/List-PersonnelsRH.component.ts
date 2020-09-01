@@ -182,11 +182,11 @@ export class ListPersonnelsComponent implements OnInit {
     if (this.personnel["nom"] != "") {
       if (this.personnel["prenom"] != "") {
         if (this.personnel["sexe"] != "") {
-          if (this.personnel["departement"].id_dept != "") {
+          if (1 == 1) {
             if (this.personnel["grade"].id_grade != "") {
               if (this.personnel["telephone"] != "") {
                 if (this.personnel["email"] != "") {
-                  this.Rhservice.addPersonnel(this.personnel).subscribe(res => {
+                  this.Rhservice.addPersonnel2(this.personnel, this.idfonction, this.gouvselecter, this.idAfffff).subscribe(res => {
                     console.log(res);
                     this.ngOnInit();
 

@@ -58,6 +58,9 @@ export class RHService {
   addPersonnel(personnel: object) {
     return this.http.post("http://localhost:8082/api/addPersonnel", personnel);
   }
+  addPersonnel2(personnel: object, idFonction: number, idStructure: number, idAffectation: number) {
+    return this.http.post("http://localhost:8082/api/addPersonnel/" + idFonction + "/" + idStructure + "/" + idAffectation, personnel);
+  }
   deletePersonnel(id_personnel: number) {
     return this.http.delete(
       "http://localhost:8082/api/deletePersonnel/" + id_personnel
