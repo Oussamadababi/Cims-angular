@@ -56,6 +56,7 @@ export class ListPersonnelsComponent implements OnInit {
   divselect: any;
   idAfffff: any;
   idfonction: any;
+  id_grade: any;
 
   personnel: object = {
     id_personnel: "",
@@ -64,7 +65,6 @@ export class ListPersonnelsComponent implements OnInit {
     sexe: "",
     telephone: "",
     departement: { id_dept: "" },
-    grade: { id_grade: "" },
     email: "",
     date_recrutement: "",
     matricule: "",
@@ -183,10 +183,10 @@ export class ListPersonnelsComponent implements OnInit {
       if (this.personnel["prenom"] != "") {
         if (this.personnel["sexe"] != "") {
           if (1 == 1) {
-            if (this.personnel["grade"].id_grade != "") {
+            if (this.id_grade != "") {
               if (this.personnel["telephone"] != "") {
                 if (this.personnel["email"] != "") {
-                  this.Rhservice.addPersonnel2(this.personnel, this.idfonction, this.gouvselecter, this.idAfffff).subscribe(res => {
+                  this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff).subscribe(res => {
                     console.log(res);
                     this.ngOnInit();
 
