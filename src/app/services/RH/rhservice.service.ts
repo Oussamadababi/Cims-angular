@@ -58,8 +58,8 @@ export class RHService {
   addPersonnel(personnel: object) {
     return this.http.post("http://localhost:8082/api/addPersonnel", personnel);
   }
-  addPersonnel2(personnel: object, id_grade: number, idFonction: number, idStructure: number, idAffectation: number) {
-    return this.http.post("http://localhost:8082/api/addPersonnel/" + id_grade + "/" + idFonction + "/" + idStructure + "/" + idAffectation, personnel);
+  addPersonnel2(personnel: object, id_grade: number, idFonction: number, idStructure: number, idAffectation: number, idDivision: number, idService: number) {
+    return this.http.post("http://localhost:8082/api/addPersonnel/" + id_grade + "/" + idFonction + "/" + idStructure + "/" + idAffectation + "/" + idDivision + "/" + idService, personnel);
   }
   deletePersonnel(id_personnel: number) {
     return this.http.delete(

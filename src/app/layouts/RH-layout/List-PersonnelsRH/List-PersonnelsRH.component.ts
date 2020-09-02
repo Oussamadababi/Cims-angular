@@ -76,7 +76,7 @@ export class ListPersonnelsComponent implements OnInit {
     date_Promotion: "",
     soldeRepos: "",
     date_Naissance: "",
-    Adresse: "",
+    adresse: "",
     affectation: { affectation_id: "" },
     fonction: { id_fonction: "" },
     division: { id_division: "" }
@@ -186,7 +186,7 @@ export class ListPersonnelsComponent implements OnInit {
             if (this.id_grade != "") {
               if (this.personnel["telephone"] != "") {
                 if (this.personnel["email"] != "") {
-                  this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff).subscribe(res => {
+                  this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff, this.personnel["division"].id_division, this.divselect).subscribe(res => {
                     console.log(res);
                     this.ngOnInit();
 
@@ -348,8 +348,16 @@ export class ListPersonnelsComponent implements OnInit {
       maxWidth: 300
     },
     {
+      headerName: "SoldeRepos",
+      field: "soldeRepos",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 140
+    },
+    {
       headerName: "Grade",
-      field: "grade.nom_grade",
+      field: "grade.nom_grade_fr",
       valueSetter: function (params) {
         params.data.grade.id_grade = params.newValue;
         console.log(params);
