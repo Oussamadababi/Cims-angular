@@ -438,7 +438,7 @@ export class DialogConfirmation implements OnInit {
   }
 }
 
-//////
+/////////
 
 @Component({
   selector: 'dialog-error',
