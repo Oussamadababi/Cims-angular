@@ -11,6 +11,7 @@ import {
 import { MAT_MOMENT_DATE_FORMATS } from "@angular/material-moment-adapter";
 import { MomentUtcDateAdapter } from "../../chef-service-layout/AffectationsPartiellesCS/datePicker";
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-conge',
   templateUrl: './conge.component.html',
@@ -19,7 +20,8 @@ import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@ang
 
     { provide: MAT_DATE_LOCALE, useValue: "fr-FR" },
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS },
-    { provide: DateAdapter, useClass: MomentUtcDateAdapter }
+    { provide: DateAdapter, useClass: MomentUtcDateAdapter },
+    { provide: DatePipe }
   ]
 
 })
@@ -30,6 +32,7 @@ export class CongeComponent implements OnInit {
   constructor(private http: HttpClient,
     private Rhservice: RHService,
     private _snackBar: MatSnackBar,
+    private datePipe: DatePipe,
     public dialog: MatDialog,
     private fb: FormBuilder) {
     this.form = this.fb.group({
@@ -108,7 +111,7 @@ export class CongeComponent implements OnInit {
     },
     {
       headerName: "nombredejour",
-      field: "",
+      field: "numDeJour",
       sortable: true,
       filter: true,
       editable: true,
@@ -116,7 +119,7 @@ export class CongeComponent implements OnInit {
     },
     {
       headerName: "NomPersonnel",
-      field: "p.nom",
+      field: "p.id_personnel",
       sortable: true,
       filter: true,
       editable: true,
@@ -173,6 +176,7 @@ export class CongeComponent implements OnInit {
                 console.log(this.conge["personnel"].personnel_id);
                 this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
                 console.log((this.conge["datefin"] - this.conge["datedebut"]) / 86400000);
+                console.log((this.datePipe.transform(this.conge["datedebut"]), 'yyyy-MM-dd') + (this.conge["numDeJour"]));
                 this._snackBar.open("demandeConge ajouté avec succés", "OK", {
                   duration: 2000,
                   panelClass: ["green-snackbar"]
