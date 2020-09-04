@@ -78,12 +78,12 @@ export class CongeComponent implements OnInit {
   }
   columnDefs = [
     {
-      headerName: "numdemande",
+      headerName: "Numdemande",
       field: "id",
       sortable: true,
       filter: true,
       editable: true,
-      maxWidth: 200
+      maxWidth: 120
     },
     {
       headerName: "typedeconge",
@@ -118,8 +118,16 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     },
     {
-      headerName: "NomPersonnel",
-      field: "p.id_personnel",
+      headerName: "NomP",
+      field: "p.nom",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "PrenomP",
+      field: "p.prenom",
       sortable: true,
       filter: true,
       editable: true,
