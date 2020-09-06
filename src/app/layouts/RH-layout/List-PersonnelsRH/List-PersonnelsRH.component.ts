@@ -70,7 +70,6 @@ export class ListPersonnelsComponent implements OnInit {
     matricule: "",
     matricule_CNRPS: "",
     matricule_CNSS: "",
-    nom_Ar: "",
     prenom_AR: "",
     poste_Occupe: "",
     date_Promotion: "",
@@ -79,7 +78,8 @@ export class ListPersonnelsComponent implements OnInit {
     adresse: "",
     affectation: { affectation_id: "" },
     fonction: { id_fonction: "" },
-    division: { id_division: "" }
+    division: { id_division: "" },
+    nom_AR: ""
 
 
 

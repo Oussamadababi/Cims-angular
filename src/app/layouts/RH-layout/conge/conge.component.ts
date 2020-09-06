@@ -78,12 +78,12 @@ export class CongeComponent implements OnInit {
   }
   columnDefs = [
     {
-      headerName: "numdemande",
+      headerName: "Numdemande",
       field: "id",
       sortable: true,
       filter: true,
       editable: true,
-      maxWidth: 200
+      maxWidth: 120
     },
     {
       headerName: "typedeconge",
@@ -118,8 +118,21 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     },
     {
+<<<<<<< HEAD
       headerName: "NomPersonnel",
       field: "p.nom",
+=======
+      headerName: "NomP",
+      field: "p.nom",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "PrenomP",
+      field: "p.prenom",
+>>>>>>> f58c8bba128e55b4e00852b42f6a1eea75071c19
       sortable: true,
       filter: true,
       editable: true,
@@ -139,7 +152,6 @@ export class CongeComponent implements OnInit {
     id: "",
     typedeconge: "",
     datedebut: "",
-    datefin: "",
     numDeJour: "",
     personnel: { personnel_id: "" }
   };
@@ -165,6 +177,7 @@ export class CongeComponent implements OnInit {
     // if (this.conge2 == null) {
     if (this.conge["typedeconge"] != "") {
       if (this.conge["datedebut"] != "") {
+<<<<<<< HEAD
 
         if (this.conge["personnel"].personnel_id != "") {
 
@@ -185,6 +198,39 @@ export class CongeComponent implements OnInit {
           });
 
 
+=======
+
+        if (this.conge["personnel"].personnel_id != "") {
+          if (this.conge["numDeJour"] != "") {
+
+            this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+              this.ngOnInit();
+              console.log(res);
+              console.log(this.conge["datefin"]);
+              console.log(this.conge["personnel"].personnel_id);
+              this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
+              console.log((this.conge["datefin"] - this.conge["datedebut"]) / 86400000);
+              console.log((this.datePipe.transform(this.conge["datedebut"]), 'yyyy-MM-dd') + (this.conge["numDeJour"]));
+              this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+                duration: 2000,
+                panelClass: ["green-snackbar"]
+
+              });
+            });
+
+
+          } else {
+            this._snackBar.open(
+              "verifier le nombre de du conge ",
+              "OK",
+              {
+                duration: 2000,
+                panelClass: ["red-snackbar"]
+              }
+            );
+
+          }
+>>>>>>> f58c8bba128e55b4e00852b42f6a1eea75071c19
         }
         else {
           this._snackBar.open(
@@ -196,6 +242,7 @@ export class CongeComponent implements OnInit {
             }
           );
         }
+
       }
 
       else {
