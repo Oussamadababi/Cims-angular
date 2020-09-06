@@ -10,7 +10,13 @@ export class ConsulterSoldeComponent implements OnInit {
 
   constructor(private Rhservice: RHService) { }
   personnels: any;
-  rowData: any;
+  personnel: object =
+    {
+      soldeRepos: "",
+      soldeReposN_1: "",
+      soldeReposN_2: ""
+
+    }
   perselecter: any;
   ngOnInit(): void {
     this.Rhservice.listerPersonnel().subscribe(data => {
@@ -21,7 +27,8 @@ export class ConsulterSoldeComponent implements OnInit {
   onOptionsSelected() {
     this.Rhservice.getPersonnel(this.perselecter).subscribe(res => {
       var y: any = res;
-      this.rowData = y;
+      console.log(res);
+      this.personnel = y;
     });
 
 
@@ -29,7 +36,7 @@ export class ConsulterSoldeComponent implements OnInit {
   columnDefs = [
     {
       headerName: "Solde",
-      field: "nom",
+      field: "soldeRepos",
       sortable: true,
       filter: true,
       editable: true,
@@ -37,7 +44,7 @@ export class ConsulterSoldeComponent implements OnInit {
     },
     {
       headerName: "SoldeN-1",
-      field: "prenom",
+      field: "soldeReposN_1",
       sortable: true,
       filter: true,
       editable: true,
@@ -45,7 +52,7 @@ export class ConsulterSoldeComponent implements OnInit {
     },
     {
       headerName: "SoldeN-2",
-      field: "sexe",
+      field: "soldeReposN_2",
       sortable: true,
       filter: true,
       editable: true,

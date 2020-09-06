@@ -11,16 +11,20 @@
                             <form>
                                 <mat-form-field class="spacing">
                                     <mat-label>Personnel</mat-label>
-                                    <mat-select name="personnel" ngDefaultControl>
-                                        <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel"
-                                            (selectionChange)="onOptionsSelected()" [(ngModel)]="perselecter">
+                                    <mat-select name="personnel" [(ngModel)]="perselecter"
+                                        (selectionChange)="onOptionsSelected()">
+                                        <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel">
                                             {{ item.nom }} {{ item.prenom }}
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
-                                <ag-grid-angular style="width: 1218px; height: 500px;" class="ag-theme-material"
-                                    [rowData]="rowData" [columnDefs]="columnDefs" [modules]="modules"
-                                    [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
-                                    [paginationAutoPageSize]="true"></ag-grid-angular>
 
+                                <fieldset>
+
+                                    <label>Solde de l’année actuelle :</label> {{personnel.soldeRepos}} jours<br>
+                                    <label>Solde de l’année N-1 :</label> {{personnel.soldeReposN_1}} jours<br>
+                                    <label>Solde récupéré (de l’année N-2) :</label> {{personnel.soldeReposN_2}}
+                                    jours<br>
+                                    <label> Solde de compensation :</label>{{personnel.soldeExceptionnel}} jours
+                                </fieldset>
                             </form>
