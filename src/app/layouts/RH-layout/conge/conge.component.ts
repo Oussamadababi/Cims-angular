@@ -119,7 +119,7 @@ export class CongeComponent implements OnInit {
     },
     {
       headerName: "NomPersonnel",
-      field: "p.id_personnel",
+      field: "p.nom",
       sortable: true,
       filter: true,
       editable: true,
@@ -165,61 +165,39 @@ export class CongeComponent implements OnInit {
     // if (this.conge2 == null) {
     if (this.conge["typedeconge"] != "") {
       if (this.conge["datedebut"] != "") {
-        if (this.conge["datefin"] != "") {
-          if (this.conge["personnel"].personnel_id != "") {
-            if (this.conge["datedebut"] < this.conge["datefin"]) {
 
-              this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
-                this.ngOnInit();
-                console.log(res);
-                console.log(this.conge["datefin"]);
-                console.log(this.conge["personnel"].personnel_id);
-                this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
-                console.log((this.conge["datefin"] - this.conge["datedebut"]) / 86400000);
-                console.log((this.datePipe.transform(this.conge["datedebut"]), 'yyyy-MM-dd') + (this.conge["numDeJour"]));
-                this._snackBar.open("demandeConge ajouté avec succés", "OK", {
-                  duration: 2000,
-                  panelClass: ["green-snackbar"]
-
-                });
-              });
+        if (this.conge["personnel"].personnel_id != "") {
 
 
-            } else {
-              this._snackBar.open(
-                "verifier les date du conge ",
-                "OK",
-                {
-                  duration: 2000,
-                  panelClass: ["red-snackbar"]
-                }
-              );
+          this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+            this.ngOnInit();
+            console.log(res);
+            console.log(this.conge["datefin"]);
+            console.log(this.conge["personnel"].personnel_id);
+            this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
+            console.log((this.conge["datefin"] - this.conge["datedebut"]) / 86400000);
+            console.log((this.datePipe.transform(this.conge["datedebut"]), 'yyyy-MM-dd') + (this.conge["numDeJour"]));
+            this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+              duration: 2000,
+              panelClass: ["green-snackbar"]
 
-            }
-          }
-          else {
-            this._snackBar.open(
-              "Veuillez insérer le nom du personnel ",
-              "OK",
-              {
-                duration: 2000,
-                panelClass: ["red-snackbar"]
-              }
-            );
-          }
+            });
+          });
+
+
         }
         else {
           this._snackBar.open(
-            "Veuillez insérer datefin du conge ",
+            "Veuillez insérer le nom du personnel ",
             "OK",
             {
               duration: 2000,
               panelClass: ["red-snackbar"]
             }
           );
-
         }
       }
+
       else {
         this._snackBar.open(
           "Veuillez insérer datedebut du conge ",

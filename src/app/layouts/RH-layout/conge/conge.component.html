@@ -51,7 +51,7 @@
                                             [(ngModel)]="this.conge.numDeJour" />
                                     </div>
 
-                                    <div class="col-md-4 mb-3">
+                                    <!--  <div class="col-md-4 mb-3">
                                         <mat-form-field>
                                             <mat-label>Date fin *</mat-label>
                                             <input matInput [matDatepicker]="picker1" ngDefaultControl
@@ -61,11 +61,11 @@
                                             <mat-datepicker #picker1></mat-datepicker>
 
                                         </mat-form-field>
-                                        <!-- nombre jour {{nombreJourConge}}-->
+                                         nombre jour {{nombreJourConge}}
 
 
 
-                                    </div>
+                                    </div>-->
 
 
 
@@ -77,13 +77,33 @@
                                         <mat-select name="TypeConge" [(ngModel)]="this.conge.typedeconge"
                                             ngDefaultControl required>
                                             <mat-option value="conge_repos">
-                                                Conge_repos
+                                                CongeRepos
+                                            </mat-option>
+                                            <mat-option value="conge_compensation">
+                                                CongeCompensation
                                             </mat-option>
                                             <mat-option value="conge_exceptionnel">
-                                                Conge_exceptionnel
+                                                CongeExceptionnel
                                             </mat-option>
-                                            <mat-option value="conge_autre">
-                                                Autre
+                                            <mat-option value="conge_maladie">
+                                                CongeMaladie
+                                            </mat-option>
+                                            <mat-option value="conge_maladie_longue_duree">
+                                                CongeMaladielongueDuree </mat-option>
+                                            <mat-option value="conge_post_natal">
+                                                CongéPostNatal
+                                            </mat-option>
+                                            <mat-option value="conge_maternite">
+                                                CongéMaternité
+                                            </mat-option>
+                                            <mat-option value="conge_sans_solde">
+                                                Congésanssolde
+                                            </mat-option>
+                                            <mat-option value="mise_a_pied">
+                                                Miseàpied
+                                            </mat-option>
+                                            <mat-option value="detachement">
+                                                Détachement
                                             </mat-option>
                                         </mat-select>
                                     </mat-form-field>

@@ -29,6 +29,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { CongeComponent } from './conge/conge.component';
 import { AbsenceComponent } from './absence/absence.component';
 import { RecuperationSoldeReposComponent } from './recuperation-solde-repos/recuperation-solde-repos.component';
+import { ConsulterSoldeComponent } from './conge/consulter-solde/consulter-solde.component';
 
 @NgModule({
   imports: [
@@ -63,7 +64,8 @@ import { RecuperationSoldeReposComponent } from './recuperation-solde-repos/recu
     ButtonOrdreMissionComponent,
     CongeComponent,
     AbsenceComponent,
-    RecuperationSoldeReposComponent
+    RecuperationSoldeReposComponent,
+    ConsulterSoldeComponent
   ]
 })
 export class RHLayoutModule { }

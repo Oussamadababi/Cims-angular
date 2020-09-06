@@ -1,0 +1,26 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">Consulter Solde Conge</h4>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <mat-form-field class="spacing">
+                                    <mat-label>Personnel</mat-label>
+                                    <mat-select name="personnel" ngDefaultControl>
+                                        <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel"
+                                            (selectionChange)="onOptionsSelected()" [(ngModel)]="perselecter">
+                                            {{ item.nom }} {{ item.prenom }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <ag-grid-angular style="width: 1218px; height: 500px;" class="ag-theme-material"
+                                    [rowData]="rowData" [columnDefs]="columnDefs" [modules]="modules"
+                                    [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
+                                    [paginationAutoPageSize]="true"></ag-grid-angular>
+
+                            </form>

@@ -10,6 +10,7 @@ import { ListDepartementComponent } from "./list-departement/list-departement.co
 import { CongeComponent } from "./conge/conge.component";
 import { AbsenceComponent } from "./absence/absence.component";
 import { RecuperationSoldeReposComponent } from "./recuperation-solde-repos/recuperation-solde-repos.component";
+import { ConsulterSoldeComponent } from "./conge/consulter-solde/consulter-solde.component";
 
 export const RHLayoutRoutes: Routes = [
   { path: "", component: DashboardComponent },
@@ -25,5 +26,6 @@ export const RHLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "Gestion_Conge", component: CongeComponent },
   { path: "Absence", component: AbsenceComponent },
-  { path: "RecuperationSoldeRepos", component: RecuperationSoldeReposComponent }
+  { path: "RecuperationSoldeRepos", component: RecuperationSoldeReposComponent },
+  { path: "ConsulterSolde", component: ConsulterSoldeComponent }
 ];

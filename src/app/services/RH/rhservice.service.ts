@@ -279,5 +279,10 @@ export class RHService {
       "http://localhost:8082/api/getTypeFonction/" + idf
     );
   }
+  getPersonnel(idPersonnel: number) {
+    return this.http.get(
+      "http://localhost:8082/api/getPersonnel/" + idPersonnel
+    );
+  }
 
 }

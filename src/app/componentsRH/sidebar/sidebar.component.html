@@ -16,25 +16,27 @@
             <span class="d-lg-none d-md-block">Compte</span>
           </p>
         </a>
-        <div
-          class="dropdown-menu dropdown-menu-right"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" routerLink="/login">Se deconnecter</a>
         </div>
       </li>
     </ul>
   </div>
   <ul class="nav">
-    <li
-      routerLinkActive="active"
-      *ngFor="let menuItem of menuItems"
-      class="{{ menuItem.class }} nav-item"
-    >
-      <a class="nav-link" [routerLink]="[menuItem.path]">
+    <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{ menuItem.class }} nav-item">
+      <a class="nav-link" (click)="ShowChildren(menuItem)" [routerLink]="[menuItem.path]">
         <i class="material-icons">{{ menuItem.icon }}</i>
         <p>{{ menuItem.title }}</p>
       </a>
+      <ul *ngIf="menuItem.etat == true">
+        <li routerLinkActive="active" *ngFor="let childItem of menuItem.children" class="nav-item">
+          <!--<a [routerLink]="[menuItem.path,childItem.path]" class="nav-link">-->
+          <a [routerLink]="[childItem.path]" class="nav-link">
+            <i class="material-icons">{{ childItem.icon }}</i>
+            <span class="sidebar-normal">{{ childItem.title }}</span>
+          </a>
+        </li>
+      </ul>
     </li>
   </ul>
 </div>
