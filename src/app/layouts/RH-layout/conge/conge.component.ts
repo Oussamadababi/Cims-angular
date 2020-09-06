@@ -118,11 +118,8 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     },
     {
-<<<<<<< HEAD
+
       headerName: "NomPersonnel",
-      field: "p.nom",
-=======
-      headerName: "NomP",
       field: "p.nom",
       sortable: true,
       filter: true,
@@ -132,7 +129,7 @@ export class CongeComponent implements OnInit {
     {
       headerName: "PrenomP",
       field: "p.prenom",
->>>>>>> f58c8bba128e55b4e00852b42f6a1eea75071c19
+
       sortable: true,
       filter: true,
       editable: true,
@@ -177,7 +174,7 @@ export class CongeComponent implements OnInit {
     // if (this.conge2 == null) {
     if (this.conge["typedeconge"] != "") {
       if (this.conge["datedebut"] != "") {
-<<<<<<< HEAD
+
 
         if (this.conge["personnel"].personnel_id != "") {
 
@@ -197,44 +194,54 @@ export class CongeComponent implements OnInit {
             });
           });
 
+          if (this.conge["personnel"].personnel_id != "") {
+            if (this.conge["numDeJour"] != "") {
 
-=======
+              this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+                this.ngOnInit();
+                console.log(res);
+                console.log(this.conge["datefin"]);
+                console.log(this.conge["personnel"].personnel_id);
+                this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
+                console.log((this.conge["datefin"] - this.conge["datedebut"]) / 86400000);
+                console.log((this.datePipe.transform(this.conge["datedebut"]), 'yyyy-MM-dd') + (this.conge["numDeJour"]));
+                this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+                  duration: 2000,
+                  panelClass: ["green-snackbar"]
 
-        if (this.conge["personnel"].personnel_id != "") {
-          if (this.conge["numDeJour"] != "") {
-
-            this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
-              this.ngOnInit();
-              console.log(res);
-              console.log(this.conge["datefin"]);
-              console.log(this.conge["personnel"].personnel_id);
-              this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
-              console.log((this.conge["datefin"] - this.conge["datedebut"]) / 86400000);
-              console.log((this.datePipe.transform(this.conge["datedebut"]), 'yyyy-MM-dd') + (this.conge["numDeJour"]));
-              this._snackBar.open("demandeConge ajouté avec succés", "OK", {
-                duration: 2000,
-                panelClass: ["green-snackbar"]
-
+                });
               });
-            });
 
 
-          } else {
+            } else {
+              this._snackBar.open(
+                "verifier le nombre de du conge ",
+                "OK",
+                {
+                  duration: 2000,
+                  panelClass: ["red-snackbar"]
+                }
+              );
+
+            }
+
+          }
+          else {
             this._snackBar.open(
-              "verifier le nombre de du conge ",
+              "Veuillez insérer le nom du personnel ",
               "OK",
               {
                 duration: 2000,
                 panelClass: ["red-snackbar"]
               }
             );
-
           }
->>>>>>> f58c8bba128e55b4e00852b42f6a1eea75071c19
+
         }
+
         else {
           this._snackBar.open(
-            "Veuillez insérer le nom du personnel ",
+            "Veuillez insérer datedebut du conge ",
             "OK",
             {
               duration: 2000,
@@ -242,12 +249,10 @@ export class CongeComponent implements OnInit {
             }
           );
         }
-
       }
-
       else {
         this._snackBar.open(
-          "Veuillez insérer datedebut du conge ",
+          "Veuillez insérer typedeconge ",
           "OK",
           {
             duration: 2000,
@@ -255,37 +260,11 @@ export class CongeComponent implements OnInit {
           }
         );
       }
-    }
-    else {
-      this._snackBar.open(
-        "Veuillez insérer typedeconge ",
-        "OK",
-        {
-          duration: 2000,
-          panelClass: ["red-snackbar"]
-        }
-      );
-    }
-    /*} else {
-      this._snackBar.open(
-        "il y a une demande encours ",
-        "OK",
-        {
-          duration: 2000,
-          panelClass: ["red-snackbar"]
-        }
-      );
-  
-    }*/
 
+
+    }
   }
-  /* deleteConge() {
-     this.Rhservice.deleteConge(this.id).subscribe(res => {
-       console.log(res);
-       this.ngOnInit();
-     });
-   
-   }*/
+
   delete() {
     console.log(this.id);
     if (this.id != null) {
@@ -311,19 +290,6 @@ export class CongeComponent implements OnInit {
 
       });
     });
-
-    /*console.log(this.idA);
-    if (this.idA != null) {
-      this.dialog.open(DialogConfirmation, {
-        data: this.idA
-      });
-      this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
-    } else {
-      this._snackBar.open("Veuillez sélectionner l'annulation à accepter", "OK", {
-        duration: 2000,
-        panelClass: ["red-snackbar"]
-      });
-    }*/
   }
   edit(event) {
     if (
@@ -390,20 +356,6 @@ export class CongeComponent implements OnInit {
     });
   }
 
-  /*else {
-    this._snackBar.open(
-      "il y a une demande d'Annulation encours ",
-      "OK",
-      {
-        duration: 2000,
-        panelClass: ["red-snackbar"]
-      }
-    );
-
-    }
-  }
-  
-  }*/
   columnAnnulationConge = [
     {
       headerName: "Num Demande",
@@ -440,6 +392,7 @@ export class CongeComponent implements OnInit {
   ]
 
 }
+
 
 
 @Component({
