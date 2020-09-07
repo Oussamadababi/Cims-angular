@@ -1,3 +1,4 @@
+<p>solde-compensation works!</p>
 <div class="main-content">
     <div class="container-fluid">
         <div class="main-content">
@@ -18,14 +19,23 @@
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
-
                                 <fieldset>
 
-                                    <label>Solde de l’année actuelle :</label> {{personnel.soldeRepos}} jours<br>
-                                    <label>Solde de l’année N-1 :</label> {{personnel.soldeReposN_1}} jours<br>
-                                    <label>Solde récupéré (de l’année N-2) :</label> {{personnel.soldeReposN_2}}
-                                    jours<br>
-                                    <label> Solde de compensation :</label>{{personnel.soldeExceptionnel}} jours
+                                    <label>Solde de Compensation :</label> {{personnel.soldeCompensation}} jours<br>
+                                    <label>Nom personnel :</label> {{personnel.nom}} <br>
+                                    <label>Prenom personnel :</label> {{personnel.prenom}} <br>
+                                    <label>Nom Arabe:</label> {{personnel.nom_AR}} <br>
+                                    <label>Prenom Arabe:</label> {{personnel.prenom_AR}} <br>
+                                    <input type="text" id="SoldecompensationA" name="SoldecompensationA"
+                                        class="form-control" required [(ngModel)]="this.SoldecompensationA" />
                                 </fieldset>
+                                <div class="row">
+                                    <div class="add ml-auto mr-auto">
+                                        <button (click)="add()" type="submit" class="btn btn-success btn-round">
+                                            Ajouter Solde
+                                        </button>
+
+                                    </div>
+                                </div>
 
                             </form>

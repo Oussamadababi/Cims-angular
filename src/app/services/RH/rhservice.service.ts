@@ -284,5 +284,11 @@ export class RHService {
       "http://localhost:8082/api/getPersonnel/" + idPersonnel
     );
   }
+  ajoutSoldeCompensation(idPersonnel: number, SoldecompensationA: any) {
+    return this.http.put(
+      "http://localhost:8082/api/ajoutSoldeCompensation/" + idPersonnel, SoldecompensationA, {}
+    );
+
+  }
 
 }

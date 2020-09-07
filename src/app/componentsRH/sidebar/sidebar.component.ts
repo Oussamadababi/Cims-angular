@@ -89,6 +89,12 @@ export const ROUTES: RouteInfo[] = [
         title: "ConsulterSolde",
         icon: "done_all"
       },
+      {
+        path: "SoldeCompensation",
+        title: "Solde-Compensation",
+        icon: "done_all"
+      }
+
 
     ]
   },
