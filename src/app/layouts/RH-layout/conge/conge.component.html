@@ -43,12 +43,19 @@
 
                                         </mat-form-field>
                                     </div>
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-4 mb-3" *ngIf="this.etat">
                                         <label class="form-control-placeholder" for="nbJours">
                                             NombreDeJours *
                                         </label>
                                         <input id="nbJour" name="nbJour" class="form-control" required
                                             [(ngModel)]="this.conge.numDeJour" />
+                                    </div>
+                                    <div class="col-md-4 mb-3" *ngIf="this.etat=== false">
+                                        <label class="form-control-placeholder" for="nbJours">
+                                            NombreDeMois*
+                                        </label>
+                                        <input id="nbJour" name="nbJour" class="form-control" required
+                                            [(ngModel)]="this.conge.numDeMois" />
                                     </div>
 
                                     <!-- <div class="col-md-4 mb-3">
@@ -75,7 +82,7 @@
                                     <mat-form-field class="spacing">
                                         <mat-label>TypeConge </mat-label>
                                         <mat-select name="TypeConge" [(ngModel)]="this.conge.typedeconge"
-                                            ngDefaultControl required>
+                                            (selectionChange)="onOptionsSelected($event)">
                                             <mat-option value="conge_repos">
                                                 CongeRepos
                                             </mat-option>

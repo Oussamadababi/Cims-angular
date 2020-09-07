@@ -150,6 +150,7 @@ export class CongeComponent implements OnInit {
     typedeconge: "",
     datedebut: "",
     numDeJour: "",
+    numDeMois: "",
     personnel: { personnel_id: "" }
   };
 
@@ -354,6 +355,19 @@ export class CongeComponent implements OnInit {
 
       });
     });
+  }
+  etat: any
+  onOptionsSelected(event) {
+    console.log("hhhhh");
+    console.log(this.conge["typedeconge"]);
+    if ((this.conge["typedeconge"] == "conge_repos") || (this.conge["typedeconge"] == "conge_compensation") || (this.conge["typedeconge"] == "conge_exceptionnel") || (this.conge["typedeconge"] == "conge_maladie")) {
+      this.etat = true;
+    }
+    else {
+      this.etat = false;
+    }
+    console.log(this.etat);
+
   }
 
   columnAnnulationConge = [
