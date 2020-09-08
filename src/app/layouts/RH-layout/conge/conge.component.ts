@@ -363,6 +363,9 @@ export class CongeComponent implements OnInit {
     if ((this.conge["typedeconge"] == "conge_repos") || (this.conge["typedeconge"] == "conge_compensation") || (this.conge["typedeconge"] == "conge_exceptionnel") || (this.conge["typedeconge"] == "conge_maladie")) {
       this.etat = true;
     }
+    else if ((this.conge["typedeconge"] == "mise_a_pied") || (this.conge["typedeconge"] == "detachement")) {
+      this.etat = "other";
+    }
     else {
       this.etat = false;
     }

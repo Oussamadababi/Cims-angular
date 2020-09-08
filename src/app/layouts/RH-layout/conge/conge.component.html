@@ -43,7 +43,7 @@
 
                                         </mat-form-field>
                                     </div>
-                                    <div class="col-md-4 mb-3" *ngIf="this.etat">
+                                    <div class="col-md-4 mb-3" *ngIf="this.etat=== true">
                                         <label class="form-control-placeholder" for="nbJours">
                                             NombreDeJours *
                                         </label>
@@ -56,6 +56,9 @@
                                         </label>
                                         <input id="nbJour" name="nbJour" class="form-control" required
                                             [(ngModel)]="this.conge.numDeMois" />
+                                    </div>
+                                    <div class="col-md-4 mb-3" *ngIf="this.etat=== 'other' ">
+
                                     </div>
 
                                     <!-- <div class="col-md-4 mb-3">
