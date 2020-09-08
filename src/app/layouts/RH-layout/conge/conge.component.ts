@@ -201,9 +201,20 @@ export class CongeComponent implements OnInit {
               });
             });
           }
+          else if (this.conge["numDeMois"] != "") {
+
+            this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+              this.ngOnInit();
+              this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+                duration: 2000,
+                panelClass: ["green-snackbar"]
+
+              });
+            });
+          }
           else {
             this._snackBar.open(
-              "Veuillez Insérer le nombre de jours  ",
+              "Veuillez Insérer la durée de congé  ",
               "OK",
               {
                 duration: 2000,
@@ -211,6 +222,9 @@ export class CongeComponent implements OnInit {
               }
             );
           }
+
+
+
         }
 
 
