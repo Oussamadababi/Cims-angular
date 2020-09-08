@@ -192,9 +192,7 @@ export class CongeComponent implements OnInit {
               console.log(this.conge["datefin"]);
               console.log(this.conge["personnel"].personnel_id);
               this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
-              console.log((this.conge["datefin"] - this.conge["datedebut"]) / 86400000);
-              console.log((this.datePipe.transform(this.conge["datedebut"]), 'yyyy-MM-dd') + (this.conge["numDeJour"]));
-              this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+              this._snackBar.open("demande Conge ajouté avec succés", "OK", {
                 duration: 2000,
                 panelClass: ["green-snackbar"]
 
@@ -205,7 +203,18 @@ export class CongeComponent implements OnInit {
 
             this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
               this.ngOnInit();
-              this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+              this._snackBar.open("demande Conge ajouté avec succés", "OK", {
+                duration: 2000,
+                panelClass: ["green-snackbar"]
+
+              });
+            });
+          }
+          else if (this.etat === 'other') {
+
+            this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+              this.ngOnInit();
+              this._snackBar.open("demande Conge ajouté avec succés", "OK", {
                 duration: 2000,
                 panelClass: ["green-snackbar"]
 
