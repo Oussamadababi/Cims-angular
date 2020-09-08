@@ -171,13 +171,15 @@
                           {{item.nomSite}}
                         </mat-option>
                       </mat-select>
+
                     </mat-form-field>
+                    Nature: {{ attributAffectation.nature }}<br>
+                    Gouvernorat: {{attributAffectation.gouvernorat}}<br>
+                    Qualite De Direction: {{ attributAffectation.qualite }}
+
                   </form>
                 </div>
                 <div>
-                  <output>
-                    {{ attributAffectation.nature }}
-                  </output>
                 </div>
                 <div class="card-body">
                   <form>
@@ -190,23 +192,6 @@
                         </mat-option>
                       </mat-select>
                     </mat-form-field>
-                  </form>
-                </div>
-                <div class="card-body">
-                  <form>
-                    <mat-form-field class="spacing">
-                      <mat-label>Foncion</mat-label>
-                      <mat-select name="Fonction" [(ngModel)]="this.idfonction" (selectionChange)="onOptionFonction()">
-                        <mat-option *ngFor="let item of this.fonction" [value]="item.id_fonction">
-                          {{ item.fonction }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                    <div>
-                      <output>
-                        {{ attributfonction.type_fonction}}
-                      </output>
-                    </div>
                   </form>
                 </div>
                 <div class="card-body">
@@ -235,6 +220,20 @@
                     </mat-form-field>
                   </form>
                 </div>
+                <div class="card-body">
+                  <form>
+                    <mat-form-field class="spacing">
+                      <mat-label>Fonction</mat-label>
+                      <mat-select name="Fonction" [(ngModel)]="this.idfonction" (selectionChange)="onOptionFonction()">
+                        <mat-option *ngFor="let item of this.fonction" [value]="item.id_fonction">
+                          {{ item.fonction }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    TypeFonction: {{ attributfonction.type_fonction}}
+                  </form>
+                </div>
+
                 <p>(*):champs obligatoire </p>
               </form>
             </div>

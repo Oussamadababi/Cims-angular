@@ -94,7 +94,8 @@ export class ListPersonnelsComponent implements OnInit {
   };
   attributAffectation: object = {
     nature: "",
-    qualite: ""
+    qualite: "",
+    gouvernorat: ""
   };
 
 
