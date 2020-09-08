@@ -51,33 +51,15 @@
                                             [(ngModel)]="this.conge.numDeJour" />
                                     </div>
                                     <div class="col-md-4 mb-3" *ngIf="this.etat=== false">
-                                        <label class="form-control-placeholder" for="nbJours">
+                                        <label class="form-control-placeholder">
                                             NombreDeMois*
                                         </label>
-                                        <input id="nbJour" name="nbJour" class="form-control" required
+                                        <input id="numDeMois" name="numDeMois" class="form-control" required
                                             [(ngModel)]="this.conge.numDeMois" />
                                     </div>
                                     <div class="col-md-4 mb-3" *ngIf="this.etat=== 'other' ">
 
                                     </div>
-
-                                    <!-- <div class="col-md-4 mb-3">
-                                        <mat-form-field>
-                                            <mat-label>Date fin *</mat-label>
-                                            <input matInput [matDatepicker]="picker1" ngDefaultControl
-                                                [(ngModel)]="this.conge.datefin"
-                                                [ngModelOptions]="{ standalone: true }">
-                                            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                                            <mat-datepicker #picker1></mat-datepicker>
-
-                                        </mat-form-field>
-                                        nombre jour {{nombreJourConge}}
-
-
-
-                                </div>-->
-
-
 
 
                                 </div>
