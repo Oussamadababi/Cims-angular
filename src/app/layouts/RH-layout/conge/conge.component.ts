@@ -320,6 +320,7 @@ export class CongeComponent implements OnInit {
     console.log("aaaaaaaaaa" + this.id);
 
     this.AnnulationConge = this.Rhservice.annulationCongeenAttente(this.id).subscribe(res => {
+      console.log(this.AnnulationConge);
     });
     console.log("oooooooooooooooooooo" + this.AnnulationConge);
     if (this.AnnulationConge == null) {
