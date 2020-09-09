@@ -317,18 +317,28 @@ export class CongeComponent implements OnInit {
   }
   AnnulationConge: object;
   ajouterAnuulationConge() {
-    this.AnnulationConge = this.Rhservice.annulationCongeenAttente(this.conge["personnel"].personnel_id).subscribe(res => {
-    });
-    //if (this.AnnulationConge == null) {
-    this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
-      this.ngOnInit();
-      console.log(res);
-      this._snackBar.open("demande Annulation Conge ajouté avec succés", "OK", {
-        duration: 2000,
-        panelClass: ["green-snackbar"]
+    console.log("aaaaaaaaaa" + this.id);
 
-      });
+    this.AnnulationConge = this.Rhservice.annulationCongeenAttente(this.id).subscribe(res => {
     });
+    console.log("oooooooooooooooooooo" + this.AnnulationConge);
+    if (this.AnnulationConge == null) {
+      this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
+        this.ngOnInit();
+        console.log(res);
+        this._snackBar.open("demande Annulation Conge ajouté avec succés", "OK", {
+          duration: 2000,
+          panelClass: ["green-snackbar"]
+
+        });
+      });
+    }
+    else {
+      this._snackBar.open("Il existe deja une demande d'annulation", "OK", {
+        duration: 2000,
+        panelClass: ["red-snackbar"]
+      });
+    }
   }
   RefusererAConge() {
     this.Rhservice.RefusererAConge(this.idA).subscribe(res => {
