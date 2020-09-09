@@ -165,10 +165,20 @@ export class CongeComponent implements OnInit {
   id: number;
   idA: number;
   nombreJourConge: any;
+  annulation: boolean;
   getId(event) {
     this.id = event.data["id"];
     console.log(event.data["id"]);
     console.log(this.id);
+    this.AnnulationConge = this.Rhservice.annulationCongeenAttente(this.id).subscribe(res => {
+      console.log(res);
+      if (res == null) {
+        this.annulation = false;
+      }
+      else
+        this.annulation = true;
+
+    });
   }
   getIdA(event1) {
     this.idA = event1.data["id"];
@@ -317,13 +327,11 @@ export class CongeComponent implements OnInit {
   }
   AnnulationConge: object;
   ajouterAnuulationConge() {
-    console.log("aaaaaaaaaa" + this.id);
+    //console.log("aaaaaaaaaa" + this.id);
 
-    this.AnnulationConge = this.Rhservice.annulationCongeenAttente(this.id).subscribe(res => {
-      console.log(this.AnnulationConge);
-    });
+
     console.log("oooooooooooooooooooo" + this.AnnulationConge);
-    if (this.AnnulationConge == null) {
+    if (this.annulation == false) {
       this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
         this.ngOnInit();
         console.log(res);

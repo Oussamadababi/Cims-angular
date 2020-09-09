@@ -286,7 +286,7 @@ export class RHService {
   }
   ajoutSoldeCompensation(idPersonnel: number, SoldecompensationA: any) {
     return this.http.put(
-      "http://localhost:8082/api/ajoutSoldeCompensation/" + idPersonnel, SoldecompensationA, {}
+      "http://localhost:8082/api/ajoutSoldeCompensation/" + idPersonnel + "/" + SoldecompensationA, {}
     );
 
   }
