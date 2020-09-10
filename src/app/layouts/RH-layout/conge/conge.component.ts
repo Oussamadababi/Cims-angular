@@ -326,20 +326,32 @@ export class CongeComponent implements OnInit {
     }
   }
   AnnulationConge: object;
+  test: object;
   ajouterAnuulationConge() {
     //console.log("aaaaaaaaaa" + this.id);
 
 
     console.log("oooooooooooooooooooo" + this.AnnulationConge);
     if (this.annulation == false) {
-      this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
+      this.test = this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
         this.ngOnInit();
         console.log(res);
-        this._snackBar.open("demande Annulation Conge ajouté avec succés", "OK", {
-          duration: 2000,
-          panelClass: ["green-snackbar"]
+        if (this.test == null) {
+          this._snackBar.open("demande Annulation Conge ajouté avec succés", "OK", {
+            duration: 2000,
+            panelClass: ["green-snackbar"]
 
-        });
+          });
+        }
+        else {
+          this._snackBar.open("Verifier la début du congé ?", "OK", {
+            duration: 2000,
+            panelClass: ["red-snackbar"]
+          });
+
+
+        }
+
       });
     }
     else {
