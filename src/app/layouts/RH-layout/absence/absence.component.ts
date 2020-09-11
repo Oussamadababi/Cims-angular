@@ -56,6 +56,7 @@ export class AbsenceComponent implements OnInit {
     console.log(this.d);
     this.Rhservice.ajouterAbsence(this.absence["personnel"].personnel_id, this.d).subscribe(res => {
       console.log(res);
+      this.addAddress();
 
       this._snackBar.open("Personnel ajouté au liste d'absences", "OK", {
         duration: 2000,
@@ -124,6 +125,21 @@ export class AbsenceComponent implements OnInit {
   initD() {
     this.d = this.datePipe.transform(this.absence["datedujour"], 'yyyy-MM-dd');
     return this.d;
+  }
+  public addresses: any[] = [{
+    id: '',
+    personnel: ''
+
+  }];
+  addAddress() {
+    this.addresses.push({
+      id: this.addresses.length + 1,
+
+      personnel: ''
+    });
+  }
+  removeAddress(i: number) {
+    this.addresses.splice(i, 1);
   }
 }
 @Component({
