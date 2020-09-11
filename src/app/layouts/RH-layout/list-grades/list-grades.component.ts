@@ -28,20 +28,45 @@ export class ListGradesComponent implements OnInit {
   }
   add() {
     if (this.grade["nom_grade_fr"] != "") {
-      this.Rhservice.addGrade(this.grade).subscribe(res => {
-        console.log(res);
-        this.ngOnInit();
-        this._snackBar.open("Grade ajouté avec succés", "OK", {
+      if (this.grade["nom_grade_ar"] != "") {
+        if (this.grade["categorie_grade_fr"] != "") {
+          if (this.grade["categorie_grade_ar"] != "") {
+            this.Rhservice.addGrade(this.grade).subscribe(res => {
+              console.log(res);
+              this.ngOnInit();
+              this._snackBar.open("Grade ajouté avec succés", "OK", {
+                duration: 2000,
+                panelClass: ["green-snackbar"]
+              });
+            }, err => {
+              this.message = err.error.message;
+              this.dialog.open(DialogError, {
+                data: this.message
+              });
+              this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
+            });
+          }
+          else {
+            this._snackBar.open("Veuillez insérer la categorie du grade en Arabe", "OK", {
+              duration: 2000,
+              panelClass: ["red-snackbar"]
+            });
+          }
+        } else {
+          this._snackBar.open("Veuillez insérer la categorie du grade en Francais", "OK", {
+            duration: 2000,
+            panelClass: ["red-snackbar"]
+          });
+        }
+      }
+      else {
+        this._snackBar.open("Veuillez insérer le nom du grade en Arabe", "OK", {
           duration: 2000,
-          panelClass: ["green-snackbar"]
+          panelClass: ["red-snackbar"]
         });
-      }, err => {
-        this.message = err.error.message;
-        this.dialog.open(DialogError, {
-          data: this.message
-        });
-        this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
-      });
+
+
+      }
 
     } else {
       this._snackBar.open("Veuillez insérer le nom du grade", "OK", {
