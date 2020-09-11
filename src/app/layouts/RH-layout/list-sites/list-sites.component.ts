@@ -48,28 +48,111 @@ export class ListSitesComponent implements OnInit {
     console.log(this.site["gouvernorat"].idGouvernorat);
     if (this.site["nomSite"] != "") {
       if (this.site["gouvernorat"].idGouvernorat != "") {
-        for (let prop in this.site) {
-          if (typeof this.site[prop] == "string") {
-            if (!this.site[prop]) return alert(prop + " is Required");
-          } else {
-            if (this.site[prop] == {}) return alert(prop + "is Required");
+        if (this.site["nom_etablissement_fr"] != "") {
+          if (this.site["nom_etablissement_ar"] != "") {
+            if (this.site["nature_etablissement_fr"] != "") {
+              if (this.site["nature_etablissement_ar"] != "") {
+                if (this.site["qualite_direction_fr"] != "") {
+                  if (this.site["qualite_direction_ar"] != "") {
+                    for (let prop in this.site) {
+                      if (typeof this.site[prop] == "string") {
+                        if (!this.site[prop]) return alert(prop + " is Required");
+                      } else {
+                        if (this.site[prop] == {}) return alert(prop + "is Required");
+                      }
+                    }
+                    this.Rhservice.addSite(this.site, this.site["gouvernorat"].idGouvernorat).subscribe(res => {
+                      console.log(res);
+                      this.ngOnInit();
+                      this._snackBar.open("Site ajouté avec succés", "OK", {
+                        duration: 2000,
+                        panelClass: ["green-snackbar"]
+                      });
+                    }, err => {
+                      this.message = err.error.message;
+                      this.dialog.open(DialogError, {
+                        data: this.message
+                      });
+                      this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
+
+                    });
+                  }
+                  else {
+                    this._snackBar.open(
+                      "Veuillez sélectionner la qualité direction en Ar du site",
+                      "OK",
+                      {
+                        duration: 2000,
+                        panelClass: ["red-snackbar"]
+                      }
+                    );
+
+                  }
+                }
+                else {
+                  this._snackBar.open(
+                    "Veuillez sélectionner la qualité direction en Fr du site",
+                    "OK",
+                    {
+                      duration: 2000,
+                      panelClass: ["red-snackbar"]
+                    }
+                  );
+
+
+                }
+              }
+              else {
+                this._snackBar.open(
+                  "Veuillez sélectionner la nature etablissement en Ar du site",
+                  "OK",
+                  {
+                    duration: 2000,
+                    panelClass: ["red-snackbar"]
+                  }
+                );
+
+
+              }
+            }
+            else {
+              this._snackBar.open(
+                "Veuillez sélectionner la nature etablissement en Fr du site",
+                "OK",
+                {
+                  duration: 2000,
+                  panelClass: ["red-snackbar"]
+                }
+              );
+
+
+            }
+          }
+          else {
+            this._snackBar.open(
+              "Veuillez sélectionner le nom etablissement en Ar du site",
+              "OK",
+              {
+                duration: 2000,
+                panelClass: ["red-snackbar"]
+              }
+            );
+
+
           }
         }
-        this.Rhservice.addSite(this.site, this.site["gouvernorat"].idGouvernorat).subscribe(res => {
-          console.log(res);
-          this.ngOnInit();
-          this._snackBar.open("Site ajouté avec succés", "OK", {
-            duration: 2000,
-            panelClass: ["green-snackbar"]
-          });
-        }, err => {
-          this.message = err.error.message;
-          this.dialog.open(DialogError, {
-            data: this.message
-          });
-          this.dialog._afterAllClosed.subscribe(res => { this.ngOnInit(); })
+        else {
+          this._snackBar.open(
+            "Veuillez sélectionner le nom etablissement en fr du site",
+            "OK",
+            {
+              duration: 2000,
+              panelClass: ["red-snackbar"]
+            }
+          );
 
-        });
+
+        }
 
       } else {
         this._snackBar.open(
