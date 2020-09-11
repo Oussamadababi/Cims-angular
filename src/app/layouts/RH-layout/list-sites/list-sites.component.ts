@@ -223,6 +223,38 @@ export class ListSitesComponent implements OnInit {
       sortable: true,
       filter: true,
       editable: true,
+      minWidth: 300
+    },
+    {
+      headerName: "Nom Etablissement Fr",
+      field: "nom_etablissement_fr",
+      sortable: true,
+      filter: true,
+      editable: true,
+      minWidth: 350
+    },
+    {
+      headerName: "Nom Etablissement Ar",
+      field: "nom_etablissement_ar",
+      sortable: true,
+      filter: true,
+      editable: true,
+      minWidth: 350
+    },
+    {
+      headerName: "Nature etablissement fr",
+      field: "nature_etablissement_fr",
+      sortable: true,
+      filter: true,
+      editable: true,
+      minWidth: 350
+    },
+    {
+      headerName: "Qualite direction fr",
+      field: "qualite_direction_fr",
+      sortable: true,
+      filter: true,
+      editable: true,
       minWidth: 350
     },
     {
