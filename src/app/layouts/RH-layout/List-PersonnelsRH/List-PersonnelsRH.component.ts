@@ -233,7 +233,7 @@ export class ListPersonnelsComponent implements OnInit {
                                             }
                                             else {
                                               this._snackBar.open(
-                                                "Veuillez une Division   ",
+                                                "Veuillez une Division    ",
                                                 "OK",
                                                 {
                                                   duration: 2000,
