@@ -14,6 +14,7 @@ export class ListSitesComponent implements OnInit {
   id: number;
   gouvernorats: any;
   site: object = {
+    id_affectation: "",
     nomSite: "",
     nom_etablissement_fr: "",
     nom_etablissement_ar: "",
@@ -173,8 +174,8 @@ export class ListSitesComponent implements OnInit {
   }
 
   getId(event) {
-    this.id = event.data["idSite"];
-    console.log(event.data["idSite"]);
+    this.id = event.data["id_affectation"];
+    console.log(event.data["id_affectation"]);
     console.log(this.id);
   }
   edit(event) {
