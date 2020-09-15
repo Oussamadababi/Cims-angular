@@ -1,8 +1,5 @@
 <div class="main-content">
     <div class="container-fluid">
-        <button class="btn btn-succes btn-round" (click)="displayAbsence()">
-            ListeAbsence
-        </button>
         <div *ngIf="!this.addpers" class="main-content">
             <div class="row">
                 <div class="col-md-8">
@@ -11,28 +8,27 @@
                             <h4 class="card-title">Appel du Jour</h4>
                         </div>
                         <div class="card-body">
-                            <form #addressForm="ngForm">
+                            <form>
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <mat-form-field>
                                             <mat-label>Date de debut *</mat-label>
-                                            <input matInput [matDatepicker]="picker" ngDefaultControl
-                                                [(ngModel)]="this.absence.datedujour"
-                                                [ngModelOptions]="{ standalone: true }">
+                                            <input matInput [matDatepicker]="picker" [(ngModel)]="this.dateSelect"
+                                                [ngModelOptions]="{ standalone: true }"
+                                                (dateChange)="onOptionsSelected()">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                            <mat-datepicker #picker></mat-datepicker>
+                                            <mat-datepicker #picker>
+                                            </mat-datepicker>
 
                                         </mat-form-field>
                                     </div>
                                 </div>
+                                <!--- *ngFor=" let address of addresses; let i=index;"-->
+                                <mat-form-field class="spacing">
 
-                                <mat-form-field class="spacing" *ngFor="let address of addresses; let i = index;">
-
-                                    <mat-label>Personnel N°{{i + 1}}</mat-label>
-                                    <mat-select name="personnel" [(ngModel)]="this.absence.personnel.personnel_id"
-                                        ngDefaultControl>
-                                        <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel"
-                                            ngDefaultControl>
+                                    <mat-label>Personnel</mat-label>
+                                    <mat-select name="personnel" [(ngModel)]="this.absence.personnel.personnel_id">
+                                        <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel">
                                             {{ item.nom }} {{ item.prenom }}
                                         </mat-option>
                                     </mat-select>
@@ -48,56 +44,72 @@
                             </button>
 
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row" *ngIf="this.addpers">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Liste des personnels</h4>
-                    </div>
-                    <center>
-                        <div class="col-md-4 mb-3" style="text-align: center;">
-
-                            <mat-form-field>
-                                <mat-label>Date</mat-label>
-                                <input matInput [matDatepicker]="picker" ngDefaultControl
-                                    [(ngModel)]="this.absence.datedujour" [ngModelOptions]="{ standalone: true }">
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker></mat-datepicker>
-
-                            </mat-form-field>
-
+                        <div class="add ml-auto mr-auto">
+                            <ag-grid-angular style="width: 250px; height: 500px;text-align: center;"
+                                class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs"
+                                [modules]="modules" (rowSelected)="getId($event)" (cellValueChanged)="edit($event)"
+                                [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
+                                [paginationAutoPageSize]="true">
+                            </ag-grid-angular>
                             <div class="add ml-auto mr-auto">
-                                <button class="btn btn-success btn-round" (click)="getListeAbsence()">
-                                    AfficherLesAbsences
+                                <button class="btn btn-danger btn-round" (click)="delete2()">
+                                    Supprimer
                                 </button>
-
+                                <button class="btn btn-danger btn-round" (click)="cancel()">
+                                    Annuler
+                                </button>
                             </div>
                         </div>
-
-                    </center>
-                    <center>
-                        <ag-grid-angular style="width: 250px; height: 500px;text-align: center;"
-                            class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs" [modules]="modules"
-                            (rowSelected)="getId($event)" (cellValueChanged)="edit($event)" [rowSelection]="'multiple'"
-                            rowMultiSelectWithClick="true" [pagination]="true" [paginationAutoPageSize]="true">
-                        </ag-grid-angular>
-                        <div class="add ml-auto mr-auto">
-                            <button class="btn btn-danger btn-round" (click)="delete2()">
-                                Supprimer
-                            </button>
-                            <button class="btn btn-danger btn-round" (click)="cancel()">
-                                Annuler
-                            </button>
-                        </div>
-                    </center>
+                    </div>
                 </div>
+
+                <div class="row" *ngIf="this.addpers">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title ">Liste des personnels</h4>
+                            </div>
+                            <center>
+                                <div class="col-md-4 mb-3" style="text-align: center;">
+
+                                    <mat-form-field>
+                                        <mat-label>Date</mat-label>
+                                        <input matInput [matDatepicker]="picker" ngDefaultControl
+                                            [(ngModel)]="this.absence.datedujour"
+                                            [ngModelOptions]="{ standalone: true }">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+
+                                    </mat-form-field>
+
+                                    <div class="add ml-auto mr-auto">
+                                        <button class="btn btn-success btn-round" (click)="getListeAbsence()">
+                                            AfficherLesAbsences
+                                        </button>
+
+                                    </div>
+                                </div>
+
+                            </center>
+                            <center>
+                                <ag-grid-angular style="width: 250px; height: 500px;text-align: center;"
+                                    class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs"
+                                    [modules]="modules" (rowSelected)="getId($event)" (cellValueChanged)="edit($event)"
+                                    [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
+                                    [paginationAutoPageSize]="true">
+                                </ag-grid-angular>
+                                <div class="add ml-auto mr-auto">
+                                    <button class="btn btn-danger btn-round" (click)="delete2()">
+                                        Supprimer
+                                    </button>
+                                    <button class="btn btn-danger btn-round" (click)="cancel()">
+                                        Annuler
+                                    </button>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-
-    </div>
-</div>

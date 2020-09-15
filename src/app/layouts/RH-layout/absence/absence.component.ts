@@ -52,11 +52,14 @@ export class AbsenceComponent implements OnInit {
   id: number;
   add() {
 
-    this.d = this.datePipe.transform(this.absence["datedujour"], 'yyyy-MM-dd');
+    this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
     console.log(this.d);
     this.Rhservice.ajouterAbsence(this.absence["personnel"].personnel_id, this.d).subscribe(res => {
       console.log(res);
-      this.addAddress();
+      this.Rhservice.getListeAbsenceParDate(this.d).subscribe(res => {
+        var y: any = res;
+        this.rowData = y;
+      });
 
       this._snackBar.open("Personnel ajouté au liste d'absences", "OK", {
         duration: 2000,
@@ -71,12 +74,22 @@ export class AbsenceComponent implements OnInit {
   cancel() {
     this.addpers = false;
   }
+  dateSelect: any;
+  onOptionsSelected() {
+    console.log("ggggg");
+    this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd')
+    console.log("ggggg");
+    this.Rhservice.getListeAbsenceParDate(this.d).subscribe(res => {
+      var y: any = res;
+      this.rowData = y;
+    });
+  }
   getListeAbsence() {
-    this.d = this.datePipe.transform(this.absence["datedujour"], 'yyyy-MM-dd');
+    /*this.d = this.datePipe.transform(this.absence["datedujour"], 'yyyy-MM-dd');
     this.Rhservice.getListeAbsenceParDate(this.d).subscribe(res => {
       console.log(res);
       this.rowData = res;
-    });
+    });*/
   }
   getId(event) {
     this.id = event.data["id_personnel"];
@@ -97,10 +110,13 @@ export class AbsenceComponent implements OnInit {
     }
   }
   delete2() {
-    this.d = this.datePipe.transform(this.absence["datedujour"], 'yyyy-MM-dd');
+    this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
     console.log(this.d);
     this.Rhservice.deletePersonnelFromListeAbsence(this.id, this.d).subscribe(res => {
-      this.getListeAbsence()
+      this.Rhservice.getListeAbsenceParDate(this.d).subscribe(res => {
+        var y: any = res;
+        this.rowData = y;
+      });
       console.log("Personnel Supprimé");
     });
   }
@@ -120,14 +136,22 @@ export class AbsenceComponent implements OnInit {
       filter: true,
       editable: true,
       maxWidth: 130
+    },
+    {
+      headerName: "Justificatif",
+      field: "",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 130
     }
   ]
   initD() {
-    this.d = this.datePipe.transform(this.absence["datedujour"], 'yyyy-MM-dd');
+    this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
     return this.d;
   }
   public addresses: any[] = [{
-    id: '',
+    id: 1,
     personnel: ''
 
   }];
