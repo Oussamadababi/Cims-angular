@@ -79,7 +79,8 @@ export class ListPersonnelsComponent implements OnInit {
     affectation: { affectation_id: "" },
     fonction: { id_fonction: "" },
     division: { id_division: "" },
-    nom_AR: ""
+    nom_AR: "",
+    grade: { id_grade: "" }
 
 
 
@@ -181,38 +182,146 @@ export class ListPersonnelsComponent implements OnInit {
 
   add() {
     if (this.personnel["nom"] != "") {
-      if (this.personnel["nom_AR"] != "") {
-        if (this.personnel["prenom"] != "") {
+      if (this.personnel["prenom"] != "") {
+        if (this.personnel["nom_AR"] != "") {
           if (this.personnel["prenom_AR"] != "") {
             if (this.personnel["sexe"] != "") {
               if (this.personnel["date_Naissance"] != "") {
                 if (this.personnel["adresse"] != "") {
-                  if (this.personnel["matricule"] != "") {
-                    if (this.personnel["date_recrutement"] != "") {
-                      if (this.personnel["soldeRepos"] != "") {
-                        if (this.personnel["departement"].id_dept) {
-                          if (this.id_grade != "") {
-                            if (this.personnel["telephone"] != "") {
-                              if (this.personnel["email"] != "") {
-                                this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff, this.personnel["division"].id_division, this.divselect).subscribe(res => {
-                                  console.log(res);
-                                  this.ngOnInit();
+                  if (this.personnel["telephone"] != "") {
+                    if (this.personnel["email"] != "") {
+                      if (this.personnel["date_recrutement"] != "") {
+                        if (this.personnel["matricule"] != "") {
+                          if (this.personnel["matricule_CNSS"] != "") {
+                            if (this.personnel["matricule_CNRPS"] != "") {
+                              if (this.personnel["date_Promotion"] != "") {
+                                if (this.personnel["poste_Occupe"] != "") {
+                                  if (this.personnel["soldeRepos"] != "") {
+                                    if (this.id_grade != "") {
+                                      if (this.idAfffff != "") {
+                                        if (this.gouvselecter != "") {
+                                          if (this.divselect != "") {
+                                            if (this.personnel["division"].id_division != "") {
+                                              if (this.idfonction != "") {
+                                                this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff, this.personnel["division"].id_division, this.divselect).subscribe(res => {
+                                                  console.log(res);
+                                                  this.ngOnInit();
 
-                                  this._snackBar.open("Personnel ajouté avec succés", "OK", {
-                                    duration: 2000,
-                                    panelClass: ["green-snackbar"]
-                                  });
-                                }, err => {
-                                  this.message = err.error.message;
-                                  this.dialog.open(DialogError, {
-                                    data: this.message
-                                  });
+                                                  this._snackBar.open("Personnel ajouté avec succés", "OK", {
+                                                    duration: 2000,
+                                                    panelClass: ["green-snackbar"]
+                                                  });
+                                                }, err => {
+                                                  this.message = err.error.message;
+                                                  this.dialog.open(DialogError, {
+                                                    data: this.message
+                                                  });
 
-                                });
+                                                });
+                                              } else {
+                                                this._snackBar.open(
+                                                  "Veuillez une Fonction  ",
+                                                  "OK",
+                                                  {
+                                                    duration: 2000,
+                                                    panelClass: ["red-snackbar"]
+                                                  }
+                                                );
+
+
+                                              }
+                                            }
+                                            else {
+                                              this._snackBar.open(
+                                                "Veuillez une Division    ",
+                                                "OK",
+                                                {
+                                                  duration: 2000,
+                                                  panelClass: ["red-snackbar"]
+                                                }
+                                              );
+
+                                            }
+                                          }
+
+                                          else {
+                                            this._snackBar.open(
+                                              "Veuillez une Division  ",
+                                              "OK",
+                                              {
+                                                duration: 2000,
+                                                panelClass: ["red-snackbar"]
+                                              }
+                                            );
+
+
+                                          }
+                                        }
+                                        else {
+                                          this._snackBar.open(
+                                            "Veuillez une Structure  ",
+                                            "OK",
+                                            {
+                                              duration: 2000,
+                                              panelClass: ["red-snackbar"]
+                                            }
+                                          );
+
+                                        }
+                                      }
+                                      else {
+                                        this._snackBar.open(
+                                          "Veuillez une Affectation  ",
+                                          "OK",
+                                          {
+                                            duration: 2000,
+                                            panelClass: ["red-snackbar"]
+                                          }
+                                        );
+
+                                      }
+                                    }
+                                    else {
+                                      this._snackBar.open(
+                                        "Veuillez selectionner une grade  ",
+                                        "OK",
+                                        {
+                                          duration: 2000,
+                                          panelClass: ["red-snackbar"]
+                                        }
+                                      );
+
+                                    }
+
+                                  }
+                                  else {
+                                    this._snackBar.open(
+                                      "Veuillez insérer la Solde initial du personnel ",
+                                      "OK",
+                                      {
+                                        duration: 2000,
+                                        panelClass: ["red-snackbar"]
+                                      }
+                                    );
+
+                                  }
+
+                                }
+                                else {
+                                  this._snackBar.open(
+                                    "Veuillez insérer la poste occupé du personnel ",
+                                    "OK",
+                                    {
+                                      duration: 2000,
+                                      panelClass: ["red-snackbar"]
+                                    }
+                                  );
+
+                                }
 
                               } else {
                                 this._snackBar.open(
-                                  "Veuillez insérer l'email du personnel ",
+                                  "Veuillez selectionner la date de promotion du personnel ",
                                   "OK",
                                   {
                                     duration: 2000,
@@ -222,7 +331,7 @@ export class ListPersonnelsComponent implements OnInit {
                               }
                             } else {
                               this._snackBar.open(
-                                "Veuillez insérer le num° de telephone du personnel ",
+                                "Veuillez insérer la Matricule CNRPS du personnel ",
                                 "OK",
                                 {
                                   duration: 2000,
@@ -232,7 +341,7 @@ export class ListPersonnelsComponent implements OnInit {
                             }
                           } else {
                             this._snackBar.open(
-                              "Veuillez sélectionner le grade du personnel ",
+                              "Veuillez insérer la Matricule CNSS du personnel ",
                               "OK",
                               {
                                 duration: 2000,
@@ -242,7 +351,7 @@ export class ListPersonnelsComponent implements OnInit {
                           }
                         } else {
                           this._snackBar.open(
-                            "Veuillez sélectionner le departement du personnel ",
+                            "Veuillez insérer la cin du personnel ",
                             "OK",
                             {
                               duration: 2000,
@@ -253,7 +362,7 @@ export class ListPersonnelsComponent implements OnInit {
                       }
                       else {
                         this._snackBar.open(
-                          "Veuillez sélectionner Solde initial du Conge du personnel ",
+                          "Veuillez sélectionner la date de recrutement du personnel ",
                           "OK",
                           {
                             duration: 2000,
@@ -264,7 +373,7 @@ export class ListPersonnelsComponent implements OnInit {
                     }
                     else {
                       this._snackBar.open(
-                        "Veuillez sélectionner DateRecrutement du personnel ",
+                        "Veuillez insérer l'email du personnel ",
                         "OK",
                         {
                           duration: 2000,
@@ -274,7 +383,7 @@ export class ListPersonnelsComponent implements OnInit {
                     }
                   } else {
                     this._snackBar.open(
-                      "Veuillez sélectionner Cin du personnel ",
+                      "Veuillez insérer le telephone du personnel ",
                       "OK",
                       {
                         duration: 2000,
@@ -285,7 +394,7 @@ export class ListPersonnelsComponent implements OnInit {
 
                 } else {
                   this._snackBar.open(
-                    "Veuillez sélectionner Adresse du personnel ",
+                    "Veuillez insérer Adresse du personnel ",
                     "OK",
                     {
                       duration: 2000,
@@ -315,25 +424,25 @@ export class ListPersonnelsComponent implements OnInit {
               );
             }
           } else {
-            this._snackBar.open("Veuillez insérer le prenom du personnel ", "OK", {
+            this._snackBar.open("Veuillez insérer le Prenom du personnel en Arabe", "OK", {
               duration: 2000,
               panelClass: ["red-snackbar"]
             });
           }
         } else {
-          this._snackBar.open("Veuillez insérer le prenom du personnel en Arabe", "OK", {
+          this._snackBar.open("Veuillez insérer le Nom du personnel en Arabe ", "OK", {
             duration: 2000,
             panelClass: ["red-snackbar"]
           });
         }
       } else {
-        this._snackBar.open("Veuillez insérer le nom du personnel", "OK", {
+        this._snackBar.open("Veuillez insérer le prenom du personnel", "OK", {
           duration: 2000,
           panelClass: ["red-snackbar"]
         });
       }
     } else {
-      this._snackBar.open("Veuillez insérer le nom du personnel en Arabe", "OK", {
+      this._snackBar.open("Veuillez insérer le nom du personnel", "OK", {
         duration: 2000,
         panelClass: ["red-snackbar"]
       });
