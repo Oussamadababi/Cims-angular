@@ -51,22 +51,33 @@ export class AbsenceComponent implements OnInit {
   rowData: any;
   id: number;
   add() {
+    if (this.absence["personnel"].personnel_id != "") {
+      this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
+      console.log(this.d);
+      this.Rhservice.ajouterAbsence(this.absence["personnel"].personnel_id, this.d).subscribe(res => {
+        console.log(res);
+        this.Rhservice.getListeAbsenceParDate(this.d).subscribe(res => {
+          var y: any = res;
+          this.rowData = y;
+        });
 
-    this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
-    console.log(this.d);
-    this.Rhservice.ajouterAbsence(this.absence["personnel"].personnel_id, this.d).subscribe(res => {
-      console.log(res);
-      this.Rhservice.getListeAbsenceParDate(this.d).subscribe(res => {
-        var y: any = res;
-        this.rowData = y;
+        this._snackBar.open("Personnel ajouté au liste d'absences", "OK", {
+          duration: 2000,
+          panelClass: ["green-snackbar"]
+
+        });
       });
-
-      this._snackBar.open("Personnel ajouté au liste d'absences", "OK", {
-        duration: 2000,
-        panelClass: ["green-snackbar"]
-
-      });
-    });
+    }
+    else {
+      this._snackBar.open(
+        "Veuillez Insérer nom Personnel ",
+        "OK",
+        {
+          duration: 2000,
+          panelClass: ["red-snackbar"]
+        }
+      );
+    }
   }
   displayAbsence() {
     this.addpers = true;
