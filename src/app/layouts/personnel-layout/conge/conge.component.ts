@@ -31,6 +31,7 @@ export class CongeComponent implements OnInit {
   constructor(private http: HttpClient,
     private PersonnelService: PersonnelService,
     private _snackBar: MatSnackBar,
+    private Rhservice: RHService,
     public dialog: MatDialog,
     private tokenStorage: TokenStorageService) { }
   rowData: any;
@@ -88,13 +89,30 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     }
   ]
+  etat: any
+  onOptionsSelected(event) {
+    console.log("hhhhh");
+    console.log(this.conge["typedeconge"]);
+    if ((this.conge["typedeconge"] == "conge_repos") || (this.conge["typedeconge"] == "conge_compensation") || (this.conge["typedeconge"] == "conge_exceptionnel") || (this.conge["typedeconge"] == "conge_maladie")) {
+      this.etat = true;
+    }
+    else if ((this.conge["typedeconge"] == "mise_a_pied") || (this.conge["typedeconge"] == "detachement")) {
+      this.etat = "other";
+    }
+    else {
+      this.etat = false;
+    }
+    console.log(this.etat);
+
+  }
 
   conge2: object;
   conge: object = {
     id: "",
     typedeconge: "",
     datedebut: "",
-    datefin: "",
+    numDeJour: "",
+    numDeMois: "",
     personnel: { personnel_id: "" }
   };
   add() {
@@ -102,67 +120,22 @@ export class CongeComponent implements OnInit {
     //if (this.conge2 == null) {
     if (this.conge["typedeconge"] != "") {
       if (this.conge["datedebut"] != "") {
-        if (this.conge["datefin"] != "") {
-          if (this.conge["personnel"].personnel_id != "") {
-            if (this.conge["datedebut"] < this.conge["datefin"]) {
-              this.PersonnelService.demandeConge(this.conge, this.tokenStorage.getUser().id).subscribe(res => {
-                this.ngOnInit();
-                console.log(res);
-                console.log(this.conge["personnel"].personnel_id);
-                this._snackBar.open("demandeConge ajouté avec succés", "OK", {
-                  duration: 2000,
-                  panelClass: ["green-snackbar"]
-                });
-              });
-            } else {
-              this._snackBar.open(
-                "verifier les date du conge ",
-                "OK",
-                {
-                  duration: 2000,
-                  panelClass: ["red-snackbar"]
-                }
-              );
-
-            }
-          }
-          else {
-            this._snackBar.open(
-              "Veuillez insérer le nom du personnel ",
-              "OK",
-              {
-                duration: 2000,
-                panelClass: ["red-snackbar"]
-              }
-            );
-          }
-        }
-        else {
-          this._snackBar.open(
-            "Veuillez insérer datefin du conge ",
-            "OK",
-            {
+        if (this.conge["numDeJour"] != "") {
+          this.PersonnelService.demandeConge(this.conge, this.tokenStorage.getUser().id).subscribe(res => {
+            this.ngOnInit();
+            console.log(res);
+            console.log(this.conge["personnel"].personnel_id);
+            this._snackBar.open("demandeConge ajouté avec succés", "OK", {
               duration: 2000,
-              panelClass: ["red-snackbar"]
-            }
-          );
-
+              panelClass: ["green-snackbar"]
+            });
+          });
         }
-      }
-      else {
-        this._snackBar.open(
-          "Veuillez insérer datedebut du conge ",
-          "OK",
-          {
-            duration: 2000,
-            panelClass: ["red-snackbar"]
-          }
-        );
       }
     }
     else {
       this._snackBar.open(
-        "Veuillez insérer typedeconge ",
+        "Veuillez insérer datedebut du conge ",
         "OK",
         {
           duration: 2000,
@@ -170,18 +143,24 @@ export class CongeComponent implements OnInit {
         }
       );
     }
-    /* } else {
-       this._snackBar.open(
-         "il y a une demande encours ",
-         "OK",
-         {
-           duration: 2000,
-           panelClass: ["red-snackbar"]
-         }
-       );
- 
-     }*/
+
+
+
   }
+
+  /* } else {
+     this._snackBar.open(
+       "il y a une demande encours ",
+       "OK",
+       {
+         duration: 2000,
+         panelClass: ["red-snackbar"]
+       }
+     );
+ 
+   }*/
+
+
   delete() {
     if (this.id != null) {
       this.dialog.open(DialogConfirmation, {
@@ -195,24 +174,57 @@ export class CongeComponent implements OnInit {
       });
     }
   }
+  AnnulationConge: any;
+  annulation: boolean;
   getId(event) {
     this.id = event.data["id"];
     console.log(event.data["id"]);
     console.log(this.id);
+    this.AnnulationConge = this.Rhservice.annulationCongeenAttente(this.id).subscribe(res => {
+      console.log(res);
+      if (res == null) {
+        this.annulation = false;
+      }
+      else
+        this.annulation = true;
+
+    });
   }
   ajouterAnuulationConge() {
-    /*  this.AnnulationConge = this.Rhservice.annulationCongeenAttente(this.conge["personnel"].personnel_id).subscribe(res => {
-      });*/
-    //if (this.AnnulationConge == null) {
-    this.PersonnelService.ajouterAnnulationConge(this.id).subscribe(res => {
+    //console.log("aaaaaaaaaa" + this.id);
 
-      console.log(res);
-      this._snackBar.open("demandeConge ajouté avec succés", "OK", {
-        duration: 2000,
-        panelClass: ["green-snackbar"]
 
+    console.log("oooooooooooooooooooo" + this.AnnulationConge);
+    if (this.annulation == false) {
+      this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
+        this.ngOnInit();
+        console.log(res);
+
+        if (res != null) {
+          this._snackBar.open("demande Annulation Conge ajouté avec succés", "OK", {
+            duration: 2000,
+            panelClass: ["green-snackbar"]
+
+          });
+        }
+        else {
+          this._snackBar.open("Verifier la début du congé ?", "OK", {
+            duration: 2000,
+            panelClass: ["red-snackbar"]
+          });
+
+
+        }
       });
-    });
+
+
+    }
+    else {
+      this._snackBar.open("Il existe deja une demande d'annulation", "OK", {
+        duration: 2000,
+        panelClass: ["red-snackbar"]
+      });
+    }
   }
   columnAnnulationConge = [
     {
