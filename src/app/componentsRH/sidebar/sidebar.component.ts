@@ -104,9 +104,15 @@ export const ROUTES: RouteInfo[] = [
     title: "Absence",
     icon: "content_paste",
     class: "",
-    click: "",
+    click: "ShowChildren()",
     etat: false,
-    children: []
+    children: [
+      {
+        path: "AbsencePersonnelSJ",
+        title: "Absence Sans justification",
+        icon: "done_all"
+      }
+    ]
   },
   {
     path: "RecuperationSoldeRepos",
@@ -128,6 +134,9 @@ export class SidebarComponent implements OnInit {
   menuItems: any[];
   ShowChildren(route: any) {
     if (route.title == "GestionConge") {
+      route.etat = !route.etat;
+    }
+    if (route.title == "Absence") {
       route.etat = !route.etat;
     }
   }

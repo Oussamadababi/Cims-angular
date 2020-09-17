@@ -31,6 +31,7 @@ import { AbsenceComponent } from './absence/absence.component';
 import { RecuperationSoldeReposComponent } from './recuperation-solde-repos/recuperation-solde-repos.component';
 import { ConsulterSoldeComponent } from './conge/consulter-solde/consulter-solde.component';
 import { SoldeCompensationComponent } from './conge/solde-compensation/solde-compensation.component';
+import { PersonnelAbsenceSJComponent } from './absence/personnel-absence-sj/personnel-absence-sj.component';
 
 @NgModule({
   imports: [
@@ -67,7 +68,8 @@ import { SoldeCompensationComponent } from './conge/solde-compensation/solde-com
     AbsenceComponent,
     RecuperationSoldeReposComponent,
     ConsulterSoldeComponent,
-    SoldeCompensationComponent
+    SoldeCompensationComponent,
+    PersonnelAbsenceSJComponent
   ]
 })
 export class RHLayoutModule { }

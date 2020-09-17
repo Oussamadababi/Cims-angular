@@ -12,6 +12,7 @@ import { AbsenceComponent } from "./absence/absence.component";
 import { RecuperationSoldeReposComponent } from "./recuperation-solde-repos/recuperation-solde-repos.component";
 import { ConsulterSoldeComponent } from "./conge/consulter-solde/consulter-solde.component";
 import { SoldeCompensationComponent } from "./conge/solde-compensation/solde-compensation.component";
+import { PersonnelAbsenceSJComponent } from "./absence/personnel-absence-sj/personnel-absence-sj.component";
 
 export const RHLayoutRoutes: Routes = [
   { path: "", component: DashboardComponent },
@@ -29,6 +30,9 @@ export const RHLayoutRoutes: Routes = [
   { path: "Absence", component: AbsenceComponent },
   { path: "RecuperationSoldeRepos", component: RecuperationSoldeReposComponent },
   { path: "ConsulterSolde", component: ConsulterSoldeComponent },
-  { path: "SoldeCompensation", component: SoldeCompensationComponent }
+  { path: "SoldeCompensation", component: SoldeCompensationComponent },
+  { path: "AbsencePersonnelSJ", component: PersonnelAbsenceSJComponent }
+
+
 
 ];
