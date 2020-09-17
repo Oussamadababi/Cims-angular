@@ -295,5 +295,10 @@ export class RHService {
       "http://localhost:8082/api/listPAbsence/"
     );
   }
+  getPersonnelnonAbsent(date: Date) {
+    return this.http.get(
+      "http://localhost:8082/api/listnonAbsent/" + date
+    );
+  }
 
 }

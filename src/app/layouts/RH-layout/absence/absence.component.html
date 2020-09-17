@@ -28,7 +28,7 @@
 
                                     <mat-label>Personnel</mat-label>
                                     <mat-select name="personnel" [(ngModel)]="this.absence.personnel.personnel_id">
-                                        <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel">
+                                        <mat-option *ngFor="let item of this.rowData1" [value]="item.id_personnel">
                                             {{ item.nom }} {{ item.prenom }}
                                         </mat-option>
                                     </mat-select>

@@ -37,11 +37,11 @@ export class AbsenceComponent implements OnInit {
   personnels: any;
   ngOnInit(): void {
     this.addpers = false;
-    this.Rhservice.listerPersonnel().subscribe(data => {
-      this.personnels = data;
-      console.dir(data);
-
-    });
+    /* this.Rhservice.listerPersonnel().subscribe(data => {
+       this.personnels = data;
+       console.dir(data);
+ 
+     });*/
   }
   absence: object = {
     datedujour: "",
@@ -49,6 +49,7 @@ export class AbsenceComponent implements OnInit {
   };
   public d: any;
   rowData: any;
+  rowData1: any;
   id: number;
   add() {
     if (this.absence["personnel"].personnel_id != "") {
@@ -59,6 +60,10 @@ export class AbsenceComponent implements OnInit {
         this.Rhservice.getListeAbsenceParDate(this.d).subscribe(res => {
           var y: any = res;
           this.rowData = y;
+        });
+        this.Rhservice.getPersonnelnonAbsent(this.d).subscribe(res => {
+          var y: any = res;
+          this.rowData1 = y;
         });
 
         this._snackBar.open("Personnel ajouté au liste d'absences", "OK", {
@@ -94,13 +99,21 @@ export class AbsenceComponent implements OnInit {
       var y: any = res;
       this.rowData = y;
     });
+    this.Rhservice.getPersonnelnonAbsent(this.d).subscribe(res => {
+      var y: any = res;
+      this.rowData1 = y;
+    });
   }
   getListeAbsence() {
-    /*this.d = this.datePipe.transform(this.absence["datedujour"], 'yyyy-MM-dd');
+    this.d = this.datePipe.transform(this.absence["datedujour"], 'yyyy-MM-dd');
     this.Rhservice.getListeAbsenceParDate(this.d).subscribe(res => {
       console.log(res);
       this.rowData = res;
-    });*/
+    });
+    this.Rhservice.getPersonnelnonAbsent(this.d).subscribe(res => {
+      var y: any = res;
+      this.rowData1 = y;
+    });
   }
   getId(event) {
     this.id = event.data["id_personnel"];
@@ -127,6 +140,10 @@ export class AbsenceComponent implements OnInit {
       this.Rhservice.getListeAbsenceParDate(this.d).subscribe(res => {
         var y: any = res;
         this.rowData = y;
+      });
+      this.Rhservice.getPersonnelnonAbsent(this.d).subscribe(res => {
+        var y: any = res;
+        this.rowData1 = y;
       });
       console.log("Personnel Supprimé");
     });
