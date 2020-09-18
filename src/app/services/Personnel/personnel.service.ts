@@ -90,5 +90,10 @@ export class PersonnelService {
   annulationCongeparPersonnel(personnel_id: number) {
     return this.http.get("http://localhost:8082/api/AnulationConge/" + personnel_id);
   }
+  getByIdcompte(idPersonnel: number) {
+    return this.http.get(
+      "http://localhost:8082/api/getByIdcompte/" + idPersonnel
+    );
+  }
 
 }

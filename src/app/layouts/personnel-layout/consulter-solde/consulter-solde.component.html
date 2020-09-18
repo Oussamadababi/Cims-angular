@@ -1,0 +1,25 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">Consulter Solde Conge</h4>
+                        </div>
+                        <div class="card-body">
+                            <fieldset>
+
+                                <label>Solde de l’année actuelle :</label> {{personnel.soldeRepos}} jours<br>
+                                <label>Solde de l’année N-1 :</label> {{personnel.soldeReposN_1}} jours<br>
+                                <label>Solde récupéré (de l’année N-2) :</label> {{personnel.soldeReposN_2}}
+                                jours<br>
+                                <label> Solde de compensation :</label>{{personnel.soldeExceptionnel}} jours
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

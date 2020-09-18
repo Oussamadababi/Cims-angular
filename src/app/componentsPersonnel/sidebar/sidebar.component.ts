@@ -19,6 +19,12 @@ export const ROUTES: RouteInfo[] = [
     title: "Mes Conges",
     icon: "Conge",
     class: ""
+  },
+  {
+    path: "ConsulterMonSolde",
+    title: "Mes ConsulterMonSolde",
+    icon: "Solde",
+    class: ""
   }
 ];
 

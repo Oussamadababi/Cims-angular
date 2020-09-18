@@ -22,6 +22,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { DashbordPersComponent } from './dashbord-pers/dashbord-pers.component';
 import { CongeComponent } from './conge/conge.component';
 import { MatDatepickerModule } from "@angular/material/datepicker";
+import { ConsulterSoldeComponent } from './consulter-solde/consulter-solde.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -43,7 +44,7 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
     MatDatepickerModule,
   ],
   entryComponents: [DialogElementsExampleDialog, DialogUpdateMission],
-  declarations: [DialogElementsExampleDialog, Mes_AffectationsComponent, DialogUpdateMission, DashbordPersComponent, CongeComponent],
+  declarations: [DialogElementsExampleDialog, Mes_AffectationsComponent, DialogUpdateMission, DashbordPersComponent, CongeComponent, ConsulterSoldeComponent],
   bootstrap: []
 })
 export class PersonnelLayoutModule { }
