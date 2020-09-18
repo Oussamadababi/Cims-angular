@@ -95,5 +95,9 @@ export class PersonnelService {
       "http://localhost:8082/api/getByIdcompte/" + idPersonnel
     );
   }
+  ajouterRSR(RSR: object, personnel_id: number) {
+    return this.http.post("http://localhost:8082/api/addRSRPersonnel/" + personnel_id, RSR);
+  }
+
 
 }
