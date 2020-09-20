@@ -25,6 +25,7 @@ export class PersonnelAbsenceSJComponent implements OnInit {
   ListePASJ: any;
   ngOnInit(): void {
     this.Rhservice.ListePersonnelAbsentSj().subscribe(res => {
+      console.log('aaaaaaaaaaaaaaaa' + res.valueOf);
       console.log(res);
       this.rowData = res;
     });
@@ -32,7 +33,7 @@ export class PersonnelAbsenceSJComponent implements OnInit {
   columnDefs = [
     {
       headerName: "Nom",
-      field: "nom",
+      field: "res[0][0]",
       sortable: true,
       filter: true,
       editable: true,
@@ -40,7 +41,7 @@ export class PersonnelAbsenceSJComponent implements OnInit {
     },
     {
       headerName: "Prenom",
-      field: "prenom",
+      field: "res[0][1]",
       sortable: true,
       filter: true,
       editable: true,
@@ -48,27 +49,11 @@ export class PersonnelAbsenceSJComponent implements OnInit {
     },
     {
       headerName: "Nom Arabe",
-      field: "nom_AR",
+      field: "annees[3]",
       sortable: true,
       filter: true,
       editable: true,
       maxWidth: 180
-    },
-    {
-      headerName: "Prenom Arabe",
-      field: "prenom_AR",
-      sortable: true,
-      filter: true,
-      editable: true,
-      maxWidth: 180
-    },
-    {
-      headerName: "Poste Occupe",
-      field: "poste_Occupe",
-      sortable: true,
-      filter: true,
-      editable: true,
-      maxWidth: 170
     },
   ];
 
