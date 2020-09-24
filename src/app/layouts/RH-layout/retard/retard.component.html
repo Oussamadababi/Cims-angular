@@ -1,0 +1,76 @@
+<link href="https://cdn.syncfusion.com/ej2/ej2-base/styles/material.css" rel="stylesheet" />
+<link href="https://cdn.syncfusion.com/ej2/ej2-buttons/styles/material.css" rel="stylesheet" />
+<link href="https://cdn.syncfusion.com/ej2/ej2-inputs/styles/material.css" rel="stylesheet" />
+<link href="https://cdn.syncfusion.com/ej2/ej2-popups/styles/material.css" rel="stylesheet" />
+<link href="https://cdn.syncfusion.com/ej2/ej2-lists/styles/material.css" rel="stylesheet" />
+<link href="https://cdn.syncfusion.com/ej2/ej2-calendars/styles/material.css" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
+
+<div class="main-content">
+    <div class="container-fluid">
+        <div *ngIf="!this.addpers" class="main-content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">Appel du Jour</h4>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <ngb-timepicker></ngb-timepicker>
+                                        <mat-form-field>
+                                            <mat-label>Date de debut *</mat-label>
+                                            <input matInput [matDatepicker]="picker"
+                                                [ngModelOptions]="{ standalone: true }" [(ngModel)]="this.dateSelect"
+                                                (dateChange)="onOptionsSelected()">
+                                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker>
+                                            </mat-datepicker>
+
+                                        </mat-form-field>
+
+                                    </div>
+
+                                </div>
+                                <ejs-datetimepicker id='datetimepicker' placeholder='Select a datetime '
+                                    format='yyyy.MM.dd HH:mm'></ejs-datetimepicker>
+
+
+                                <!--- *ngFor=" let address of addresses; let i=index;"-->
+                                <mat-form-field class="spacing">
+
+                                    <mat-label>Personnel</mat-label>
+                                    <mat-select name="personnel" [(ngModel)]="this.retard.personnel.personnel_id">
+                                        <mat-option *ngFor="let item of this.rowData1" [value]="item.id_personnel">
+                                            {{ item.nom }} {{ item.prenom }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+
+                            </form>
+
+                        </div>
+                        <div class="add ml-auto mr-auto">
+                            <button (click)="add()" class="btn btn-success btn-round">
+                                Ajouter
+                            </button>
+
+                        </div>
+                        <div class="add ml-auto mr-auto">
+                            <ag-grid-angular style="width: 250px; height: 500px;text-align: center;"
+                                class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs"
+                                [modules]="modules" (rowSelected)="getId($event)" (cellValueChanged)="edit($event)"
+                                [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
+                                [paginationAutoPageSize]="true">
+                            </ag-grid-angular>
+                            <div class="add ml-auto mr-auto">
+                                <button class="btn btn-danger btn-round" (click)="delete2()">
+                                    Supprimer
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>

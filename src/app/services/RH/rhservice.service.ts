@@ -300,6 +300,16 @@ export class RHService {
       "http://localhost:8082/api/listnonAbsent/" + date
     );
   }
+  getPersonnelnonRetard(date: Date) {
+    return this.http.get(
+      "http://localhost:8082/api/listNonRetard/" + date
+    );
+  }
+  getPersonnelRetard(date: Date) {
+    return this.http.get(
+      "http://localhost:8082/api/listRetard/" + date
+    );
+  }
 
 
 }

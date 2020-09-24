@@ -115,6 +115,15 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
+    path: "Retard",
+    title: "les Retards",
+    icon: "time",
+    class: "",
+    click: "",
+    etat: false,
+    children: []
+  },
+  {
     path: "RecuperationSoldeRepos",
     title: "RecuperationSoldeRepos",
     icon: "content_paste",
@@ -123,6 +132,7 @@ export const ROUTES: RouteInfo[] = [
     etat: false,
     children: []
   }
+
 ];
 
 @Component({

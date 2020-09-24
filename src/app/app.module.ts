@@ -6,7 +6,6 @@ import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
-//firebase
 import { AngularFireMessagingModule } from "@angular/fire/messaging";
 import { AngularFireDatabaseModule } from "@angular/fire/database";
 import { AngularFireAuthModule } from "@angular/fire/auth";
@@ -33,6 +32,8 @@ import { PersonnelLayoutComponent } from "./layouts/personnel-layout/personnel-l
 import { DEMANDEURLayoutComponent } from "./layouts/demandeur-layout/demandeur-layout.component";
 import { PlanificateurLayoutComponent } from "./layouts/planificateur-layout/planificateur-layout.component";
 import { ProfilComponent } from "./profil/profil.component";
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 //import { CongeComponent } from './layouts/RH-layout/conge/conge.component';
 //import { RegisterLayoutComponent } from "./register-layout/register-layout.component";
 @NgModule({
@@ -54,6 +55,9 @@ import { ProfilComponent } from "./profil/profil.component";
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AngularFireMessagingModule,
+    /*DateTimePickerModule,*/
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
     AngularFireModule.initializeApp(environment.firebase)
   ],
   declarations: [
