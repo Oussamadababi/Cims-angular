@@ -133,10 +133,10 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
   ShowChildren(route: any) {
-    if (route.title == "GestionConge") {
+    if (route.title == "Gestion Conge") {
       route.etat = !route.etat;
     }
-    if (route.title == "Absence") {
+    if (route.title == "Gérer L'Absence") {
       route.etat = !route.etat;
     }
   }
