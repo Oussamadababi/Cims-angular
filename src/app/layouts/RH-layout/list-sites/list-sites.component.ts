@@ -214,10 +214,7 @@ export class ListSitesComponent implements OnInit {
     }
   }
   columnDefs = [
-    {
-      headerName: "ID",
-      valueGetter: "node.rowIndex + 1"
-    },
+
     {
       headerName: "Nom",
       field: "nomSite",

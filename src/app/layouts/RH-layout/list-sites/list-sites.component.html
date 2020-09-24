@@ -92,7 +92,7 @@
           <div class="card-header card-header-danger">
             <h4 class="card-title ">Liste des sites</h4>
           </div>
-          <ag-grid-angular style="width: 900px; height: 400px;" class="ag-theme-material" [rowData]="rowData"
+          <ag-grid-angular style="width: 1400px; height: 600px;" class="ag-theme-material" [rowData]="rowData"
             [columnDefs]="columnDefs" [modules]="modules" (rowSelected)="getId($event)"
             (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
             [pagination]="true" [paginationAutoPageSize]="true"></ag-grid-angular>
