@@ -42,7 +42,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "List_Personnels",
-    title: "Liste des personnels",
+    title: "Gérer les personnels",
     icon: "account_box",
     class: "",
     etat: false,
@@ -51,7 +51,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "List_Sites",
-    title: "Liste des sites",
+    title: "Gérer les sites",
     icon: "local_hospital",
     class: "",
     etat: false,
@@ -60,7 +60,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "List_Grades",
-    title: "Liste des grades",
+    title: "Gérer les grades",
     icon: "grade",
     class: "",
     etat: false,
@@ -69,7 +69,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "List_Departements",
-    title: "Liste des Departements",
+    title: "Gérer les Departements",
     icon: "apartment",
     class: "",
     etat: false,
@@ -78,7 +78,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "Gestion_Conge",
-    title: "GestionConge",
+    title: "Gestion Conge",
     icon: "content_paste",
     class: "",
     click: "ShowChildren()",
@@ -86,7 +86,7 @@ export const ROUTES: RouteInfo[] = [
     children: [
       {
         path: "ConsulterSolde",
-        title: "ConsulterSolde",
+        title: "Consulter Solde",
         icon: "done_all"
       },
       {
@@ -101,7 +101,7 @@ export const ROUTES: RouteInfo[] = [
 
   {
     path: "Absence",
-    title: "Absence",
+    title: "Gérer L'Absence",
     icon: "content_paste",
     class: "",
     click: "ShowChildren()",
@@ -116,7 +116,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "RecuperationSoldeRepos",
-    title: "RecuperationSoldeRepos",
+    title: "Recuperation Solde Repos",
     icon: "content_paste",
     class: "",
     click: "",

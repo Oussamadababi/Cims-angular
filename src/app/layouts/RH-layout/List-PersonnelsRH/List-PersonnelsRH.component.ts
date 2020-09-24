@@ -528,7 +528,7 @@ export class ListPersonnelsComponent implements OnInit {
       sortable: true,
       filter: true,
       editable: true,
-      maxWidth: 300
+      maxWidth: 200
     },
     {
       headerName: "SoldeRepos",
