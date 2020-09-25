@@ -32,6 +32,11 @@ import { RecuperationSoldeReposComponent } from './recuperation-solde-repos/recu
 import { ConsulterSoldeComponent } from './conge/consulter-solde/consulter-solde.component';
 import { SoldeCompensationComponent } from './conge/solde-compensation/solde-compensation.component';
 import { PersonnelAbsenceSJComponent } from './absence/personnel-absence-sj/personnel-absence-sj.component';
+import { RetardComponent } from './retard/retard.component';
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+
+
 
 @NgModule({
   imports: [
@@ -47,6 +52,9 @@ import { PersonnelAbsenceSJComponent } from './absence/personnel-absence-sj/pers
     MatTooltipModule,
     MatSnackBarModule,
     MatDatepickerModule,
+    /* DateTimePickerModule,*/
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
 
     AgGridModule.withComponents([])
   ],
@@ -69,7 +77,8 @@ import { PersonnelAbsenceSJComponent } from './absence/personnel-absence-sj/pers
     RecuperationSoldeReposComponent,
     ConsulterSoldeComponent,
     SoldeCompensationComponent,
-    PersonnelAbsenceSJComponent
+    PersonnelAbsenceSJComponent,
+    RetardComponent
   ]
 })
 export class RHLayoutModule { }

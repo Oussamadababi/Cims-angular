@@ -22,7 +22,7 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: "ConsulterMonSolde",
-    title: "Mes ConsulterMonSolde",
+    title: "ConsulterMonSolde",
     icon: "Solde",
     class: ""
   }
