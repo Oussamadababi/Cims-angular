@@ -328,10 +328,10 @@ export class CongeComponent implements OnInit {
   AnnulationConge: object;
   test: object;
   ajouterAnuulationConge() {
-    //console.log("aaaaaaaaaa" + this.id);
+    console.log("aaaaaaaaaa" + this.id);
 
 
-    console.log("oooooooooooooooooooo" + this.AnnulationConge);
+    console.log("oooooooooooooooooooo" + this.annulation);
     if (this.annulation == false) {
       this.Rhservice.ajouterAnnulationConge(this.id).subscribe(res => {
         this.ngOnInit();
