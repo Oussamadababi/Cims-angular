@@ -310,6 +310,12 @@ export class RHService {
       "http://localhost:8082/api/listRetard/" + date
     );
   }
+  ajoutRetard(idPersonnel: number, date: any, heure: any) {
+    return this.http.put(
+      "http://localhost:8082/api/ListeRetard/" + idPersonnel + "/" + date + "/" + heure, {}
+    );
+
+  }
 
 
 }

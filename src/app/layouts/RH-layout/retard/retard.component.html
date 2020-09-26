@@ -19,11 +19,11 @@
                             <form>
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
-                                        <ngb-timepicker></ngb-timepicker>
+
                                         <mat-form-field>
-                                            <mat-label>Date de debut *</mat-label>
-                                            <input matInput [matDatepicker]="picker"
-                                                [ngModelOptions]="{ standalone: true }" [(ngModel)]="this.dateSelect"
+                                            <mat-label>Retard *</mat-label>
+                                            <input matInput [matDatepicker]="picker" [(ngModel)]="this.dateSelect"
+                                                [ngModelOptions]="{ standalone: true }"
                                                 (dateChange)="onOptionsSelected()">
                                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                             <mat-datepicker #picker>
@@ -37,7 +37,8 @@
                                 <!--    <ejs-datetimepicker id='datetimepicker' placeholder='Select a datetime '
                                     format='yyyy.MM.dd HH:mm'></ejs-datetimepicker>-->
 
-                                <input type="time" atp-time-picker value="08:00" theme="dark" />
+                                <input type="time" atp-time-picker theme="dark" [(ngModel)]="this.retard.heure"
+                                    [ngModelOptions]="{ standalone: true }" />
                                 <!--<input type="time" atp-time-picker value="20:55" theme="dark" locale='fa' start='18:30'
                                     end="23:00" arrowStyle="{'background': 'red', 'color': 'white'}" />-->
 

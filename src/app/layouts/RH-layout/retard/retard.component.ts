@@ -35,16 +35,18 @@ export class RetardComponent implements OnInit {
     private atp: AmazingTimePickerService) { }
   open() {
     const amazingTimePicker = this.atp.open();
+
     amazingTimePicker.afterClose().subscribe(time => {
       console.log(time);
+
+      ;
     });
   }
   ngOnInit(): void {
+
+
   }
-  public minDate: Date = new Date("05/07/2017 2:00 AM");
-  public maxDate: Date = new Date("05/27/2017 11:00 AM");
-  public dateValue: Date = new Date("05/16/2017 5:00 AM");
-  time = { hour: 13, minute: 30 };
+
   retard: object = {
     datedujour: "",
     heure: "",
@@ -56,11 +58,14 @@ export class RetardComponent implements OnInit {
   dateSelect: any;
   onOptionsSelected() {
     console.log("ggggg");
-    this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd hh:mm:ss')
+    this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd')
+    console.log(this.d);
     console.log("ggggg");
     this.Rhservice.getPersonnelRetard(this.d).subscribe(res => {
       var y: any = res;
       this.rowData = y;
+      console.log(this.retard["heure"]);
+      console.log(this.d1);
     });
     this.Rhservice.getPersonnelnonRetard(this.d).subscribe(res => {
       var y: any = res;
@@ -94,11 +99,15 @@ export class RetardComponent implements OnInit {
       maxWidth: 130
     }
   ]
-  /*add() {
+  d1: any;
+  add() {
+
     if (this.retard["personnel"].personnel_id != "") {
       this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
-      console.log(this.d);
-      this.Rhservice.ajouterAbsence(this.retard["personnel"].personnel_id, this.d).subscribe(res => {
+      /* this.d1 = this.datePipe.transform(this.retard["heure"], 'yyyy-MM-dd hh:mm');
+       console.log(this.d1);*/
+
+      this.Rhservice.ajoutRetard(this.retard["personnel"].personnel_id, this.d, this.d + "T" + this.retard["heure"]).subscribe(res => {
         console.log(res);
         this.Rhservice.getPersonnelRetard(this.d).subscribe(res => {
           var y: any = res;
@@ -126,5 +135,5 @@ export class RetardComponent implements OnInit {
         }
       );
     }
-  }*/
+  }
 }
