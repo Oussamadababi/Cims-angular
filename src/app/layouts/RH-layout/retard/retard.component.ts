@@ -11,6 +11,7 @@ import { RHService } from 'app/services/RH/rhservice.service';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
+import { AmazingTimePickerService } from 'amazing-time-picker';
 @Component({
   selector: 'app-retard',
   templateUrl: './retard.component.html',
@@ -30,8 +31,14 @@ export class RetardComponent implements OnInit {
     private http: HttpClient,
     private _snackBar: MatSnackBar,
     private datePipe: DatePipe,
-    public dialog: MatDialog) { }
-
+    public dialog: MatDialog,
+    private atp: AmazingTimePickerService) { }
+  open() {
+    const amazingTimePicker = this.atp.open();
+    amazingTimePicker.afterClose().subscribe(time => {
+      console.log(time);
+    });
+  }
   ngOnInit(): void {
   }
   public minDate: Date = new Date("05/07/2017 2:00 AM");

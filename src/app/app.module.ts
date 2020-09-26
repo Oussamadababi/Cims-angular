@@ -36,6 +36,7 @@ import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 //import { CongeComponent } from './layouts/RH-layout/conge/conge.component';
 //import { RegisterLayoutComponent } from "./register-layout/register-layout.component";
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 @NgModule({
   imports: [
     ComponentsPersonnelModule,
@@ -56,6 +57,7 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-mat
     AngularFireAuthModule,
     AngularFireMessagingModule,
     /*DateTimePickerModule,*/
+    AmazingTimePickerModule,
     NgxMatTimepickerModule,
     NgxMatDatetimePickerModule,
     AngularFireModule.initializeApp(environment.firebase)
