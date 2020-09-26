@@ -46,6 +46,7 @@ export class SoldeCompensationComponent implements OnInit {
       this._snackBar.open("Solde Ajouté avec succés", "OK", {
         duration: 2000,
         panelClass: ["green-snackbar"]
+
       });
     }, err => {
       this.message = err.error.message;

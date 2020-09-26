@@ -25,7 +25,7 @@ export class PersonnelAbsenceSJComponent implements OnInit {
   ListePASJ: any;
   ngOnInit(): void {
     this.Rhservice.ListePersonnelAbsentSj().subscribe(res => {
-      console.log('aaaaaaaaaaaaaaaa' + res.valueOf);
+      console.log('aaaaaaaaaaaaaaaa' + res[0][0]);
       console.log(res);
       this.rowData = res;
     });
