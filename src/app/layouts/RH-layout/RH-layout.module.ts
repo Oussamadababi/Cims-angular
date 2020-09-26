@@ -35,7 +35,7 @@ import { PersonnelAbsenceSJComponent } from './absence/personnel-absence-sj/pers
 import { RetardComponent } from './retard/retard.component';
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
-
+import { AmazingTimePickerModule } from 'amazing-time-picker';
 
 
 @NgModule({
@@ -53,6 +53,7 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-mat
     MatSnackBarModule,
     MatDatepickerModule,
     /* DateTimePickerModule,*/
+    AmazingTimePickerModule,
     NgxMatTimepickerModule,
     NgxMatDatetimePickerModule,
 

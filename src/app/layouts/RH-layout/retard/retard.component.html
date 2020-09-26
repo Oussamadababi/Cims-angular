@@ -5,7 +5,7 @@
 <link href="https://cdn.syncfusion.com/ej2/ej2-lists/styles/material.css" rel="stylesheet" />
 <link href="https://cdn.syncfusion.com/ej2/ej2-calendars/styles/material.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons&display=block" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <div class="main-content">
     <div class="container-fluid">
         <div *ngIf="!this.addpers" class="main-content">
@@ -34,9 +34,12 @@
                                     </div>
 
                                 </div>
-                                <ejs-datetimepicker id='datetimepicker' placeholder='Select a datetime '
-                                    format='yyyy.MM.dd HH:mm'></ejs-datetimepicker>
+                                <!--    <ejs-datetimepicker id='datetimepicker' placeholder='Select a datetime '
+                                    format='yyyy.MM.dd HH:mm'></ejs-datetimepicker>-->
 
+                                <input type="time" atp-time-picker value="08:00" theme="dark" />
+                                <!--<input type="time" atp-time-picker value="20:55" theme="dark" locale='fa' start='18:30'
+                                    end="23:00" arrowStyle="{'background': 'red', 'color': 'white'}" />-->
 
                                 <!--- *ngFor=" let address of addresses; let i=index;"-->
                                 <mat-form-field class="spacing">
