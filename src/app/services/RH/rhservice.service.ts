@@ -316,6 +316,10 @@ export class RHService {
     );
 
   }
-
+  deletePersonnelFromListeRetard(personnel_id: number, datedejour: Date) {
+    return this.http.put(
+      "http://localhost:8082/api/supprimerPersonnelDeLaListeRetard/" + personnel_id + "/" + datedejour, {}
+    );
+  }
 
 }

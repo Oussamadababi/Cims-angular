@@ -136,4 +136,26 @@ export class RetardComponent implements OnInit {
       );
     }
   }
+  getId(event) {
+    this.id = event.data["id_personnel"];
+    console.log(event.data["id_personnel"]);
+    console.log(this.id);
+  }
+  id: number;
+  delete() {
+    this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
+    console.log(this.d);
+    this.Rhservice.deletePersonnelFromListeRetard(this.id, this.d).subscribe(res => {
+      this.Rhservice.getPersonnelRetard(this.d).subscribe(res => {
+        var y: any = res;
+        this.rowData = y;
+      });
+      this.Rhservice.getPersonnelnonRetard(this.d).subscribe(res => {
+        var y: any = res;
+        this.rowData1 = y;
+      });
+
+      console.log("Personnel Supprimé");
+    });
+  }
 }
