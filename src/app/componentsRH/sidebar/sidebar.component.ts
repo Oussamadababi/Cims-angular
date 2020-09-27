@@ -117,7 +117,7 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "Retard",
     title: "les Retards",
-    icon: "time",
+    icon: "alarm",
     class: "",
     click: "",
     etat: false,
