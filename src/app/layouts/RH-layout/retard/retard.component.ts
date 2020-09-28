@@ -118,7 +118,7 @@ export class RetardComponent implements OnInit {
           this.rowData1 = y;
         });
 
-        this._snackBar.open("Personnel ajouté au liste d'absences", "OK", {
+        this._snackBar.open("Personnel ajouté au liste des retard", "OK", {
           duration: 2000,
           panelClass: ["green-snackbar"]
 
