@@ -184,7 +184,7 @@ export class RHService {
   }
   ///////////////////////////////////////////////////////////////////////
   ajouterAbsence(personnel_id: number, datedejour: Date) {
-    return this.http.put("http://localhost:8082/api/ListeAbsence/" + personnel_id + "/" + datedejour, {}
+    return this.http.post("http://localhost:8082/api/ajouteAuListeAbsence/" + personnel_id + "/" + datedejour, {}
     );
 
   }
@@ -192,8 +192,8 @@ export class RHService {
     return this.http.get("http://localhost:8082/api/listAbsenceParJour/" + datedejour);
   }
   deletePersonnelFromListeAbsence(personnel_id: number, datedejour: Date) {
-    return this.http.put(
-      "http://localhost:8082/api/supprimerPersonnelDeLaListe/" + personnel_id + "/" + datedejour, {}
+    return this.http.delete(
+      "http://localhost:8082/api/suppDuListeAbsence/" + personnel_id + "/" + datedejour
     );
   }
   ajouterAnnulationConge(conge_id: number) {
