@@ -24,7 +24,7 @@
                                 <mat-form-field class="spacing">
                                     <mat-label>Personnel</mat-label>
                                     <mat-select name="personnel" [(ngModel)]="this.conge.personnel.personnel_id"
-                                        ngDefaultControl>
+                                        (selectionChange)="onOptionsSelected2()">
                                         <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel"
                                             ngDefaultControl>
                                             {{ item.nom }} {{ item.prenom }}

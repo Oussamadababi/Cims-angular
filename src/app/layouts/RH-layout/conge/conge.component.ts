@@ -40,6 +40,23 @@ export class CongeComponent implements OnInit {
     })
 
   }
+  personnel: object =
+    {
+      soldeRepos: "",
+      soldeReposN_1: "",
+      soldeReposN_2: ""
+
+    }
+  onOptionsSelected2() {
+    this.Rhservice.getPersonnel(this.conge["personnel"].personnel_id).subscribe(res => {
+      var y: any = res;
+      console.log(res);
+      this.personnel = y;
+      console.log(this.personnel["soldeRepos"])
+      console.log(this.personnel["soldeReposN_1"])
+      console.log(this.personnel["soldeReposN_2"])
+    });
+  }
   personnels: any;
   ngOnInit(): void {
     this.Rhservice.listerPersonnel().subscribe(data => {
@@ -191,49 +208,66 @@ export class CongeComponent implements OnInit {
 
     console.log(this.conge["personnel"].personnel_id);
     // if (this.conge2 == null) {
-    if (this.conge["typedeconge"] != "") {
-      if (this.conge["datedebut"] != "") {
-        if (this.conge["personnel"].personnel_id != "") {
-          if (this.conge["numDeJour"] != "") {
+    if ((this.personnel["soldeRepos"]) != 0 && (this.personnel["soldeRepos"]) != 0 && (this.personnel["soldeRepos"]) != 0)
+      if (this.conge["typedeconge"] != "") {
+        if (this.conge["datedebut"] != "") {
+          if (this.conge["personnel"].personnel_id != "") {
+            if (this.conge["numDeJour"] != "") {
 
-            this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
-              this.ngOnInit();
-              console.log(res);
-              console.log(this.conge["datefin"]);
-              console.log(this.conge["personnel"].personnel_id);
-              this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
-              this._snackBar.open("demande Conge ajouté avec succés", "OK", {
-                duration: 2000,
-                panelClass: ["green-snackbar"]
+              this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+                this.ngOnInit();
+                console.log(res);
+                console.log(this.conge["datefin"]);
+                console.log(this.conge["personnel"].personnel_id);
+                this.nombreJourConge = (this.conge["datefin"] - this.conge["datedebut"]) / 86400000;
+                this._snackBar.open("demande Conge ajouté avec succés", "OK", {
+                  duration: 2000,
+                  panelClass: ["green-snackbar"]
 
+                });
               });
-            });
-          }
-          else if (this.conge["numDeMois"] != "") {
+            }
+            else if (this.conge["numDeMois"] != "") {
 
-            this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
-              this.ngOnInit();
-              this._snackBar.open("demande Conge ajouté avec succés", "OK", {
-                duration: 2000,
-                panelClass: ["green-snackbar"]
+              this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+                this.ngOnInit();
+                this._snackBar.open("demande Conge ajouté avec succés", "OK", {
+                  duration: 2000,
+                  panelClass: ["green-snackbar"]
 
+                });
               });
-            });
-          }
-          else if (this.etat === 'other') {
+            }
+            else if (this.etat === 'other') {
 
-            this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
-              this.ngOnInit();
-              this._snackBar.open("demande Conge ajouté avec succés", "OK", {
-                duration: 2000,
-                panelClass: ["green-snackbar"]
+              this.Rhservice.ajouterConge(this.conge, this.conge["personnel"].personnel_id).subscribe(res => {
+                this.ngOnInit();
+                this._snackBar.open("demande Conge ajouté avec succés", "OK", {
+                  duration: 2000,
+                  panelClass: ["green-snackbar"]
 
+                });
               });
-            });
+            }
+            else {
+              this._snackBar.open(
+                "Veuillez Insérer la durée de congé  ",
+                "OK",
+                {
+                  duration: 2000,
+                  panelClass: ["red-snackbar"]
+                }
+              );
+            }
+
+
+
           }
+
+
           else {
             this._snackBar.open(
-              "Veuillez Insérer la durée de congé  ",
+              "Veuillez selectionner Personnel  ",
               "OK",
               {
                 duration: 2000,
@@ -241,15 +275,10 @@ export class CongeComponent implements OnInit {
               }
             );
           }
-
-
-
         }
-
-
         else {
           this._snackBar.open(
-            "Veuillez selectionner Personnel  ",
+            "Veuillez insérer date de début ",
             "OK",
             {
               duration: 2000,
@@ -257,10 +286,12 @@ export class CongeComponent implements OnInit {
             }
           );
         }
+
+
       }
       else {
         this._snackBar.open(
-          "Veuillez insérer date de début ",
+          "Veuillez Selectionner un type de congé ",
           "OK",
           {
             duration: 2000,
@@ -268,12 +299,9 @@ export class CongeComponent implements OnInit {
           }
         );
       }
-
-
-    }
     else {
       this._snackBar.open(
-        "Veuillez Selectionner un type de congé ",
+        "Solde insuffisant ",
         "OK",
         {
           duration: 2000,
