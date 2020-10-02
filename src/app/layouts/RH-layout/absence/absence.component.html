@@ -45,7 +45,7 @@
 
                         </div>
                         <div class="add ml-auto mr-auto">
-                            <ag-grid-angular style="width: 250px; height: 500px;text-align: center;"
+                            <ag-grid-angular style="width: 500px; height: 500px;text-align: center;"
                                 class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs"
                                 [modules]="modules" (rowSelected)="getId($event)" (cellValueChanged)="edit($event)"
                                 [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
@@ -88,22 +88,22 @@
                                 </div>
 
                             </center>
-                            <center>
-                                <ag-grid-angular style="width: 250px; height: 500px;text-align: center;"
-                                    class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs"
-                                    [modules]="modules" (rowSelected)="getId($event)" (cellValueChanged)="edit($event)"
-                                    [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
-                                    [paginationAutoPageSize]="true">
-                                </ag-grid-angular>
-                                <div class="add ml-auto mr-auto">
-                                    <button class="btn btn-danger btn-round" (click)="delete2()">
-                                        Supprimer
-                                    </button>
-                                    <button class="btn btn-danger btn-round" (click)="cancel()">
-                                        Annuler
-                                    </button>
-                                </div>
-                            </center>
+
+                            <ag-grid-angular style="width: 500px; height: 500px;text-align: center;"
+                                class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs"
+                                [modules]="modules" (rowSelected)="getId($event)" (cellValueChanged)="edit($event)"
+                                [rowSelection]="'multiple'" rowMultiSelectWithClick="true" [pagination]="true"
+                                [paginationAutoPageSize]="true">
+                            </ag-grid-angular>
+                            <div class="add ml-auto mr-auto">
+                                <button class="btn btn-danger btn-round" (click)="delete2()">
+                                    Supprimer
+                                </button>
+                                <button class="btn btn-danger btn-round" (click)="cancel()">
+                                    Annuler
+                                </button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

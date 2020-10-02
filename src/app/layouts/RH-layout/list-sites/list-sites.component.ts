@@ -55,13 +55,13 @@ export class ListSitesComponent implements OnInit {
               if (this.site["nature_etablissement_ar"] != "") {
                 if (this.site["qualite_direction_fr"] != "") {
                   if (this.site["qualite_direction_ar"] != "") {
-                    for (let prop in this.site) {
-                      if (typeof this.site[prop] == "string") {
-                        if (!this.site[prop]) return alert(prop + " is Required");
-                      } else {
-                        if (this.site[prop] == {}) return alert(prop + "is Required");
-                      }
-                    }
+                    /*      for (let prop in this.site) {
+                            /*   if (typeof this.site[prop] == "string") {
+                                 if (!this.site[prop]) return alert(prop + " is Required");
+                               } else {
+                                 if (this.site[prop] == {}) return alert(prop + "is Required");
+                               }
+                  }*/
                     this.Rhservice.addSite(this.site, this.site["gouvernorat"].idGouvernorat).subscribe(res => {
                       console.log(res);
                       this.ngOnInit();
