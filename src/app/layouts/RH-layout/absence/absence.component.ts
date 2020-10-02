@@ -116,8 +116,8 @@ export class AbsenceComponent implements OnInit {
     });
   }
   getId(event) {
-    this.id = event.data["id_personnel"];
-    console.log(event.data["id_personnel"]);
+    this.id = event.data["id"];
+    console.log(event.data["id"]);
     console.log(this.id);
   }
   delete() {
@@ -166,13 +166,15 @@ export class AbsenceComponent implements OnInit {
       maxWidth: 130
     },
     {
-      headerName: "Justificatif",
-      field: "",
+      headerName: "etat",
+      field: "etat",
       sortable: true,
       filter: true,
       editable: true,
       maxWidth: 130
     }
+
+
   ]
   initD() {
     this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
