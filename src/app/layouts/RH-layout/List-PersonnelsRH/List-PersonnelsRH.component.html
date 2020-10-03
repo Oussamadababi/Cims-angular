@@ -233,7 +233,18 @@
                     TypeFonction: {{ attributfonction.type_fonction}}
                   </form>
                 </div>
+                <form>
+                  <div class="col-md-4 mb-3">
+                    <mat-form-field>
+                      <mat-label>Date de Fonction *</mat-label>
+                      <input matInput [matDatepicker]="picker3" ngDefaultControl
+                        [(ngModel)]="this.personnel.date_fonction" [ngModelOptions]="{ standalone: true }">
+                      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                      <mat-datepicker #picker3></mat-datepicker>
 
+                    </mat-form-field>
+                  </div>
+                </form>
                 <p>(*):champs obligatoire </p>
               </form>
             </div>

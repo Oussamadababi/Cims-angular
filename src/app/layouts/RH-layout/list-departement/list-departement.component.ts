@@ -12,7 +12,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 export class ListDepartementComponent implements OnInit {
   message: string;
   id: number;
-  departement: object = { id_dept: "", nom_dept: "" };
+  departement: object = { id_dept: "", direction: "", nom_dept: "" };
   rowData: any;
   constructor(
     private http: HttpClient,
@@ -101,6 +101,14 @@ export class ListDepartementComponent implements OnInit {
     {
       headerName: "ID",
       valueGetter: "node.rowIndex + 1"
+    },
+    {
+      headerName: "Direction",
+      field: "direction",
+      sortable: true,
+      filter: true,
+      editable: true,
+      minWidth: 500
     },
     {
       headerName: "Nom",
