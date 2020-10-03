@@ -37,6 +37,15 @@ export class CongeComponent implements OnInit {
   rowData: any;
   rowData1: any;
   id: number;
+  personnel: object =
+    {
+      soldeRepos: "",
+      soldeReposN_1: "",
+      soldeReposN_2: "",
+      soldeCompensation: "",
+      soldeExceptionnel: ""
+
+    }
   ngOnInit(): void {
     this.PersonnelService.listCongeParPersonnel(this.tokenStorage.getUser().id).subscribe(res => {
       console.log(res);
@@ -45,6 +54,11 @@ export class CongeComponent implements OnInit {
     this.PersonnelService.annulationCongeparPersonnel(this.tokenStorage.getUser().id).subscribe(res => {
       console.log(res);
       this.rowData1 = res;
+    });
+    this.Rhservice.getPersonnel(this.tokenStorage.getUser().id).subscribe(res => {
+      var y: any = res;
+      console.log("hhhh");
+      this.personnel = y;
     });
   }
   columnDefs = [
@@ -118,24 +132,36 @@ export class CongeComponent implements OnInit {
   add() {
     this.conge2 = this.PersonnelService.congeparPersonnelenattenteCompte(this.tokenStorage.getUser().id).subscribe(res => { });
     //if (this.conge2 == null) {
-    if (this.conge["typedeconge"] != "") {
-      if (this.conge["datedebut"] != "") {
-        if (this.conge["numDeJour"] != "") {
-          this.PersonnelService.demandeConge(this.conge, this.tokenStorage.getUser().id).subscribe(res => {
-            this.ngOnInit();
-            console.log(res);
-            console.log(this.conge["personnel"].personnel_id);
-            this._snackBar.open("demandeConge ajouté avec succés", "OK", {
-              duration: 2000,
-              panelClass: ["green-snackbar"]
+    if ((this.personnel["soldeRepos"]) != 0 || (this.personnel["soldeReposN_1"]) != 0 || (this.personnel["soldeReposN_2"]) != 0 || (this.personnel["soldeCompensation"]) != 0 || (this.personnel["soldeExceptionnel"]) != 0)
+      if (this.conge["typedeconge"] != "") {
+        if (this.conge["datedebut"] != "") {
+          if (this.conge["numDeJour"] != "") {
+            this.PersonnelService.demandeConge(this.conge, this.tokenStorage.getUser().id).subscribe(res => {
+              this.ngOnInit();
+              console.log(res);
+              console.log(this.conge["personnel"].personnel_id);
+              this._snackBar.open("demandeConge ajouté avec succés", "OK", {
+                duration: 2000,
+                panelClass: ["green-snackbar"]
+              });
             });
-          });
+          }
         }
       }
-    }
+      else {
+        this._snackBar.open(
+          "Veuillez insérer datedebut du conge ",
+          "OK",
+          {
+            duration: 2000,
+            panelClass: ["red-snackbar"]
+          }
+        );
+      }
+
     else {
       this._snackBar.open(
-        "Veuillez insérer datedebut du conge ",
+        "Solde insuffisant ",
         "OK",
         {
           duration: 2000,
@@ -173,6 +199,7 @@ export class CongeComponent implements OnInit {
         panelClass: ["red-snackbar"]
       });
     }
+
   }
   AnnulationConge: any;
   annulation: boolean;

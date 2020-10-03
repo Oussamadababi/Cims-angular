@@ -44,7 +44,9 @@ export class CongeComponent implements OnInit {
     {
       soldeRepos: "",
       soldeReposN_1: "",
-      soldeReposN_2: ""
+      soldeReposN_2: "",
+      soldeCompensation: "",
+      soldeExceptionnel: ""
 
     }
   onOptionsSelected2() {
@@ -208,7 +210,7 @@ export class CongeComponent implements OnInit {
 
     console.log(this.conge["personnel"].personnel_id);
     // if (this.conge2 == null) {
-    if ((this.personnel["soldeRepos"]) != 0 && (this.personnel["soldeRepos"]) != 0 && (this.personnel["soldeRepos"]) != 0)
+    if ((this.personnel["soldeRepos"]) != 0 || (this.personnel["soldeReposN_1"]) != 0 || (this.personnel["soldeReposN_2"]) != 0 || (this.personnel["soldeCompensation"]) != 0 || (this.personnel["soldeExceptionnel"]) != 0)
       if (this.conge["typedeconge"] != "") {
         if (this.conge["datedebut"] != "") {
           if (this.conge["personnel"].personnel_id != "") {
