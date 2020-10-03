@@ -159,6 +159,7 @@ export class ListPersonnelsComponent implements OnInit {
   }
   onOptionsSelected1() {
     this.Rhservice.listService(this.divselect).subscribe(res => {
+      console.log('aaaaaaaaaaaaaaaaaaaaaaaaazeby' + this.divselect);
       var y: any = res;
       this.services = y;
     });
@@ -205,7 +206,7 @@ export class ListPersonnelsComponent implements OnInit {
                                             if (this.personnel["division"].id_division != "") {
                                               if (this.idfonction != "") {
                                                 if (this.personnel["date_fonction"] != "") {
-                                                  this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff, this.personnel["division"].id_division, this.divselect).subscribe(res => {
+                                                  this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff, this.divselect, this.personnel["division"].id_division).subscribe(res => {
                                                     console.log(res);
                                                     this.ngOnInit();
 
