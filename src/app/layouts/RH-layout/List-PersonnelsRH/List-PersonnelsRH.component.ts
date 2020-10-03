@@ -80,7 +80,8 @@ export class ListPersonnelsComponent implements OnInit {
     fonction: { id_fonction: "" },
     division: { id_division: "" },
     nom_AR: "",
-    grade: { id_grade: "" }
+    grade: { id_grade: "" },
+    date_fonction: ""
 
 
 
@@ -203,21 +204,36 @@ export class ListPersonnelsComponent implements OnInit {
                                           if (this.divselect != "") {
                                             if (this.personnel["division"].id_division != "") {
                                               if (this.idfonction != "") {
-                                                this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff, this.personnel["division"].id_division, this.divselect).subscribe(res => {
-                                                  console.log(res);
-                                                  this.ngOnInit();
+                                                if (this.personnel["date_fonction"] != "") {
+                                                  this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff, this.personnel["division"].id_division, this.divselect).subscribe(res => {
+                                                    console.log(res);
+                                                    this.ngOnInit();
 
-                                                  this._snackBar.open("Personnel ajouté avec succés", "OK", {
-                                                    duration: 2000,
-                                                    panelClass: ["green-snackbar"]
-                                                  });
-                                                }, err => {
-                                                  this.message = err.error.message;
-                                                  this.dialog.open(DialogError, {
-                                                    data: this.message
-                                                  });
+                                                    this._snackBar.open("Personnel ajouté avec succés", "OK", {
+                                                      duration: 2000,
+                                                      panelClass: ["green-snackbar"]
+                                                    });
+                                                  }, err => {
+                                                    this.message = err.error.message;
+                                                    this.dialog.open(DialogError, {
+                                                      data: this.message
+                                                    });
 
-                                                });
+                                                  });
+                                                }
+                                                else {
+                                                  this._snackBar.open(
+                                                    "Veuillez Selectionner une date de fonction  ",
+                                                    "OK",
+                                                    {
+                                                      duration: 2000,
+                                                      panelClass: ["red-snackbar"]
+                                                    }
+                                                  );
+
+
+                                                }
+
                                               } else {
                                                 this._snackBar.open(
                                                   "Veuillez une Fonction  ",
