@@ -19,7 +19,7 @@ export class ListeRetardPersonnelComponent implements OnInit {
   }
   columnDefs = [
     {
-      headerName: "Dateetheureretard",
+      headerName: "Date & Heure retard",
       field: "heureEntree",
       sortable: true,
       filter: true,
