@@ -119,9 +119,13 @@ export const ROUTES: RouteInfo[] = [
     title: "les Retards",
     icon: "alarm",
     class: "",
-    click: "",
+    click: "ShowChildren()",
     etat: false,
-    children: []
+    children: [{
+      path: "ListeRetardPersonnel",
+      title: "Liste Des Retards des personnels",
+      icon: "done_all"
+    }]
   },
   {
     path: "RecuperationSoldeRepos",
@@ -147,6 +151,9 @@ export class SidebarComponent implements OnInit {
       route.etat = !route.etat;
     }
     if (route.title == "Gérer L'Absence") {
+      route.etat = !route.etat;
+    }
+    if (route.title == "les Retards") {
       route.etat = !route.etat;
     }
   }

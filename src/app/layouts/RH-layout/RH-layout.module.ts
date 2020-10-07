@@ -36,6 +36,7 @@ import { RetardComponent } from './retard/retard.component';
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { AmazingTimePickerModule } from 'amazing-time-picker';
+import { ListeRetardPersonnelComponent } from './retard/liste-retard-personnel/liste-retard-personnel.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { AmazingTimePickerModule } from 'amazing-time-picker';
     ConsulterSoldeComponent,
     SoldeCompensationComponent,
     PersonnelAbsenceSJComponent,
-    RetardComponent
+    RetardComponent,
+    ListeRetardPersonnelComponent
   ]
 })
 export class RHLayoutModule { }

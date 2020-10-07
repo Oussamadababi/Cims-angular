@@ -14,6 +14,7 @@ import { ConsulterSoldeComponent } from "./conge/consulter-solde/consulter-solde
 import { SoldeCompensationComponent } from "./conge/solde-compensation/solde-compensation.component";
 import { PersonnelAbsenceSJComponent } from "./absence/personnel-absence-sj/personnel-absence-sj.component";
 import { RetardComponent } from "./retard/retard.component";
+import { ListeRetardPersonnelComponent } from "./retard/liste-retard-personnel/liste-retard-personnel.component";
 
 export const RHLayoutRoutes: Routes = [
   { path: "", component: DashboardComponent },
@@ -33,7 +34,8 @@ export const RHLayoutRoutes: Routes = [
   { path: "ConsulterSolde", component: ConsulterSoldeComponent },
   { path: "SoldeCompensation", component: SoldeCompensationComponent },
   { path: "AbsencePersonnelSJ", component: PersonnelAbsenceSJComponent },
-  { path: "Retard", component: RetardComponent }
+  { path: "Retard", component: RetardComponent },
+  { path: "ListeRetardPersonnel", component: ListeRetardPersonnelComponent }
 
 
 
