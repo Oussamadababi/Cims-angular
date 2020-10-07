@@ -52,13 +52,25 @@ export class RecuperationSoldeReposComponent implements OnInit {
 
     console.log(this.RSR["personnel"].personnel_id);
     this.Rhservice.ajouterRSR(this.RSR, this.RSR["personnel"].personnel_id).subscribe(res => {
-      this.ngOnInit();
-      console.log(res);
-      console.log(this.RSR["personnel"].personnel_id);
-      this._snackBar.open("Demande De recuperation Solde repos ajouté avec succés", "OK", {
-        duration: 2000,
-        panelClass: ["green-snackbar"]
-      });
+      if (res != null) {
+        this.ngOnInit();
+        console.log("hani lenna" + res);
+        console.log(res);
+        console.log(this.RSR["personnel"].personnel_id);
+        this._snackBar.open("Demande De recuperation Solde repos ajouté avec succés", "OK", {
+          duration: 2000,
+          panelClass: ["green-snackbar"]
+        });
+      }
+      else {
+        console.log("hani lenna" + res);
+        console.log(res);
+        this._snackBar.open("Il existe deja une demande avec cette personnel dans le meme année", "OK", {
+          duration: 2000,
+          panelClass: ["green-snackbar"]
+        });
+
+      }
     });
   }
 
