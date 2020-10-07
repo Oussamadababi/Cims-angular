@@ -1,1 +1,39 @@
-<p>liste-retard-personnel works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title">Consulter les heures et les de retard</h4>
+
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <mat-form-field class="spacing">
+                                    <mat-label>Personnel</mat-label>
+                                    <mat-select name="personnel" [(ngModel)]="perselecter"
+                                        (selectionChange)="onOptionsSelected()">
+                                        <mat-option *ngFor="let item of this.personnels" [value]="item.id_personnel">
+                                            {{ item.nom }} {{ item.prenom }}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                            </form>
+                            <center>
+                                <div class="add ml-auto mr-auto">
+                                    <ag-grid-angular style="width: 250px; height: 500px;text-align: center;"
+                                        class="ag-theme-material" [rowData]="personnel" [columnDefs]="columnDefs"
+                                        [modules]="modules" (rowSelected)="getId($event)"
+                                        (cellValueChanged)="edit($event)" [rowSelection]="'multiple'"
+                                        rowMultiSelectWithClick="true" [pagination]="true"
+                                        [paginationAutoPageSize]="true">
+                                    </ag-grid-angular>
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

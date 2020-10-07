@@ -321,5 +321,9 @@ export class RHService {
       "http://localhost:8082/api/supprimerPersonnelDeLaListeRetard/" + personnel_id + "/" + datedejour, {}
     );
   }
-
+  listRetard(idPersonnel: number) {
+    return this.http.get(
+      "http://localhost:8082/api/ListeDesHeuresRetardParPersonnelId/" + idPersonnel
+    );
+  }
 }
