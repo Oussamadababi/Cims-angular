@@ -65,7 +65,7 @@ export class RecuperationSoldeReposComponent implements OnInit {
       else {
 
         console.log(res);
-        this._snackBar.open("Il existe deja une demande avec cette personnel dans le meme année", "OK", {
+        this._snackBar.open("Il existe déjà une demande avec ce personnel dans la même année", "OK", {
           duration: 2000,
           panelClass: ["green-snackbar"]
         });
