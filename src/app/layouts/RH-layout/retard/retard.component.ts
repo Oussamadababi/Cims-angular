@@ -56,6 +56,7 @@ export class RetardComponent implements OnInit {
   rowData1: any;
   d: any;
   dateSelect: any;
+  today: number = Date.now();
   onOptionsSelected() {
     console.log("ggggg");
     this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd')
@@ -103,27 +104,38 @@ export class RetardComponent implements OnInit {
   add() {
 
     if (this.retard["personnel"].personnel_id != "") {
-      this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
-      /* this.d1 = this.datePipe.transform(this.retard["heure"], 'yyyy-MM-dd hh:mm');
-       console.log(this.d1);*/
+      if (this.retard["datedujour"] < this.today) {
+        this.d = this.datePipe.transform(this.dateSelect, 'yyyy-MM-dd');
+        /* this.d1 = this.datePipe.transform(this.retard["heure"], 'yyyy-MM-dd hh:mm');
+         console.log(this.d1);*/
 
-      this.Rhservice.ajoutRetard(this.retard["personnel"].personnel_id, this.d, this.d + "T" + this.retard["heure"]).subscribe(res => {
-        console.log(res);
-        this.Rhservice.getPersonnelRetard(this.d).subscribe(res => {
-          var y: any = res;
-          this.rowData = y;
-        });
-        this.Rhservice.getPersonnelnonRetard(this.d).subscribe(res => {
-          var y: any = res;
-          this.rowData1 = y;
-        });
+        this.Rhservice.ajoutRetard(this.retard["personnel"].personnel_id, this.d, this.d + "T" + this.retard["heure"]).subscribe(res => {
+          console.log(res);
+          this.Rhservice.getPersonnelRetard(this.d).subscribe(res => {
+            var y: any = res;
+            this.rowData = y;
+          });
+          this.Rhservice.getPersonnelnonRetard(this.d).subscribe(res => {
+            var y: any = res;
+            this.rowData1 = y;
+          });
 
-        this._snackBar.open("Personnel ajouté au liste des retard", "OK", {
-          duration: 2000,
-          panelClass: ["green-snackbar"]
+          this._snackBar.open("Personnel ajouté au liste des retard", "OK", {
+            duration: 2000,
+            panelClass: ["green-snackbar"]
 
+          });
         });
-      });
+      } else {
+        this._snackBar.open(
+          "Vérifier La date de retard SVP! ",
+          "OK",
+          {
+            duration: 2000,
+            panelClass: ["red-snackbar"]
+          }
+        );
+      }
     }
     else {
       this._snackBar.open(
