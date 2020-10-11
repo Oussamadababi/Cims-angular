@@ -47,6 +47,7 @@ export class ListPersonnelsComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
   message: string;
+  today: number = Date.now();
   id: number;
   grade: any;
   site: any;
@@ -206,21 +207,72 @@ export class ListPersonnelsComponent implements OnInit {
                                             if (this.personnel["division"].id_division != "") {
                                               if (this.idfonction != "") {
                                                 if (this.personnel["date_fonction"] != "") {
-                                                  this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff, this.divselect, this.personnel["division"].id_division).subscribe(res => {
-                                                    console.log(res);
-                                                    this.ngOnInit();
+                                                  if (this.personnel["date_Naissance"] < this.personnel["date_recrutement"]) {
+                                                    if (this.personnel["date_recrutement"] < this.today) {
+                                                      if (this.personnel["date_Promotion"] < this.today) {
+                                                        if (this.personnel["date_fonction"] < this.today) {
+                                                          this.Rhservice.addPersonnel2(this.personnel, this.id_grade, this.idfonction, this.gouvselecter, this.idAfffff, this.divselect, this.personnel["division"].id_division).subscribe(res => {
+                                                            console.log(res);
+                                                            this.ngOnInit();
 
-                                                    this._snackBar.open("Personnel ajouté avec succés", "OK", {
-                                                      duration: 2000,
-                                                      panelClass: ["green-snackbar"]
-                                                    });
-                                                  }, err => {
-                                                    this.message = err.error.message;
-                                                    this.dialog.open(DialogError, {
-                                                      data: this.message
-                                                    });
+                                                            this._snackBar.open("Personnel ajouté avec succés", "OK", {
+                                                              duration: 2000,
+                                                              panelClass: ["green-snackbar"]
+                                                            });
+                                                          }, err => {
+                                                            this.message = err.error.message;
+                                                            this.dialog.open(DialogError, {
+                                                              data: this.message
+                                                            });
 
-                                                  });
+                                                          });
+                                                        }
+                                                        else {
+                                                          this._snackBar.open(
+                                                            "Vérifier la date de fonction par rapport au date d'aujourd'hui SVP!  ",
+                                                            "OK",
+                                                            {
+                                                              duration: 2000,
+                                                              panelClass: ["red-snackbar"]
+                                                            }
+                                                          );
+                                                        }
+
+                                                      }
+                                                      else {
+                                                        this._snackBar.open(
+                                                          "Vérifier la date de promotion par rapport au date d'aujourd'hui SVP!  ",
+                                                          "OK",
+                                                          {
+                                                            duration: 2000,
+                                                            panelClass: ["red-snackbar"]
+                                                          }
+                                                        );
+                                                      }
+                                                    }
+                                                    else {
+                                                      this._snackBar.open(
+                                                        "Vérifier la date de recrutement par rapport au date d'aujourd'hui SVP!  ",
+                                                        "OK",
+                                                        {
+                                                          duration: 2000,
+                                                          panelClass: ["red-snackbar"]
+                                                        }
+                                                      );
+                                                    }
+                                                  }
+                                                  else {
+                                                    this._snackBar.open(
+                                                      "Vérifier la date de naissance par rapport au date de recrutement SVP!  ",
+                                                      "OK",
+                                                      {
+                                                        duration: 2000,
+                                                        panelClass: ["red-snackbar"]
+                                                      }
+                                                    );
+
+
+                                                  }
                                                 }
                                                 else {
                                                   this._snackBar.open(
