@@ -311,13 +311,13 @@ export class RHService {
     );
   }
   ajoutRetard(idPersonnel: number, date: any, heure: any) {
-    return this.http.put(
+    return this.http.post(
       "http://localhost:8082/api/ListeRetard/" + idPersonnel + "/" + date + "/" + heure, {}
     );
 
   }
   deletePersonnelFromListeRetard(personnel_id: number, datedejour: Date) {
-    return this.http.put(
+    return this.http.delete(
       "http://localhost:8082/api/supprimerPersonnelDeLaListeRetard/" + personnel_id + "/" + datedejour, {}
     );
   }
