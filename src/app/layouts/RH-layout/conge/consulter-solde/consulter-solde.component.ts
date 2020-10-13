@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RHService } from 'app/services/RH/rhservice.service';
+import { parseTwoDigitYear } from 'moment';
 
 @Component({
   selector: 'app-consulter-solde',
@@ -7,6 +8,10 @@ import { RHService } from 'app/services/RH/rhservice.service';
   styleUrls: ['./consulter-solde.component.css']
 })
 export class ConsulterSoldeComponent implements OnInit {
+  today: number = Date.now();
+  // today1: number = {{this.today| Date:'yyyy'}};
+
+  //
 
   constructor(private Rhservice: RHService) { }
   personnels: any;
