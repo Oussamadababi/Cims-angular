@@ -40,13 +40,40 @@ export class CongeComponent implements OnInit {
     })
 
   }
+  today: any = new Date().getFullYear();
   personnel: object =
     {
+      id_personnel: "",
+      matricule: "",
+      nom: "",
+      prenom: "",
+      sexe: "",
+      telephone: "",
       soldeRepos: "",
       soldeReposN_1: "",
       soldeReposN_2: "",
+      soldeExceptionnel: "",
       soldeCompensation: "",
-      soldeExceptionnel: ""
+      date_recrutement: "",
+      email: "",
+      nom_AR: "",
+      prenom_AR: "",
+      matricule_CNRPS: "",
+      matricule_CNSS: "",
+      date_Naissance: "",
+      adresse: "",
+      poste_Occupe: "",
+      date_Promotion: "",
+      echelle: "",
+      date_Echelle: "",
+      echellon: "",
+      date_Echellon: "",
+      date_fonction: "",
+      departement: { id_dept: "" },
+      grade: { id_grade: "" },
+      nbrMinuteRetard: ""
+
+
 
     }
   onOptionsSelected2() {
@@ -54,8 +81,8 @@ export class CongeComponent implements OnInit {
       var y: any = res;
       console.log(res);
       this.personnel = y;
-      console.log(this.personnel["soldeRepos"])
-      console.log(this.personnel["soldeReposN_1"])
+
+      console.log("bbbbbbbbbbbbbbb" + this.personnel["soldeRepos"])
       console.log(this.personnel["soldeReposN_2"])
     });
   }

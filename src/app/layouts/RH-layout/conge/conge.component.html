@@ -31,6 +31,7 @@
                                         </mat-option>
                                     </mat-select>
                                 </mat-form-field>
+
                                 <div class="row">
                                     <div class="col-md-4 mb-3">
                                         <mat-form-field>
@@ -101,6 +102,16 @@
                                     </mat-form-field>
 
                                 </div>
+                                <fieldset>
+
+                                    <label>Solde de l’année {{today }}:</label> {{this.personnel["soldeRepos"]}}
+                                    jours<br>
+                                    <label>Solde de l’année {{today-1}} :</label>
+                                    {{this.personnel["soldeRepos"]}}jours<br>
+                                    <label>Solde récupéré {{this.personnel["soldeReposN_1"]}} :</label>
+                                    {{personnel.soldeReposN_2}}
+                                    jours<br>
+                                </fieldset>
                             </form>
                         </div>
                         <div class="add ml-auto mr-auto">
