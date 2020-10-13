@@ -22,11 +22,11 @@
 
                                 <fieldset>
 
-                                    <label>Solde de l’année {{today | date:'yyyy'}}:</label> {{personnel.soldeRepos}}
+                                    <label>Solde de l’année {{today }}:</label> {{personnel.soldeRepos}}
                                     jours<br>
-                                    <label>Solde de l’année {{today | date:'yyyy'}} :</label>
+                                    <label>Solde de l’année {{today-1}} :</label>
                                     {{personnel.soldeReposN_1}} jours<br>
-                                    <label>Solde récupéré {{today | date:'yyyy'}} :</label>
+                                    <label>Solde récupéré {{today-2}} :</label>
                                     {{personnel.soldeReposN_2}}
                                     jours<br>
                                 </fieldset>

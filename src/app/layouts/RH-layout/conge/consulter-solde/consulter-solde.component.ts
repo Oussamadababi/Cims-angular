@@ -8,8 +8,9 @@ import { parseTwoDigitYear } from 'moment';
   styleUrls: ['./consulter-solde.component.css']
 })
 export class ConsulterSoldeComponent implements OnInit {
-  today: number = Date.now();
-  // today1: number = {{this.today| Date:'yyyy'}};
+  // today: number = Date.now();
+  today: any = new Date().getFullYear();
+  //| date:'yyyy'
 
   //
 
