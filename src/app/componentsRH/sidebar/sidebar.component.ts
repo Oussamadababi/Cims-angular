@@ -91,7 +91,7 @@ export const ROUTES: RouteInfo[] = [
       },
       {
         path: "SoldeCompensation",
-        title: "Solde-Compensation",
+        title: "Ajouter Solde-Compensation",
         icon: "done_all"
       }
 

@@ -20,7 +20,8 @@ export class ConsulterSoldeComponent implements OnInit {
     {
       soldeRepos: "",
       soldeReposN_1: "",
-      soldeReposN_2: ""
+      soldeReposN_2: "",
+      soldeCompensation: "",
 
     }
   perselecter: any;
@@ -65,8 +66,8 @@ export class ConsulterSoldeComponent implements OnInit {
       maxWidth: 100
     },
     {
-      headerName: "SoldeExeceptionnel",
-      field: "telephone",
+      headerName: "Solde Compensation",
+      field: "soldeCompensation",
       sortable: true,
       filter: true,
       editable: true,
