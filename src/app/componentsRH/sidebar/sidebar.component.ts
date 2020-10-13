@@ -50,31 +50,31 @@ export const ROUTES: RouteInfo[] = [
     children: []
   },
   {
-    path: "List_Sites",
-    title: "Gérer les sites",
+    path: "",
+    title: "Parametrage",
     icon: "local_hospital",
     class: "",
     etat: false,
-    click: "Nothing()",
-    children: []
-  },
-  {
-    path: "List_Grades",
-    title: "Gérer les grades",
-    icon: "grade",
-    class: "",
-    etat: false,
-    click: "Nothing()",
-    children: []
-  },
-  {
-    path: "List_Departements",
-    title: "Gérer les Departements",
-    icon: "apartment",
-    class: "",
-    etat: false,
-    click: "Nothing()",
-    children: []
+    click: "ShowChildren()",
+    children: [
+      {
+        path: "List_Sites",
+        title: "Gérer les sites",
+        icon: "local_hospital"
+      },
+      {
+        path: "List_Grades",
+        title: "Gérer les grades",
+        icon: "local_hospital"
+      },
+      {
+        path: "List_Departements",
+        title: "Gérer les Departements",
+        icon: "local_hospital"
+      }
+
+
+    ]
   },
   {
     path: "Gestion_Conge",
@@ -156,6 +156,10 @@ export class SidebarComponent implements OnInit {
     if (route.title == "les Retards") {
       route.etat = !route.etat;
     }
+    if (route.title == "Parametrage") {
+      route.etat = !route.etat;
+    }
+
   }
   Nothing() {
     console.log("");
