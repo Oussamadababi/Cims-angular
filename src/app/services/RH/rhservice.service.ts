@@ -326,4 +326,10 @@ export class RHService {
       "http://localhost:8082/api/ListeDesHeuresRetardParPersonnelId/" + idPersonnel
     );
   }
+
+  listCongeEnAttente() {
+    return this.http.get(
+      "http://localhost:8082/api/listcongeAccepte/"
+    );
+  }
 }

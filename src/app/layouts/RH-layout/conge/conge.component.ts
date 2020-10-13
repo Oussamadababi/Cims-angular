@@ -28,6 +28,7 @@ import { DatePipe } from '@angular/common';
 export class CongeComponent implements OnInit {
   rowData: any;
   rowData1: any;
+  rowData2: any;
   form: FormGroup;
   constructor(private http: HttpClient,
     private Rhservice: RHService,
@@ -103,6 +104,11 @@ export class CongeComponent implements OnInit {
       console.log(res);
       this.rowData1 = res;
     });
+    this.Rhservice.listCongeEnAttente().subscribe(res => {
+      console.log(res);
+      this.rowData2 = res;
+    });
+    // listCongeEnAttente
 
   }
 
@@ -123,6 +129,82 @@ export class CongeComponent implements OnInit {
     }
   }
   columnDefs = [
+    {
+      headerName: "Numdemande",
+      field: "id",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 120
+    },
+    {
+      headerName: "typedeconge",
+      field: "typedeconge",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "datedebut",
+      field: "datedebut",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "datefin",
+      field: "datefin",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "nombredejour",
+      field: "numDeJour",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "NbrMois",
+      field: "numDeMois",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+
+      headerName: "NomPersonnel",
+      field: "p.nom",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "PrenomP",
+      field: "p.prenom",
+
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "Etat",
+      field: "etat",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    }
+  ]
+  columnDefs2 = [
     {
       headerName: "Numdemande",
       field: "id",
@@ -504,6 +586,7 @@ export class CongeComponent implements OnInit {
       maxWidth: 200
     }
   ]
+
 
 }
 
