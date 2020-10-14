@@ -18,14 +18,41 @@ export class ConsulterSoldeComponent implements OnInit {
   personnels: any;
   personnel: object =
     {
+      id_personnel: "",
+      nom: "",
+      prenom: "",
+      sexe: "",
+      telephone: "",
+      departement: { id_dept: "" },
+      email: "",
+      date_recrutement: "",
+      matricule: "",
+      matricule_CNRPS: "",
+      matricule_CNSS: "",
+      prenom_AR: "",
+      poste_Occupe: "",
+      date_Promotion: "",
       soldeRepos: "",
+      date_Naissance: "",
+      adresse: "",
+      affectation: { affectation_id: "" },
+      fonction: { id_fonction: "" },
+      division: { id_division: "" },
+      nom_AR: "",
+      grade: { id_grade: "" },
+      date_fonction: "",
       soldeReposN_1: "",
       soldeReposN_2: "",
       soldeCompensation: "",
 
     }
+  rowData: any;
   perselecter: any;
   ngOnInit(): void {
+    this.Rhservice.listerPersonnel().subscribe(res => {
+      console.log(res);
+      this.rowData = res;
+    });
     this.Rhservice.listerPersonnel().subscribe(data => {
       this.personnels = data;
       console.dir(data);
@@ -42,36 +69,56 @@ export class ConsulterSoldeComponent implements OnInit {
   }
   columnDefs = [
     {
-      headerName: "Solde",
-      field: "soldeRepos",
+      headerName: "Nom",
+      field: "nom",
       sortable: true,
       filter: true,
       editable: true,
       maxWidth: 130
     },
     {
-      headerName: "SoldeN-1",
-      field: "soldeReposN_1",
+      headerName: "Prenom",
+      field: "prenom",
       sortable: true,
       filter: true,
       editable: true,
       maxWidth: 130
     },
     {
-      headerName: "SoldeN-2",
-      field: "soldeReposN_2",
-      sortable: true,
-      filter: true,
-      editable: true,
-      maxWidth: 100
-    },
-    {
-      headerName: "Solde Compensation",
-      field: "soldeCompensation",
+      headerName: "Matricule",
+      field: "matricule",
       sortable: true,
       filter: true,
       editable: true,
       maxWidth: 140
     },
-  ]
+    {
+      headerName: "Solde Repos1",
+      field: "soldeReposN_1",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 200
+    },
+    {
+      headerName: "SoldeRepos2",
+      field: "soldeReposN_2",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 140
+    },
+    {
+      headerName: "Compensation",
+      field: "soldeCompensation",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 300
+    }
+
+  ];
+
+
+
 }
