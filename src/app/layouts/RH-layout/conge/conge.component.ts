@@ -12,6 +12,8 @@ import { MAT_MOMENT_DATE_FORMATS } from "@angular/material-moment-adapter";
 import { MomentUtcDateAdapter } from "../../chef-service-layout/AffectationsPartiellesCS/datePicker";
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-conge',
   templateUrl: './conge.component.html',
@@ -35,7 +37,8 @@ export class CongeComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private datePipe: DatePipe,
     public dialog: MatDialog,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private router: Router,) {
     this.form = this.fb.group({
       checkArray: this.fb.array([])
     })
@@ -312,6 +315,14 @@ export class CongeComponent implements OnInit {
     this.idA = event1.data["id"];
     console.log(event1.data["id"]);
     console.log(this.idA);
+  }
+  pdf() {
+    this.Rhservice.pdf().subscribe(res => {
+      var file = new Blob([res], { type: "application/pdf" });
+      var fileURL = URL.createObjectURL(file);
+      window.open(fileURL);
+      console.log("PDF Mission");
+    });
   }
   add() {
 

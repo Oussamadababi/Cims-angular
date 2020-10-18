@@ -332,4 +332,13 @@ export class RHService {
       "http://localhost:8082/api/listcongeAccepte/"
     );
   }
+  pdf() {
+    const headers = new HttpHeaders();
+    return this.http.get(
+      "http://localhost:8082/api/allCongeA",
+      {
+        responseType: "blob"
+      }
+    );
+  }
 }
