@@ -46,7 +46,8 @@
                                 <mat-form-field class="spacing">
 
                                     <mat-label>Personnel</mat-label>
-                                    <mat-select name="personnel" [(ngModel)]="this.retard.personnel.personnel_id">
+                                    <mat-select name="personnel" [(ngModel)]="this.retard.personnel.personnel_id"
+                                        (selectionChange)="add()">
                                         <mat-option *ngFor="let item of this.rowData1" [value]="item.id_personnel">
                                             {{ item.nom }} {{ item.prenom }}
                                         </mat-option>
@@ -57,12 +58,12 @@
                             </form>
 
                         </div>
-                        <div class="add ml-auto mr-auto">
+                        <!--            <div class="add ml-auto mr-auto">
                             <button (click)="add()" class="btn btn-success btn-round">
                                 Ajouter
                             </button>
 
-                        </div>
+                        </div>-->
                         <div class="add ml-auto mr-auto">
                             <ag-grid-angular style="width: 250px; height: 500px;text-align: center;"
                                 class="ag-theme-material" [rowData]="rowData" [columnDefs]="columnDefs"
