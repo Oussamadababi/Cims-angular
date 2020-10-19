@@ -134,7 +134,14 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     click: "",
     etat: false,
-    children: []
+    children: [
+      {
+        path: "UpdateSolde",
+        title: "Transfére les soldes repos",
+        icon: "done_all"
+      }
+
+    ]
   }
 
 ];
@@ -157,6 +164,9 @@ export class SidebarComponent implements OnInit {
       route.etat = !route.etat;
     }
     if (route.title == "Parametrage") {
+      route.etat = !route.etat;
+    }
+    if (route.title == "Recuperation Solde Repos") {
       route.etat = !route.etat;
     }
 

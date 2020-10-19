@@ -160,7 +160,7 @@ export class ListPersonnelsComponent implements OnInit {
   }
   onOptionsSelected1() {
     this.Rhservice.listService(this.divselect).subscribe(res => {
-      console.log('aaaaaaaaaaaaaaaaaaaaaaaaazeby' + this.divselect);
+      console.log('' + this.divselect);
       var y: any = res;
       this.services = y;
     });

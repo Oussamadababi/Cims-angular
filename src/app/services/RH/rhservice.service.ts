@@ -332,4 +332,12 @@ export class RHService {
       "http://localhost:8082/api/listcongeAccepte/"
     );
   }
+
+  TransferSoldeRtoN_1() {
+    return this.http.put(
+      "http://localhost:8082/api/transfererSoldreR/", {}
+
+    );
+  }
+
 }
