@@ -333,10 +333,21 @@ export class RHService {
     );
   }
 
+
   TransferSoldeRtoN_1() {
     return this.http.put(
       "http://localhost:8082/api/transfererSoldreR/", {}
 
+    );
+  }
+
+  pdf() {
+    const headers = new HttpHeaders();
+    return this.http.get(
+      "http://localhost:8082/api/allCongeA",
+      {
+        responseType: "blob"
+      }
     );
   }
 
