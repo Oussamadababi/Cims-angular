@@ -66,7 +66,8 @@
           <ag-grid-angular style="width: 1000px; height: 400px;" class="ag-theme-material" [rowData]="rowDataT"
             [columnDefs]="columnDefsT" [modules]="modules" (rowSelected)="getId($event)"
             (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
-            [paginationAutoPageSize]="true" [pagination]="true"></ag-grid-angular>
+            [frameworkComponents]="frameworkComponents" [paginationAutoPageSize]="true" [pagination]="true"
+            [localeText]="this.localeText"></ag-grid-angular>
           <div class="add ml-auto mr-auto">
             <button class="btn btn-danger btn-round" (click)="delete()">
               Supprimer

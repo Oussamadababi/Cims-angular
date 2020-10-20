@@ -32,7 +32,7 @@ export class PersonnelLayoutComponent implements OnInit {
     public location: Location,
     private router: Router,
     private userService: UserService //private tokenStorageService: TokenStorageService
-  ) {}
+  ) { }
   /*logout() {
     this.tokenStorageService.signOut();
     window.location.reload();
@@ -115,7 +115,7 @@ export class PersonnelLayoutComponent implements OnInit {
       }
     }
 
-    $(".fixed-plugin a").click(function(event) {
+    $(".fixed-plugin a").click(function (event) {
       // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
       if ($(this).hasClass("switch-trigger")) {
         if (event.stopPropagation) {
@@ -126,7 +126,7 @@ export class PersonnelLayoutComponent implements OnInit {
       }
     });
 
-    $(".fixed-plugin .badge").click(function() {
+    $(".fixed-plugin .badge").click(function () {
       let $full_page_background = $(".full-page-background");
 
       $(this)
@@ -145,7 +145,7 @@ export class PersonnelLayoutComponent implements OnInit {
       }
     });
 
-    $(".fixed-plugin .img-holder").click(function() {
+    $(".fixed-plugin .img-holder").click(function () {
       let $full_page_background = $(".full-page-background");
 
       $(this)
@@ -161,7 +161,7 @@ export class PersonnelLayoutComponent implements OnInit {
         .attr("src");
 
       if ($sidebar_img_container.length != 0) {
-        $sidebar_img_container.fadeOut("fast", function() {
+        $sidebar_img_container.fadeOut("fast", function () {
           $sidebar_img_container.css(
             "background-image",
             'url("' + new_image + '")'
@@ -171,7 +171,7 @@ export class PersonnelLayoutComponent implements OnInit {
       }
 
       if ($full_page_background.length != 0) {
-        $full_page_background.fadeOut("fast", function() {
+        $full_page_background.fadeOut("fast", function () {
           $full_page_background.css(
             "background-image",
             'url("' + new_image + '")'
@@ -214,4 +214,5 @@ export class PersonnelLayoutComponent implements OnInit {
     }
     return bool;
   }
+
 }

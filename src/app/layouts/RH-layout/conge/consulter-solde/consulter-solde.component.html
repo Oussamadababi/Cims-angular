@@ -49,7 +49,8 @@
                                             [rowData]="rowData" [columnDefs]="columnDefs" [modules]="modules"
                                             (rowSelected)="getId($event)" (cellValueChanged)="edit($event)"
                                             [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
-                                            [pagination]="true" [paginationAutoPageSize]="true"></ag-grid-angular>
+                                            [pagination]="true" [paginationAutoPageSize]="true"
+                                            [localeText]="this.localeText"></ag-grid-angular>
 
                                     </div>
                                 </div>

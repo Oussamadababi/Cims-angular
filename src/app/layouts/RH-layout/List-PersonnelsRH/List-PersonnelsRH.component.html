@@ -272,7 +272,7 @@
           <ag-grid-angular style="width: 1218px; height: 500px;" class="ag-theme-material" [rowData]="rowData"
             [columnDefs]="columnDefs" [modules]="modules" (rowSelected)="getId($event)"
             (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
-            [pagination]="true" [paginationAutoPageSize]="true"></ag-grid-angular>
+            [pagination]="true" [paginationAutoPageSize]="true" [localeText]="this.localeText"></ag-grid-angular>
           <div class="add ml-auto mr-auto">
             <button class="btn btn-danger btn-round" (click)="delete()">
               Supprimer

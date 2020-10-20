@@ -7,19 +7,10 @@
             <h4 class="card-title ">Liste des missions accomplies</h4>
           </div>
 
-          <ag-grid-angular
-            style="width: 1210px; height: 500px;"
-            class="ag-theme-material"
-            [rowData]="rowDataP"
-            [columnDefs]="columnDefsP"
-            [modules]="modules"
-            [pagination]="true"
-            (cellClicked)="getId($event)"
-            rowMultiSelectWithClick="false"
-            [rowSelection]="'single'"
-            [frameworkComponents]="frameworkComponents"
-            [paginationAutoPageSize]="true"
-          ></ag-grid-angular>
+          <ag-grid-angular style="width: 1210px; height: 500px;" class="ag-theme-material" [rowData]="rowDataP"
+            [columnDefs]="columnDefsP" [modules]="modules" [pagination]="true" (cellClicked)="getId($event)"
+            rowMultiSelectWithClick="false" [rowSelection]="'single'" [frameworkComponents]="frameworkComponents"
+            [paginationAutoPageSize]="true" [localeText]="this.localeText"></ag-grid-angular>
         </div>
       </div>
     </div>
