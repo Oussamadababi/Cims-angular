@@ -21,6 +21,7 @@ export class PersonnelAbsenceSJComponent implements OnInit {
     public dialog: MatDialog) {
 
   }
+  idA: number;
   rowData: any;
   ListePASJ: any;
   ngOnInit(): void {
@@ -53,8 +54,42 @@ export class PersonnelAbsenceSJComponent implements OnInit {
       filter: true,
       editable: true,
       maxWidth: 150
+    },
+    {
+      headerName: "Mail Reçu",
+      field: "etat",
+      sortable: true,
+      filter: true,
+      editable: true,
+      maxWidth: 250
     }
 
   ];
+  getIdA(event) {
+    this.idA = event.data["id"];
+    console.log(event.data["id"]);
+    console.log(this.idA);
+  }
+  JustifierAbsence() {
+    if (this.idA != null) {
+      this.Rhservice.JustifierAbsence(this.idA).subscribe(res => {
+        this.ngOnInit();
+
+      });
+    }
+    else {
+      this._snackBar.open(
+        "Sélectionner une absence pour le justifier ",
+        "OK",
+        {
+          duration: 2000,
+          panelClass: ["red-snackbar"]
+        }
+      );
+    }
+
+
+
+  }
 
 }

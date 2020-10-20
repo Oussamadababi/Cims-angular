@@ -351,4 +351,10 @@ export class RHService {
     );
   }
 
+  JustifierAbsence(id: number) {
+    return this.http.put(
+      "http://localhost:8082/api/justifierAbsence/" + id, {}
+    );
+  }
+
 }

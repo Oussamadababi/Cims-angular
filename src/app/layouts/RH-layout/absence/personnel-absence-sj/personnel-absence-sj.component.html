@@ -6,9 +6,15 @@
             </div>
 
             <ag-grid-angular style="width: 1218px; height: 500px;" class="ag-theme-material" [rowData]="rowData"
-                [columnDefs]="columnDefs" [modules]="modules" (rowSelected)="getId($event)"
+                [columnDefs]="columnDefs" [modules]="modules" (rowSelected)="getIdA($event)"
                 (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
                 [pagination]="true" [paginationAutoPageSize]="true"></ag-grid-angular>
+            <div class="add ml-auto mr-auto">
+                <button class="btn btn-success btn-round" (click)=" JustifierAbsence()">
+                    Justifié
+                </button>
+
+            </div>
         </div>
+
     </div>
-</div>
