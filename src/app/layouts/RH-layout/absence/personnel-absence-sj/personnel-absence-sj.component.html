@@ -4,19 +4,24 @@
             <div class="card-header card-header-danger">
                 <h4 class="card-title ">Liste des personnels Absent Sans Justification</h4>
             </div>
+            <div style="margin-right: 20%;">
+                <center>
+                    <ag-grid-angular style="width: 1218px; height: 500px;text-align: center;" class="ag-theme-material"
+                        [rowData]="rowData" [columnDefs]="columnDefs" [modules]="modules" (rowSelected)="getIdA($event)"
+                        (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
+                        [pagination]="true" [paginationAutoPageSize]="true" [localeText]="this.localeText">
+                    </ag-grid-angular>
+                    <div style="margin-right: 30%;">
+                        <div class="add ml-auto mr-auto">
+                            <button class="btn btn-success btn-round" (click)=" JustifierAbsence()">
+                                Justifié
+                            </button>
 
-            <ag-grid-angular style="width: 1218px; height: 500px;text-align: center;" class="ag-theme-material"
-                [rowData]="rowData" [columnDefs]="columnDefs" [modules]="modules" (rowSelected)="getIdA($event)"
-                (cellValueChanged)="edit($event)" [rowSelection]="'multiple'" rowMultiSelectWithClick="true"
-                [pagination]="true" [paginationAutoPageSize]="true" [localeText]="this.localeText">
-            </ag-grid-angular>
-
-            <div class="add ml-auto mr-auto">
-                <button class="btn btn-success btn-round" (click)=" JustifierAbsence()">
-                    Justifié
-                </button>
-
+                        </div>
+                    </div>
+                </center>
             </div>
+
 
         </div>
 

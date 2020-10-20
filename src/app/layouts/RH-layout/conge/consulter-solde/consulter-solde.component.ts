@@ -98,7 +98,7 @@ export class ConsulterSoldeComponent implements OnInit {
       sortable: true,
       filter: true,
       editable: true,
-      maxWidth: 200
+      maxWidth: 400
     },
     {
       headerName: "SoldeRepos2",
@@ -106,7 +106,7 @@ export class ConsulterSoldeComponent implements OnInit {
       sortable: true,
       filter: true,
       editable: true,
-      maxWidth: 140
+      maxWidth: 400
     },
     {
       headerName: "Compensation",
