@@ -137,7 +137,7 @@ export const ROUTES: RouteInfo[] = [
     children: [
       {
         path: "UpdateSolde",
-        title: "Transfére les soldes repos",
+        title: "Transférer le solde repos",
         icon: "done_all"
       }
 
